@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Children to Share</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4CAF50',
+            secondary: '#FF9800',
+            accent: '#2196F3',
+            success: '#8BC34A',
+            warning: '#FFC107',
+            danger: '#F44336',
+          },
+          fontFamily: {
+            'nunito': ['Nunito', 'sans-serif'],
+            'comic': ['Comic Neue', 'cursive'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .logo-text {
+      font-family: 'Comic Neue', cursive;
+      font-weight: 700;
+    }
+    .section-title {
+      font-family: 'Comic Neue', cursive;
+      font-weight: 700;
+    }
+    .role-option {
+      transition: all 0.3s ease;
+    }
+    .role-option:hover {
+      transform: translateY(-5px);
+    }
+    .role-option.selected {
+      border: 3px solid #4CAF50;
+      box-shadow: 0 10px 25px rgba(76, 175, 80, 0.2);
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      ring: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-nunito">
+<!-- Header -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+    <div class="logo flex items-center">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjNENBRjUwIiBkPSJNNjQgNjRDNjQgNDYuMyA3OC4zIDMyIDk2IDMyaDMyMEM0NDMuNyAzMiA0NDggNDYuMyA0NDggNjR2Mzg0YzAgMTcuNy0xNC4zIDMyLTMyIDMySDk2Yy0xNy43IDAtMzItMTQuMy0zMi0zMlY2NHpNMjU2IDQ4MGM3OS41IDAgMTQ0LTY0LjUgMTQ0LTE0NHMtNjQuNS0xNDQtMTQ0LTE0NC0xNDQgNjQuNS0xNDQgMTQ0IDY0LjUgMTQ0IDE0NCAxNDR6TTEyOCA2NGg1MTJ2MzIuOEw0NDggMjQwLjIgNDQ4IDMwNGwtNjQgNjQgMTI4IDEyOEg5Nkw2NCA0NDhWNjR6Ii8+PC9zdmc+" alt="Children to Share Logo" class="h-10 mr-2">
+      <h1 class="text-xl logo-text text-primary">
+        <a href="index.html">Children to Share</a>
+      </h1>
+    </div>
+
+    <nav class="my-4 md:my-0">
+      <ul class="flex flex-wrap justify-center">
+        <li class="m-2 md:mx-4"><a href="index.html" class="font-semibold hover:text-primary transition-colors">Home</a></li>
+        <!--        <li class="m-2 md:mx-4"><a href="#how-it-works" class="font-semibold hover:text-primary transition-colors">How It Works</a></li>-->
+        <li class="m-2 md:mx-4"><a href="#roles" class="font-semibold hover:text-primary transition-colors">Get Involved</a></li>
+        <li class="m-2 md:mx-4"><a href="#safety" class="font-semibold hover:text-primary transition-colors">Safety</a></li>
+        <li class="m-2 md:mx-4"><a href="#testimonials" class="font-semibold hover:text-primary transition-colors">Testimonials</a></li>
+      </ul>
+    </nav>
+
+    <div class="auth-buttons flex gap-2 mt-4 md:mt-0">
+      <a href="login.html" class="px-4 py-2 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white transition-colors">Log In</a>
+      <a href="registration.html" class="px-4 py-2 rounded-full bg-primary text-white font-semibold hover:bg-green-600 transition-colors">Sign Up</a>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="flex-grow py-8 flex items-center justify-center">
+  <div class="container mx-auto px-4 max-w-md">
+    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+      <!-- Form Header -->
+      <div class="bg-gradient-to-r from-green-100 to-green-200 p-6 text-center">
+        <h2 class="text-3xl font-bold section-title">Welcome Back!</h2>
+        <p class="text-lg text-gray-600 mt-2">Sign in to your account</p>
+      </div>
+
+      <!-- Login Form -->
+      <div class="px-6 py-8">
+        <form class="space-y-6">
+          <div>
+            <label class="block text-gray-700 font-semibold mb-2">Phone Number <span class="text-red-500">*</span></label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <i class="fas fa-phone text-gray-400"></i>
+              </div>
+              <input type="tel" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your phone number" required>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-gray-700 font-semibold mb-2">Password <span class="text-red-500">*</span></label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <i class="fas fa-lock text-gray-400"></i>
+              </div>
+              <input type="password" id="password" class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your password" required>
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 password-toggle" onclick="togglePassword()">
+                <i class="fas fa-eye text-gray-400"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center">
+            <div class="flex items-center">
+              <input type="checkbox" id="remember" class="h-4 w-4 text-primary focus:ring-primary">
+              <label for="remember" class="ml-2 text-gray-700">Remember me</label>
+            </div>
+            <a href="#" class="text-primary font-semibold hover:underline">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold text-lg hover:bg-green-600 transition-colors focus:ring-4 focus:ring-green-200">Log In</button>
+        </form>
+
+        <div class="mt-6 text-center">
+          <p class="text-gray-600">Don't have an account? <a href="#" class="text-primary font-semibold hover:underline">Sign Up</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white pt-16 pb-8">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+        <h3 class="text-xl font-semibold mb-6 logo-text">Children to Share</h3>
+        <p class="text-gray-300 mb-6">Making sharing safe and fun for children everywhere</p>
+        <div class="flex gap-4">
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold mb-6">Quick Links</h3>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">How It Works</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Safety Guidelines</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">For Parents</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold mb-6">Support</h3>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Help Center</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold mb-6">Contact Info</h3>
+        <p class="text-gray-300 mb-3 flex items-center"><i class="fas fa-map-marker-alt mr-3"></i> 123 Sharing Street, Community City</p>
+        <p class="text-gray-300 mb-3 flex items-center"><i class="fas fa-envelope mr-3"></i> info@childrentoshare.org</p>
+        <p class="text-gray-300 flex items-center"><i class="fas fa-phone mr-3"></i> (123) 456-7890</p>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-gray-700 text-center text-gray-400">
+      <p>&copy; 2023 Children to Share. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+    // Role selection functionality
+    document.querySelectorAll('.role-option').forEach(option => {
+    option.addEventListener('click', function () {
+      document.querySelectorAll('.role-option').forEach(opt => {
+        opt.classList.remove('selected');
+        opt.classList.add('border-gray-200');
+        opt.classList.remove('border-primary');
+      });
+      this.classList.add('selected');
+      this.classList.add('border-primary');
+      this.classList.remove('border-gray-200');
+    });
+  });
+
+    // Form submission
+    document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const selectedRole = document.querySelector('.role-option.selected');
+    if (!selectedRole) {
+    alert('Please select your role');
+    return;
+  }
+    alert('Form submitted successfully! In a real application, this would be processed.');
+  });
+</script>
+</body>
+</html>
