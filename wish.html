@@ -71,25 +71,106 @@
     </div>
 </header>
 
-<section class="bg-gradient-to-br from-green-100 to-green-200 py-20">
-    <div class="container mx-auto px-4 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 hero-title">Share Joy, Create Smiles</h2>
-            <p class="text-xl text-gray-600 mb-8">A safe platform for children to share gifts, make wishes come true, and build stronger communities together</p>
+<!--<section class="bg-gradient-to-br from-green-100 to-green-200 py-20">-->
+<!--    <div class="container mx-auto px-4 text-center">-->
+<!--        <div class="max-w-3xl mx-auto">-->
+<!--            <h2 class="text-4xl md:text-5xl font-bold mb-6 hero-title">Share Joy, Create Smiles</h2>-->
+<!--            <p class="text-xl text-gray-600 mb-8">A safe platform for children to share gifts, make wishes come true, and build stronger communities together</p>-->
 <!--            <div class="flex flex-col sm:flex-row justify-center gap-4">-->
 <!--                <a href="registration.html" class="px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-green-600 transition-colors">Make a Wish</a>-->
 <!--                <a href="registration.html" class="px-6 py-3 rounded-full bg-secondary text-white font-semibold hover:bg-orange-500 transition-colors">Donate an Item</a>-->
 <!--                <a href="registration.html" class="px-6 py-3 rounded-full bg-accent text-white font-semibold hover:bg-blue-600 transition-colors">Learn More</a>-->
 <!--            </div>-->
-        </div>
-    </div>
-</section>
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
 <div class="container mx-auto">
     <!-- Page Title -->
     <div class="my-8 text-center">
-        <h1 class="text-3xl font-bold text-gray-800">Children's Wishes</h1>
-        <p class="text-gray-600 mt-2">Help make these wishes come true by donating items</p>
+        <!-- Filter Section -->
+        <div class="filter-section bg-white rounded-xl shadow-md p-6 w-full bg-gradient-to-br from-green-50 to-green-100">
+            <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-filter mr-2 text-primary"></i> Filter Wishes
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <!-- Search Field -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Search Wishes</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-gray-400"></i>
+                        </div>
+                        <input
+                                type="text"
+                                placeholder="Search by item, description..."
+                                class="pl-10 pr-4 py-3 border border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-primary focus:border-transparent"
+                        >
+                    </div>
+                </div>
+
+                <!-- Category Dropdown -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                    <div class="relative">
+                        <select class="w-full pl-3 pr-10 py-3 border border-gray-300 rounded-lg appearance-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="">All Categories</option>
+                            <option value="toy">Toys</option>
+                            <option value="book">Books</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="educational">Educational</option>
+                            <option value="sports">Sports Equipment</option>
+                            <option value="art">Art Supplies</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Dropdown -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                    <div class="relative">
+                        <select class="w-full pl-3 pr-10 py-3 border border-gray-300 rounded-lg appearance-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="">All Locations</option>
+                            <option value="sf">San Francisco, CA</option>
+                            <option value="ny">New York, NY</option>
+                            <option value="la">Los Angeles, CA</option>
+                            <option value="chi">Chicago, IL</option>
+                            <option value="hou">Houston, TX</option>
+                            <option value="phi">Philadelphia, PA</option>
+                            <option value="phx">Phoenix, AZ</option>
+                            <option value="sa">San Antonio, TX</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex justify-end space-x-3">
+                <button class="filter-btn px-5 py-2 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50">
+                    <i class="fas fa-times mr-2"></i> Clear Filters
+                </button>
+                <button class="filter-btn px-5 py-2 bg-primary text-white rounded-lg font-medium hover:bg-green-600">
+                    <i class="fas fa-check mr-2"></i> Apply Filters
+                </button>
+            </div>
+
+            <!-- Active Filters (will appear when filters are applied) -->
+            <div class="mt-6 pt-4 border-t border-gray-200 hidden" id="activeFilters">
+                <h3 class="text-sm font-medium text-gray-700 mb-2">Active Filters:</h3>
+                <div class="flex flex-wrap gap-2">
+                    <!-- Active filters will be added here dynamically -->
+                </div>
+            </div>
+        </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
