@@ -30,19 +30,11 @@
     <style>
         .wish-card {
             transition: all 0.3s ease;
+            /*max-width: 320px;*/
         }
         .wish-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        .category-tag {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-right: 6px;
-            margin-bottom: 6px;
         }
     </style>
 </head>
@@ -99,329 +91,317 @@
         <h1 class="text-3xl font-bold text-gray-800">Children's Wishes</h1>
         <p class="text-gray-600 mt-2">Help make these wishes come true by donating items</p>
     </div>
-
-    <!-- Wishes Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Wish Card 1 -->
+    <div class="grid grid-cols-3 gap-4">
         <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <div class="p-5">
-                <!-- Wisher Info -->
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                        <img src="https://cdn0.iconfinder.com/data/icons/kids-avatars/512/50_Kids_Icons-09-512.png" class="text-blue-600 font-bold" alt="">
+            <!-- Child Info Section -->
+            <div class="p-5 flex items-center">
+                <div class="w-1/2 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200 hover:ring-green-300">
+                    <img src="https://www.shutterstock.com/image-photo/close-photo-cute-little-girl-600nw-2583433993.jpg" alt="Max" class="w-48 h-48 object-cover">
+                </div>
+                <div class="w-1/2">
+                    <h2 class="font-bold text-lg">Maternity Concierge</h2>
+                    <p class="text-gray-600">Age 10</p>
+                    <div class="w-20 h-20 rounded bg-blue-100 overflow-hidden mr-4 flex items-center justify-center">
+                        <img src="https://png.pngtree.com/png-vector/20191028/ourmid/pngtree-bicycle-icon-outline-style-png-image_1903500.jpg" class="w-18 h-18 object-cover">
                     </div>
-                    <div>
-                        <h3 class="font-semibold">Emma S.</h3>
-                        <p class="text-sm text-gray-500">San Francisco, CA</p>
-                    </div>
-                </div>
-
-                <!-- Date & Time -->
-                <div class="flex items-center text-sm text-gray-500 mb-4">
-                    <i class="far fa-clock mr-2"></i>
-                    <span>Oct 15, 2023 • 2:30 PM</span>
-                </div>
-
-                <!-- Category Tags -->
-                <div class="mb-4">
-                    <span class="category-tag bg-blue-100 text-blue-800">Book</span>
-                    <span class="category-tag bg-purple-100 text-purple-800">Education</span>
-                </div>
-
-                <!-- Wish Description -->
-                <div>
-                    <p class="text-gray-700">I love reading adventure stories! I wish for a collection of adventure books to explore new worlds and improve my reading skills.</p>
                 </div>
             </div>
 
-            <!-- Action Button -->
-            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
-                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
-                    Donate Item
-                </button>
+            <!-- Wish Content -->
+            <div class="px-5 pb-5">
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <p class="text-gray-700">I need a bicycle to ride to school and play with my friends in the park.</p>
+                </div>
+
+                <!-- Wish Details -->
+                <div class="mb-4">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                        <span>San Francisco, CA</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="far fa-clock mr-2 text-primary"></i>
+                        <span>Posted: Oct 15, 2023</span>
+                    </div>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-5">
+                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
+                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
+                    <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex space-x-3">
+                    <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                        <i class="fas fa-gift mr-2"></i> Fulfill Wish
+                    </button>
+                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                        <i class="fas fa-comment mr-2"></i> Message Guardian
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
+            <!-- Child Info Section -->
+            <div class="p-5 flex items-center">
+                <div class="w-1/2 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200 hover:ring-green-300">
+                    <img src="https://www.shutterstock.com/image-photo/serious-pretty-boy-head-shot-600nw-2111421392.jpg" alt="Max" class="w-48 h-48 object-cover">
+                </div>
+                <div class="w-1/2">
+                    <h2 class="font-bold text-lg">John Wick</h2>
+                    <p class="text-gray-600">Age 7</p>
+                    <div class="w-20 h-20 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center">
+                        <img src="https://img.freepik.com/free-psd/view-children-s-stuffed-animal_23-2151517634.jpg" alt="" class="w-18 h-18 object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wish Content -->
+            <div class="px-5 pb-5">
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <p class="text-gray-700">"I need a bicycle to ride to school and play with my friends in the park."</p>
+                </div>
+
+                <!-- Wish Details -->
+                <div class="mb-4">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                        <span>San Francisco, CA</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="far fa-clock mr-2 text-primary"></i>
+                        <span>Posted: Oct 15, 2023</span>
+                    </div>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-5">
+                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
+                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
+                    <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex space-x-3">
+                    <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                        <i class="fas fa-gift mr-2"></i> Fulfill Wish
+                    </button>
+                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                        <i class="fas fa-comment mr-2"></i> Message Guardian
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
+            <!-- Child Info Section -->
+            <div class="p-5 flex items-center">
+                <div class="w-1/2 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200 hover:ring-green-300">
+                    <img src="https://www.shutterstock.com/image-photo/headshot-portrait-smiling-little-girl-600nw-2579821615.jpg" alt="Max" class="w-48 h-48 object-cover">
+                </div>
+                <div class="w-1/2">
+                    <h2 class="font-bold text-lg">Jennifer Caffelle</h2>
+                    <p class="text-gray-600">Age 12</p>
+                    <div class="w-20 h-20 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center">
+                        <img src="https://ds.rokomari.store/rokomari110/ProductNew20190903/260X372/School_Bags_For_Girls_Big_Capacity_Backp-Non_Brand-56df4-349666.jpg" alt="" class="w-18 h-18 object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wish Content -->
+            <div class="px-5 pb-5">
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <p class="text-gray-700">"I need a bicycle to ride to school and play with my friends in the park."</p>
+                </div>
+
+                <!-- Wish Details -->
+                <div class="mb-4">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                        <span>San Francisco, CA</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="far fa-clock mr-2 text-primary"></i>
+                        <span>Posted: Oct 15, 2023</span>
+                    </div>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-5">
+                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
+                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
+                    <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex space-x-3">
+                    <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                        <i class="fas fa-gift mr-2"></i> Fulfill Wish
+                    </button>
+                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                        <i class="fas fa-comment mr-2"></i> Message Guardian
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- Wish Card 2 -->
         <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <div class="p-5">
-                <!-- Wisher Info -->
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mr-3">
-                        <img src="https://thumbs.dreamstime.com/b/smiling-child-avatar-flat-design-style-blue-circle-background-smiling-child-avatar-flat-design-style-blue-circle-394182101.jpg" class="text-blue-600 font-bold" alt="">
+            <!-- Child Info Section -->
+            <div class="p-5 flex items-center">
+                <div class="w-1/2 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200 hover:ring-green-300">
+                    <img src="https://st4.depositphotos.com/1372245/23901/i/450/depositphotos_239017380-stock-photo-portrait-emotional-boy-white-background.jpg" alt="Max" class="w-48 h-48 object-cover">
+                </div>
+                <div class="w-1/2">
+                    <h2 class="font-bold text-lg">Maternity Concierge</h2>
+                    <p class="text-gray-600">Age 10</p>
+                    <div class="w-20 h-20 rounded bg-blue-100 overflow-hidden mr-4 flex items-center justify-center">
+                        <img src="https://png.pngtree.com/png-vector/20191028/ourmid/pngtree-bicycle-icon-outline-style-png-image_1903500.jpg" class="w-18 h-18 object-cover">
                     </div>
-                    <div>
-                        <h3 class="font-semibold">Maya J.</h3>
-                        <p class="text-sm text-gray-500">Oakland, CA</p>
-                    </div>
-                </div>
-
-                <!-- Date & Time -->
-                <div class="flex items-center text-sm text-gray-500 mb-4">
-                    <i class="far fa-clock mr-2"></i>
-                    <span>Oct 14, 2023 • 4:15 PM</span>
-                </div>
-
-                <!-- Category Tags -->
-                <div class="mb-4">
-                    <span class="category-tag bg-yellow-100 text-yellow-800">Art Supplies</span>
-                    <span class="category-tag bg-purple-100 text-purple-800">Creative</span>
-                </div>
-
-                <!-- Wish Description -->
-                <div>
-                    <p class="text-gray-700">I enjoy drawing and painting. I would love to have a set of watercolor paints and brushes to create beautiful artwork.</p>
                 </div>
             </div>
 
-            <!-- Action Button -->
-            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
-                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
-                    Donate Item
-                </button>
+            <!-- Wish Content -->
+            <div class="px-5 pb-5">
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <p class="text-gray-700">I need a bicycle to ride to school and play with my friends in the park.</p>
+                </div>
+
+                <!-- Wish Details -->
+                <div class="mb-4">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                        <span>San Francisco, CA</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="far fa-clock mr-2 text-primary"></i>
+                        <span>Posted: Oct 15, 2023</span>
+                    </div>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-5">
+                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
+                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
+                    <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex space-x-3">
+                    <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                        <i class="fas fa-gift mr-2"></i> Fulfill Wish
+                    </button>
+                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                        <i class="fas fa-comment mr-2"></i> Message Guardian
+                    </button>
+                </div>
             </div>
         </div>
-
-        <!-- Wish Card 3 -->
         <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <div class="p-5">
-                <!-- Wisher Info -->
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                        <img src="https://img.freepik.com/premium-vector/kids-avatar-smiling-boy-vector_495897-145.jpg" class="text-blue-600 font-bold" alt="">
+            <!-- Child Info Section -->
+            <div class="p-5 flex items-center">
+                <div class="w-1/2 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200 hover:ring-green-300">
+                    <img src="https://st.depositphotos.com/1011643/4555/i/450/depositphotos_45553123-stock-photo-little-boy-looking-at-the.jpg" alt="Max" class="w-48 h-48 object-cover">
+                </div>
+                <div class="w-1/2">
+                    <h2 class="font-bold text-lg">John Wick</h2>
+                    <p class="text-gray-600">Age 7</p>
+                    <div class="w-20 h-20 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center">
+                        <img src="https://img.freepik.com/free-psd/view-children-s-stuffed-animal_23-2151517634.jpg" alt="" class="w-18 h-18 object-cover">
                     </div>
-                    <div>
-                        <h3 class="font-semibold">Liam R.</h3>
-                        <p class="text-sm text-gray-500">San Jose, CA</p>
-                    </div>
-                </div>
-
-                <!-- Date & Time -->
-                <div class="flex items-center text-sm text-gray-500 mb-4">
-                    <i class="far fa-clock mr-2"></i>
-                    <span>Oct 13, 2023 • 10:45 AM</span>
-                </div>
-
-                <!-- Category Tags -->
-                <div class="mb-4">
-                    <span class="category-tag bg-red-100 text-red-800">Toy</span>
-                    <span class="category-tag bg-blue-100 text-blue-800">Outdoor</span>
-                </div>
-
-                <!-- Wish Description -->
-                <div>
-                    <p class="text-gray-700">I wish for a new soccer ball. I love playing with my friends after school and my old ball has a leak. It would make me so happy!</p>
                 </div>
             </div>
 
-            <!-- Action Button -->
-            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
-                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
-                    Donate Item
-                </button>
+            <!-- Wish Content -->
+            <div class="px-5 pb-5">
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <p class="text-gray-700">"I need a bicycle to ride to school and play with my friends in the park."</p>
+                </div>
+
+                <!-- Wish Details -->
+                <div class="mb-4">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                        <span>San Francisco, CA</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="far fa-clock mr-2 text-primary"></i>
+                        <span>Posted: Oct 15, 2023</span>
+                    </div>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-5">
+                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
+                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
+                    <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex space-x-3">
+                    <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                        <i class="fas fa-gift mr-2"></i> Fulfill Wish
+                    </button>
+                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                        <i class="fas fa-comment mr-2"></i> Message Guardian
+                    </button>
+                </div>
             </div>
         </div>
-
-        <!-- Wish Card 4 -->
         <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <div class="p-5">
-                <!-- Wisher Info -->
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-3">
-                        <img src="https://cdn-icons-png.flaticon.com/512/4322/4322993.png" class="text-blue-600 font-bold" alt="">
-                    </div>
-                    <div>
-                        <h3 class="font-semibold">Noah O.</h3>
-                        <p class="text-sm text-gray-500">Berkeley, CA</p>
+            <!-- Child Info Section -->
+            <div class="p-5 flex items-center">
+                <div class="w-1/2 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200 hover:ring-green-300">
+                    <img src="https://static8.depositphotos.com/1101639/814/i/450/depositphotos_8146463-stock-photo-smiling-boy.jpg" alt="Max" class="w-48 h-48 object-cover">
+                </div>
+                <div class="w-1/2">
+                    <h2 class="font-bold text-lg">Jennifer Caffelle</h2>
+                    <p class="text-gray-600">Age 12</p>
+                    <div class="w-20 h-20 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center">
+                        <img src="https://ds.rokomari.store/rokomari110/ProductNew20190903/260X372/School_Bags_For_Girls_Big_Capacity_Backp-Non_Brand-56df4-349666.jpg" alt="" class="w-18 h-18 object-cover">
                     </div>
                 </div>
+            </div>
 
-                <!-- Date & Time -->
-                <div class="flex items-center text-sm text-gray-500 mb-4">
-                    <i class="far fa-clock mr-2"></i>
-                    <span>Oct 12, 2023 • 3:20 PM</span>
+            <!-- Wish Content -->
+            <div class="px-5 pb-5">
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <p class="text-gray-700">"I need a bicycle to ride to school and play with my friends in the park."</p>
+                </div>
+
+                <!-- Wish Details -->
+                <div class="mb-4">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                        <span>San Francisco, CA</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="far fa-clock mr-2 text-primary"></i>
+                        <span>Posted: Oct 15, 2023</span>
+                    </div>
                 </div>
 
                 <!-- Category Tags -->
-                <div class="mb-4">
-                    <span class="category-tag bg-indigo-100 text-indigo-800">Gadget</span>
-                    <span class="category-tag bg-blue-100 text-blue-800">Learning</span>
+                <div class="mb-5">
+                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
+                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
+                    <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
                 </div>
 
-                <!-- Wish Description -->
-                <div>
-                    <p class="text-gray-700">I'm interested in science and technology. I would be grateful for a beginner's coding kit or an educational electronics.</p>
+                <!-- Action Buttons -->
+                <div class="flex space-x-3">
+                    <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                        <i class="fas fa-gift mr-2"></i> Fulfill Wish
+                    </button>
+                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                        <i class="fas fa-comment mr-2"></i> Message Guardian
+                    </button>
                 </div>
-            </div>
-
-            <!-- Action Button -->
-            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
-                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
-                    Donate Item
-                </button>
-            </div>
-        </div>
-
-        <!-- Wish Card 5 -->
-        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <div class="p-5">
-                <!-- Wisher Info -->
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
-                        <span class="text-yellow-600 font-bold">AV</span>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold">Ava V.</h3>
-                        <p class="text-sm text-gray-500">Palo Alto, CA</p>
-                    </div>
-                </div>
-
-                <!-- Date & Time -->
-                <div class="flex items-center text-sm text-gray-500 mb-4">
-                    <i class="far fa-clock mr-2"></i>
-                    <span>Oct 11, 2023 • 11:05 AM</span>
-                </div>
-
-                <!-- Category Tags -->
-                <div class="mb-4">
-                    <span class="category-tag bg-pink-100 text-pink-800">Craft</span>
-                    <span class="category-tag bg-purple-100 text-purple-800">Creative</span>
-                </div>
-
-                <!-- Wish Description -->
-                <div>
-                    <p class="text-gray-700">I love making friendship bracelets and small crafts. I wish for a bead kit with different colors and patterns to make gifts for my friends and family.</p>
-                </div>
-            </div>
-
-            <!-- Action Button -->
-            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
-                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
-                    Donate Item
-                </button>
-            </div>
-        </div>
-
-        <!-- Wish Card 6 -->
-        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <div class="p-5">
-                <!-- Wisher Info -->
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-3">
-                        <span class="text-red-600 font-bold">LT</span>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold">Lucas T.</h3>
-                        <p class="text-sm text-gray-500">Redwood City, CA</p>
-                    </div>
-                </div>
-
-                <!-- Date & Time -->
-                <div class="flex items-center text-sm text-gray-500 mb-4">
-                    <i class="far fa-clock mr-2"></i>
-                    <span>Oct 10, 2023 • 5:40 PM</span>
-                </div>
-
-                <!-- Category Tags -->
-                <div class="mb-4">
-                    <span class="category-tag bg-green-100 text-green-800">Puzzle</span>
-                    <span class="category-tag bg-blue-100 text-blue-800">Educational</span>
-                </div>
-
-                <!-- Wish Description -->
-                <div>
-                    <p class="text-gray-700">I enjoy solving puzzles and brain teasers. I wish for a set of challenging puzzles or a strategy board game to play with my family on weekends.</p>
-                </div>
-            </div>
-
-            <!-- Action Button -->
-            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
-                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
-                    Donate Item
-                </button>
-            </div>
-        </div>
-
-        <!-- Wish Card 7 -->
-        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <div class="p-5">
-                <!-- Wisher Info -->
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-                        <span class="text-indigo-600 font-bold">SM</span>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold">Sophia M.</h3>
-                        <p class="text-sm text-gray-500">Sunnyvale, CA</p>
-                    </div>
-                </div>
-
-                <!-- Date & Time -->
-                <div class="flex items-center text-sm text-gray-500 mb-4">
-                    <i class="far fa-clock mr-2"></i>
-                    <span>Oct 9, 2023 • 1:15 PM</span>
-                </div>
-
-                <!-- Category Tags -->
-                <div class="mb-4">
-                    <span class="category-tag bg-blue-100 text-blue-800">Music</span>
-                    <span class="category-tag bg-purple-100 text-purple-800">Creative</span>
-                </div>
-
-                <!-- Wish Description -->
-                <div>
-                    <p class="text-gray-700">I've always wanted to learn how to play an instrument. A beginner's keyboard or a small electronic piano would help me explore my musical talent.</p>
-                </div>
-            </div>
-
-            <!-- Action Button -->
-            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
-                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
-                    Donate Item
-                </button>
-            </div>
-        </div>
-
-        <!-- Wish Card 8 -->
-        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <div class="p-5">
-                <!-- Wisher Info -->
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center mr-3">
-                        <span class="text-teal-600 font-bold">EC</span>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold">Ethan C.</h3>
-                        <p class="text-sm text-gray-500">Mountain View, CA</p>
-                    </div>
-                </div>
-
-                <!-- Date & Time -->
-                <div class="flex items-center text-sm text-gray-500 mb-4">
-                    <i class="far fa-clock mr-2"></i>
-                    <span>Oct 8, 2023 • 9:30 AM</span>
-                </div>
-
-                <!-- Category Tags -->
-                <div class="mb-4">
-                    <span class="category-tag bg-orange-100 text-orange-800">Sports</span>
-                    <span class="category-tag bg-blue-100 text-blue-800">Outdoor</span>
-                </div>
-
-                <!-- Wish Description -->
-                <div>
-                    <p class="text-gray-700">I love playing basketball with my friends. I wish for a new basketball and a pump since our school court ball is often flat and we can't play properly.</p>
-                </div>
-            </div>
-
-            <!-- Action Button -->
-            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
-                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
-                    Donate Item
-                </button>
             </div>
         </div>
     </div>
+    <!-- Wish Card -->
+
 </div>
 
 <!-- Footer -->
