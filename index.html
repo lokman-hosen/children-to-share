@@ -65,11 +65,13 @@
 
     <nav class="my-4 md:my-0">
       <ul class="flex flex-wrap justify-center">
-        <li class="m-2 md:mx-4"><a href="index.html" class="font-semibold hover:text-primary transition-colors">Home</a></li>
-        <!--        <li class="m-2 md:mx-4"><a href="#how-it-works" class="font-semibold hover:text-primary transition-colors">How It Works</a></li>-->
-        <li class="m-2 md:mx-4"><a href="#roles" class="font-semibold hover:text-primary transition-colors">Get Involved</a></li>
-        <li class="m-2 md:mx-4"><a href="#safety" class="font-semibold hover:text-primary transition-colors">Safety</a></li>
-        <li class="m-2 md:mx-4"><a href="#testimonials" class="font-semibold hover:text-primary transition-colors">Testimonials</a></li>
+        <li class="m-2 md:mx-4"><a href="index.html" class="home-menu font-semibold hover:text-primary transition-colors">Home</a></li>
+        <!--        <li class="m-2 md:mx-4"><a href="#how-it-works" class="home-menu font-semibold hover:text-primary transition-colors">How It Works</a></li>-->
+        <li class="m-2 md:mx-4"><a href="#roles" class="home-menu font-semibold hover:text-primary transition-colors">Get Involved</a></li>
+        <li class="m-2 md:mx-4"><a href="#safety" class="home-menu font-semibold hover:text-primary transition-colors">Safety</a></li>
+        <li class="m-2 md:mx-4"><a href="#testimonials" class="home-menu font-semibold hover:text-primary transition-colors">Testimonials</a></li>
+        <li class="m-2 md:mx-4"><a target="_blank" href="donor-dashboard.html" class="font-semibold hover:text-primary transition-colors">Donor Dashboard</a></li>
+        <li class="m-2 md:mx-4"><a target="_blank" href="wisher-dashboard.html" class="font-semibold hover:text-primary transition-colors">Wisher Dashboard</a></li>
       </ul>
     </nav>
 
@@ -319,7 +321,7 @@
 
 <script>
   // Simple smooth scrolling for navigation links
-  document.querySelectorAll('nav a').forEach(anchor => {
+  document.querySelectorAll('nav .home-menu').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
 

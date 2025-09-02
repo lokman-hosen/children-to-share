@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisher Dashboard - Children to Share</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50',
+                        secondary: '#FF9800',
+                        accent: '#2196F3',
+                        success: '#8BC34A',
+                        warning: '#FFC107',
+                        danger: '#F44336',
+                    },
+                    fontFamily: {
+                        'nunito': ['Nunito', 'sans-serif'],
+                        'comic': ['Comic Neue', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .logo-text {
+            font-family: 'Comic Neue', cursive;
+            font-weight: 700;
+        }
+        .dashboard-card {
+            transition: all 0.3s ease;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+        .nav-item.active {
+            border-bottom: 3px solid #4CAF50;
+            color: #4CAF50;
+        }
+        .wish-table, .donation-table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .wish-table th, .donation-table th {
+            background-color: #f0f9ff;
+        }
+        .wish-table tr:nth-child(even), .donation-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-nunito min-h-screen">
+<!-- Header -->
+<header class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="logo flex items-center">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjNENBRjUwIiBkPSJNNjQgNjRDNjQgNDYuMyA3OC4zIDMyIDk2IDMyaDMyMEM0NDMuNyAzMiA0NDggNDYuMyA0NDggNjR2Mzg0YzAgMTcuNy0xNC4zIDMyLTMyIDMySDk2Yy0xNy43IDAtMzItMTQuMy0zMi0zMlY2NHpNMjU2IDQ4MGM3OS41IDAgMTQ0LTY0LjUgMTQ0LTE0NHMtNjQuNS0xNDQtMTQ0LTE0NC0xNDQgNjQuNS0xNDQgMTQ0IDY0LjUgMTQ0IDE0NCAxNDR6TTEyOCA2NGg1MTJ2MzIuOEw0NDggMjQwLjIgNDQ4IDMwNGwtNjQgNjQgMTI4IDEyOEg5Nkw2NCA0NDhWNjR6Ii8+PC9zdmc+" alt="Children to Share Logo" class="h-10 mr-2">
+            <h1 class="text-xl logo-text text-primary">
+                <a href="index.html">Children to Share</a>
+            </h1>
+        </div>
+
+        <nav class="my-4 md:my-0">
+            <ul class="flex flex-wrap justify-center">
+                <li class="m-2 md:mx-4"><a href="index.html" class="font-semibold hover:text-primary transition-colors">Home</a></li>
+                <li class="m-2 md:mx-4"><a href="donor-dashboard.html" class="font-semibold hover:text-primary transition-colors nav-item active">Donor Dashboard</a></li>
+                <li class="m-2 md:mx-4"><a href="#" class="font-semibold hover:text-primary transition-colors">Wishes</a></li>
+                <li class="m-2 md:mx-4"><a href="#" class="font-semibold hover:text-primary transition-colors">Donations</a></li>
+            </ul>
+        </nav>
+
+        <div class="flex items-center gap-4 mt-4 md:mt-0">
+            <div class="relative">
+                <div class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center font-semibold">W</div>
+                <span class="absolute -top-1 -right-1 bg-green-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">2</span>
+            </div>
+            <div>
+                <p class="font-semibold">Wisher User</p>
+                <p class="text-sm text-gray-600">San Francisco, CA</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="container mx-auto px-4 py-8">
+    <!-- Wisher Dashboard -->
+    <div>
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="dashboard-card bg-white rounded-xl p-6 shadow-md flex items-center">
+                <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                    <i class="fas fa-star text-3xl text-purple-500"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold">5</h3>
+                    <p class="text-gray-600">Wishes Made</p>
+                </div>
+            </div>
+
+            <div class="dashboard-card bg-white rounded-xl p-6 shadow-md flex items-center">
+                <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                    <i class="fas fa-gift text-3xl text-accent"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold">23</h3>
+                    <p class="text-gray-600">Donations Available</p>
+                </div>
+            </div>
+
+            <div class="dashboard-card bg-white rounded-xl p-6 shadow-md flex items-center">
+                <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mr-4">
+                    <i class="fas fa-hands-helping text-3xl text-primary"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold">3</h3>
+                    <p class="text-gray-600">Wishes Granted</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap gap-4 mb-8">
+            <button onclick="openWishModal()" class="px-6 py-3 bg-secondary text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors flex items-center">
+                <i class="fas fa-plus-circle mr-2"></i> Make a Wish
+            </button>
+            <button class="px-6 py-3 bg-accent text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors flex items-center">
+                <i class="fas fa-list mr-2"></i> View My Wishes
+            </button>
+        </div>
+
+        <!-- Available Donations -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+            <div class="bg-green-100 p-4">
+                <h3 class="text-xl font-semibold flex items-center">
+                    <i class="fas fa-gift mr-2 text-primary"></i> Available Donations
+                </h3>
+                <p class="text-sm text-gray-600">Items you can request</p>
+            </div>
+            <div class="p-4 overflow-x-auto">
+                <table class="wish-table w-full">
+                    <thead>
+                    <tr>
+                        <th class="text-left p-3">Item</th>
+                        <th class="text-left p-3">Category</th>
+                        <th class="text-left p-3">Location</th>
+                        <th class="text-left p-3">Distance</th>
+                        <th class="text-left p-3">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="p-3">Story Books Collection</td>
+                        <td class="p-3">Book</td>
+                        <td class="p-3">San Francisco</td>
+                        <td class="p-3">2.3 km</td>
+                        <td class="p-3"><button class="text-sm bg-secondary text-white px-3 py-1 rounded hover:bg-orange-600">Request</button></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Art Supplies</td>
+                        <td class="p-3">Other</td>
+                        <td class="p-3">Oakland</td>
+                        <td class="p-3">5.1 km</td>
+                        <td class="p-3"><button class="text-sm bg-secondary text-white px-3 py-1 rounded hover:bg-orange-600">Request</button></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Bicycle</td>
+                        <td class="p-3">Toy</td>
+                        <td class="p-3">San Jose</td>
+                        <td class="p-3">12.7 km</td>
+                        <td class="p-3"><button class="text-sm bg-secondary text-white px-3 py-1 rounded hover:bg-orange-600">Request</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- My Wishes -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="bg-purple-100 p-4">
+                <h3 class="text-xl font-semibold flex items-center">
+                    <i class="fas fa-star mr-2 text-purple-500"></i> My Wishes
+                </h3>
+                <p class="text-sm text-gray-600">Wishes you've created</p>
+            </div>
+            <div class="p-4 overflow-x-auto">
+                <table class="donation-table w-full">
+                    <thead>
+                    <tr>
+                        <th class="text-left p-3">Item</th>
+                        <th class="text-left p-3">Category</th>
+                        <th class="text-left p-3">Date</th>
+                        <th class="text-left p-3">Status</th>
+                        <th class="text-left p-3">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="p-3">Educational Tablet</td>
+                        <td class="p-3">Gadget</td>
+                        <td class="p-3">Oct 10, 2023</td>
+                        <td class="p-3"><span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs">Pending</span></td>
+                        <td class="p-3">
+                            <button class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"><i class="fas fa-edit"></i></button>
+                            <button class="text-sm bg-red-100 text-red-800 px-2 py-1 rounded"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Winter Jacket</td>
+                        <td class="p-3">Other</td>
+                        <td class="p-3">Oct 5, 2023</td>
+                        <td class="p-3"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Granted</span></td>
+                        <td class="p-3">
+                            <button class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2" disabled><i class="fas fa-edit"></i></button>
+                            <button class="text-sm bg-red-100 text-red-800 px-2 py-1 rounded" disabled><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Science Books</td>
+                        <td class="p-3">Book</td>
+                        <td class="p-3">Oct 2, 2023</td>
+                        <td class="p-3"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Granted</span></td>
+                        <td class="p-3">
+                            <button class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2" disabled><i class="fas fa-edit"></i></button>
+                            <button class="text-sm bg-red-100 text-red-800 px-2 py-1 rounded" disabled><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Wish Modal -->
+<div id="wishModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-md mx-4">
+        <div class="bg-secondary text-white p-4 rounded-t-xl flex justify-between items-center">
+            <h3 class="text-xl font-semibold">Make a Wish</h3>
+            <button onclick="closeWishModal()" class="text-white hover:text-gray-200">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-6">
+            <form id="wishForm" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">What do you wish for?</label>
+                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary" placeholder="Describe what you need" required>
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Category</label>
+                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary" required>
+                        <option value="">Select Category</option>
+                        <option value="toy">Toy</option>
+                        <option value="book">Book</option>
+                        <option value="gadget">Gadget</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Upload Photo (Optional)</label>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+                        <i class="fas fa-cloud-upload-alt text-gray-400 text-2xl mb-2"></i>
+                        <p class="text-gray-500">Drag & drop or <span class="text-secondary font-semibold">browse</span> files</p>
+                        <input type="file" class="hidden" id="wishPhoto">
+                        <label for="wishPhoto" class="inline-block mt-2 px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">Select Image</label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Why is this wish important to you? (Optional)</label>
+                    <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary" rows="3" placeholder="Share why this item would be meaningful to you..."></textarea>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-secondary text-white py-3 rounded-lg font-semibold hover:bg-orange-600">Make Wish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white pt-12 pb-8 mt-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            <div>
+                <h3 class="text-xl font-semibold mb-6 logo-text">Children to Share</h3>
+                <p class="text-gray-300 mb-6">Making sharing safe and fun for children everywhere</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold mb-6">Quick Links</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">How It Works</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Safety Guidelines</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">For Parents</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold mb-6">Support</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Help Center</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold mb-6">Contact Info</h3>
+                <p class="text-gray-300 mb-3 flex items-center"><i class="fas fa-map-marker-alt mr-3"></i> 123 Sharing Street, Community City</p>
+                <p class="text-gray-300 mb-3 flex items-center"><i class="fas fa-envelope mr-3"></i> info@childrentoshare.org</p>
+                <p class="text-gray-300 flex items-center"><i class="fas fa-phone mr-3"></i> (123) 456-7890</p>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-gray-700 text-center text-gray-400">
+            <p>&copy; 2023 Children to Share. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Modal functions
+    function openWishModal() {
+        document.getElementById('wishModal').classList.remove('hidden');
+    }
+
+    function closeWishModal() {
+        document.getElementById('wishModal').classList.add('hidden');
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('wishModal').addEventListener('click', function(e) {
+        if (e.target.id === 'wishModal') {
+            closeWishModal();
+        }
+    });
+
+    // Form submission
+    document.getElementById('wishForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Wish created successfully!');
+        closeWishModal();
+    });
+
+    // Sample data for demonstration
+    const sampleDonations = [
+        { item: "Story Books Collection", category: "Book", location: "San Francisco", distance: "2.3 km" },
+        { item: "Art Supplies", category: "Other", location: "Oakland", distance: "5.1 km" },
+        { item: "Bicycle", category: "Toy", location: "San Jose", distance: "12.7 km" }
+    ];
+
+    const sampleWishes = [
+        { item: "Educational Tablet", category: "Gadget", date: "Oct 10, 2023", status: "Pending" },
+        { item: "Winter Jacket", category: "Other", date: "Oct 5, 2023", status: "Granted" },
+        { item: "Science Books", category: "Book", date: "Oct 2, 2023", status: "Granted" }
+    ];
+</script>
+</body>
+</html>
