@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisher Dashboard - Children to Share</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50',
+                        secondary: '#FF9800',
+                        accent: '#2196F3',
+                        success: '#8BC34A',
+                        warning: '#FFC107',
+                        danger: '#F44336',
+                    },
+                    fontFamily: {
+                        'nunito': ['Nunito', 'sans-serif'],
+                        'comic': ['Comic Neue', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .wish-card {
+            transition: all 0.3s ease;
+        }
+        .wish-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .category-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-nunito min-h-screen">
+<!-- Header -->
+<header class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="logo flex items-center">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjNENBRjUwIiBkPSJNNjQgNjRDNjQgNDYuMyA3OC4zIDMyIDk2IDMyaDMyMEM0NDMuNyAzMiA0NDggNDYuMyA0NDggNjR2Mzg0YzAgMTcuNy0xNC4zIDMyLTMyIDMySDk2Yy0xNy43IDAtMzItMTQuMy0zMi0zMlY2NHpNMjU2IDQ4MGM3OS41IDAgMTQ0LTY0LjUgMTQ0LTE0NHMtNjQuNS0xNDQtMTQ0LTE0NC0xNDQgNjQuNS0xNDQgMTQ0IDY0LjUgMTQ0IDE0NCAxNDR6TTEyOCA2NGg1MTJ2MzIuOEw0NDggMjQwLjIgNDQ4IDMwNGwtNjQgNjQgMTI4IDEyOEg5Nkw2NCA0NDhWNjR6Ii8+PC9zdmc+" alt="Children to Share Logo" class="h-10 mr-2">
+            <h1 class="text-xl logo-text text-primary">
+                <a href="index.html">Children to Share</a>
+            </h1>
+        </div>
+
+        <nav class="my-4 md:my-0">
+            <ul class="flex flex-wrap justify-center">
+                <li class="m-2 md:mx-4"><a href="index.html" class="font-semibold hover:text-primary transition-colors">Home</a></li>
+                <li class="m-2 md:mx-4"><a href="wisher-dashboard.html" class="font-semibold hover:text-primary transition-colors nav-item active">Wisher Dashboard</a></li>
+                <li class="m-2 md:mx-4"><a href="wish.html" class="font-semibold hover:text-primary transition-colors">Wishes</a></li>
+                <li class="m-2 md:mx-4"><a href="donation.html" class="font-semibold hover:text-primary transition-colors">Donations</a></li>
+            </ul>
+        </nav>
+
+        <div class="flex items-center gap-4 mt-4 md:mt-0">
+            <div class="relative">
+                <div class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center font-semibold">W</div>
+                <span class="absolute -top-1 -right-1 bg-green-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">2</span>
+            </div>
+            <div>
+                <p class="font-semibold">Wisher User</p>
+                <p class="text-sm text-gray-600">San Francisco, CA</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="bg-gradient-to-br from-green-100 to-green-200 py-20">
+    <div class="container mx-auto px-4 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 hero-title">Share Joy, Create Smiles</h2>
+            <p class="text-xl text-gray-600 mb-8">A safe platform for children to share gifts, make wishes come true, and build stronger communities together</p>
+<!--            <div class="flex flex-col sm:flex-row justify-center gap-4">-->
+<!--                <a href="registration.html" class="px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-green-600 transition-colors">Make a Wish</a>-->
+<!--                <a href="registration.html" class="px-6 py-3 rounded-full bg-secondary text-white font-semibold hover:bg-orange-500 transition-colors">Donate an Item</a>-->
+<!--                <a href="registration.html" class="px-6 py-3 rounded-full bg-accent text-white font-semibold hover:bg-blue-600 transition-colors">Learn More</a>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<div class="container mx-auto">
+    <!-- Page Title -->
+    <div class="my-8 text-center">
+        <h1 class="text-3xl font-bold text-gray-800">Children's Wishes</h1>
+        <p class="text-gray-600 mt-2">Help make these wishes come true by donating items</p>
+    </div>
+
+    <!-- Wishes Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Wish Card 1 -->
+        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-5">
+                <!-- Wisher Info -->
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                        <img src="https://cdn0.iconfinder.com/data/icons/kids-avatars/512/50_Kids_Icons-09-512.png" class="text-blue-600 font-bold" alt="">
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Emma S.</h3>
+                        <p class="text-sm text-gray-500">San Francisco, CA</p>
+                    </div>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <i class="far fa-clock mr-2"></i>
+                    <span>Oct 15, 2023 • 2:30 PM</span>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-4">
+                    <span class="category-tag bg-blue-100 text-blue-800">Book</span>
+                    <span class="category-tag bg-purple-100 text-purple-800">Education</span>
+                </div>
+
+                <!-- Wish Description -->
+                <div>
+                    <p class="text-gray-700">I love reading adventure stories! I wish for a collection of adventure books to explore new worlds and improve my reading skills.</p>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
+                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
+                    Donate Item
+                </button>
+            </div>
+        </div>
+
+        <!-- Wish Card 2 -->
+        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-5">
+                <!-- Wisher Info -->
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mr-3">
+                        <img src="https://thumbs.dreamstime.com/b/smiling-child-avatar-flat-design-style-blue-circle-background-smiling-child-avatar-flat-design-style-blue-circle-394182101.jpg" class="text-blue-600 font-bold" alt="">
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Maya J.</h3>
+                        <p class="text-sm text-gray-500">Oakland, CA</p>
+                    </div>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <i class="far fa-clock mr-2"></i>
+                    <span>Oct 14, 2023 • 4:15 PM</span>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-4">
+                    <span class="category-tag bg-yellow-100 text-yellow-800">Art Supplies</span>
+                    <span class="category-tag bg-purple-100 text-purple-800">Creative</span>
+                </div>
+
+                <!-- Wish Description -->
+                <div>
+                    <p class="text-gray-700">I enjoy drawing and painting. I would love to have a set of watercolor paints and brushes to create beautiful artwork.</p>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
+                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
+                    Donate Item
+                </button>
+            </div>
+        </div>
+
+        <!-- Wish Card 3 -->
+        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-5">
+                <!-- Wisher Info -->
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                        <img src="https://img.freepik.com/premium-vector/kids-avatar-smiling-boy-vector_495897-145.jpg" class="text-blue-600 font-bold" alt="">
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Liam R.</h3>
+                        <p class="text-sm text-gray-500">San Jose, CA</p>
+                    </div>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <i class="far fa-clock mr-2"></i>
+                    <span>Oct 13, 2023 • 10:45 AM</span>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-4">
+                    <span class="category-tag bg-red-100 text-red-800">Toy</span>
+                    <span class="category-tag bg-blue-100 text-blue-800">Outdoor</span>
+                </div>
+
+                <!-- Wish Description -->
+                <div>
+                    <p class="text-gray-700">I wish for a new soccer ball. I love playing with my friends after school and my old ball has a leak. It would make me so happy!</p>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
+                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
+                    Donate Item
+                </button>
+            </div>
+        </div>
+
+        <!-- Wish Card 4 -->
+        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-5">
+                <!-- Wisher Info -->
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4322/4322993.png" class="text-blue-600 font-bold" alt="">
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Noah O.</h3>
+                        <p class="text-sm text-gray-500">Berkeley, CA</p>
+                    </div>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <i class="far fa-clock mr-2"></i>
+                    <span>Oct 12, 2023 • 3:20 PM</span>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-4">
+                    <span class="category-tag bg-indigo-100 text-indigo-800">Gadget</span>
+                    <span class="category-tag bg-blue-100 text-blue-800">Learning</span>
+                </div>
+
+                <!-- Wish Description -->
+                <div>
+                    <p class="text-gray-700">I'm interested in science and technology. I would be grateful for a beginner's coding kit or an educational electronics.</p>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
+                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
+                    Donate Item
+                </button>
+            </div>
+        </div>
+
+        <!-- Wish Card 5 -->
+        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-5">
+                <!-- Wisher Info -->
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+                        <span class="text-yellow-600 font-bold">AV</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Ava V.</h3>
+                        <p class="text-sm text-gray-500">Palo Alto, CA</p>
+                    </div>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <i class="far fa-clock mr-2"></i>
+                    <span>Oct 11, 2023 • 11:05 AM</span>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-4">
+                    <span class="category-tag bg-pink-100 text-pink-800">Craft</span>
+                    <span class="category-tag bg-purple-100 text-purple-800">Creative</span>
+                </div>
+
+                <!-- Wish Description -->
+                <div>
+                    <p class="text-gray-700">I love making friendship bracelets and small crafts. I wish for a bead kit with different colors and patterns to make gifts for my friends and family.</p>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
+                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
+                    Donate Item
+                </button>
+            </div>
+        </div>
+
+        <!-- Wish Card 6 -->
+        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-5">
+                <!-- Wisher Info -->
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-3">
+                        <span class="text-red-600 font-bold">LT</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Lucas T.</h3>
+                        <p class="text-sm text-gray-500">Redwood City, CA</p>
+                    </div>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <i class="far fa-clock mr-2"></i>
+                    <span>Oct 10, 2023 • 5:40 PM</span>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-4">
+                    <span class="category-tag bg-green-100 text-green-800">Puzzle</span>
+                    <span class="category-tag bg-blue-100 text-blue-800">Educational</span>
+                </div>
+
+                <!-- Wish Description -->
+                <div>
+                    <p class="text-gray-700">I enjoy solving puzzles and brain teasers. I wish for a set of challenging puzzles or a strategy board game to play with my family on weekends.</p>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
+                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
+                    Donate Item
+                </button>
+            </div>
+        </div>
+
+        <!-- Wish Card 7 -->
+        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-5">
+                <!-- Wisher Info -->
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                        <span class="text-indigo-600 font-bold">SM</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Sophia M.</h3>
+                        <p class="text-sm text-gray-500">Sunnyvale, CA</p>
+                    </div>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <i class="far fa-clock mr-2"></i>
+                    <span>Oct 9, 2023 • 1:15 PM</span>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-4">
+                    <span class="category-tag bg-blue-100 text-blue-800">Music</span>
+                    <span class="category-tag bg-purple-100 text-purple-800">Creative</span>
+                </div>
+
+                <!-- Wish Description -->
+                <div>
+                    <p class="text-gray-700">I've always wanted to learn how to play an instrument. A beginner's keyboard or a small electronic piano would help me explore my musical talent.</p>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
+                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
+                    Donate Item
+                </button>
+            </div>
+        </div>
+
+        <!-- Wish Card 8 -->
+        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-5">
+                <!-- Wisher Info -->
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center mr-3">
+                        <span class="text-teal-600 font-bold">EC</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Ethan C.</h3>
+                        <p class="text-sm text-gray-500">Mountain View, CA</p>
+                    </div>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <i class="far fa-clock mr-2"></i>
+                    <span>Oct 8, 2023 • 9:30 AM</span>
+                </div>
+
+                <!-- Category Tags -->
+                <div class="mb-4">
+                    <span class="category-tag bg-orange-100 text-orange-800">Sports</span>
+                    <span class="category-tag bg-blue-100 text-blue-800">Outdoor</span>
+                </div>
+
+                <!-- Wish Description -->
+                <div>
+                    <p class="text-gray-700">I love playing basketball with my friends. I wish for a new basketball and a pump since our school court ball is often flat and we can't play properly.</p>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
+                <button class="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
+                    Donate Item
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white pt-12 pb-8 mt-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            <div>
+                <h3 class="text-xl font-semibold mb-6 logo-text">Children to Share</h3>
+                <p class="text-gray-300 mb-6">Making sharing safe and fun for children everywhere</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold mb-6">Quick Links</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">How It Works</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Safety Guidelines</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">For Parents</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold mb-6">Support</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Help Center</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold mb-6">Contact Info</h3>
+                <p class="text-gray-300 mb-3 flex items-center"><i class="fas fa-map-marker-alt mr-3"></i> 123 Sharing Street, Community City</p>
+                <p class="text-gray-300 mb-3 flex items-center"><i class="fas fa-envelope mr-3"></i> info@childrentoshare.org</p>
+                <p class="text-gray-300 flex items-center"><i class="fas fa-phone mr-3"></i> (123) 456-7890</p>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-gray-700 text-center text-gray-400">
+            <p>&copy; 2023 Children to Share. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
