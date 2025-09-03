@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wisher Feed - Children to Share</title>
+    <title>Donation Feed - Children to Share</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@
                 <li class="m-2 md:mx-4"><a href="index.html" class="font-semibold hover:text-primary transition-colors">Home</a></li>
                 <li class="m-2 md:mx-4"><a href="wisher-dashboard.html" class="font-semibold hover:text-primary transition-colors nav-item active">Wisher Dashboard</a></li>
                 <li class="m-2 md:mx-4"><a href="wish.html" class="font-semibold hover:text-primary transition-colors">Wishes</a></li>
-                <li class="m-2 md:mx-4"><a href="donation.html" class="font-semibold hover:text-primary transition-colors">Donations</a></li>
+                <li class="m-2 md:mx-4"><a href="donations.html" class="font-semibold hover:text-primary transition-colors">Donations</a></li>
             </ul>
         </nav>
 
@@ -91,7 +91,7 @@
     <div class="w-full lg:w-1/4 mb-6 lg:mb-0">
         <div class="bg-white rounded-xl shadow-md p-5 sticky top-24">
             <h2 class="text-lg font-bold text-gray-800 mb-5 flex items-center">
-                <i class="fas fa-bars mr-2 text-primary"></i> Menu(Donor Panel)
+                <i class="fas fa-bars mr-2 text-primary"></i> Menu(Wisher Panel)
             </h2>
 
             <ul class="space-y-2">
@@ -102,32 +102,34 @@
                         <span>Feeds</span>
                     </a>
                 </li>
-<!--                <li>-->
-<!--                    <a href="#" class="sidebar-item flex items-center p-3 rounded-lg">-->
-<!--                        <i class="fas fa-star mr-3 text-secondary"></i>-->
-<!--                        <span>My Wishes</span>-->
-<!--                    </a>-->
-<!--                </li>-->
+                <!--                <li>-->
+                <!--                    <a href="#" class="sidebar-item flex items-center p-3 rounded-lg">-->
+                <!--                        <i class="fas fa-star mr-3 text-secondary"></i>-->
+                <!--                        <span>My Wishes</span>-->
+                <!--                    </a>-->
+                <!--                </li>-->
+
                 <li>
                     <div class="flex items-center justify-between p-3 rounded-lg cursor-pointer sidebar-item">
                         <div class="flex items-center">
-                            <i class="fas fa-gift mr-3 text-accent"></i>
-                            <span>Donations</span>
+                            <i class="fas fa-star mr-3 text-secondary"></i>
+                            <span>Wishes</span>
                         </div>
                         <i class="fas fa-chevron-down text-xs"></i>
                     </div>
                     <ul class="ml-8 mt-1 space-y-2">
-                        <li><a href="wish.html" class="text-sm text-gray-600 hover:text-primary block py-1">My Donations</a></li>
-                        <li><a href="#" onclick="openDonationModal()" class="text-sm text-gray-600 hover:text-primary block py-1">Create Donation</a></li>
+                        <li><a href="wish.html" class="text-sm text-gray-600 hover:text-primary block py-1">My Wishes</a></li>
+                        <li><a href="#" onclick="openWishModal()" class="text-sm text-gray-600 hover:text-primary block py-1">Create Wish</a></li>
                     </ul>
                 </li>
 
-<!--                <li>-->
-<!--                    <a href="#" class="sidebar-item flex items-center p-3 rounded-lg">-->
-<!--                        <i class="fas fa-gift mr-3 text-accent"></i>-->
-<!--                        <span>My Donations</span>-->
-<!--                    </a>-->
-<!--                </li>-->
+
+                <!--                <li>-->
+                <!--                    <a href="#" class="sidebar-item flex items-center p-3 rounded-lg">-->
+                <!--                        <i class="fas fa-gift mr-3 text-accent"></i>-->
+                <!--                        <span>My Donations</span>-->
+                <!--                    </a>-->
+                <!--                </li>-->
 
                 <!-- Parent-Child Menu -->
                 <li>
@@ -274,37 +276,42 @@
             </div>
         </div>
 
-        <!-- Wish Cards Feed -->
+        <!-- Donation Cards Feed -->
         <div class="space-y-6">
-            <!-- Wish Card 1 -->
-            <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-                <!-- Child Info Section -->
+            <!-- Donation Card 1 -->
+            <div class="donation-card bg-white rounded-xl shadow-md overflow-hidden">
+                <!-- Donor Info Section -->
                 <div class="p-5 flex items-center">
                     <div class="w-16 h-16 rounded-full bg-blue-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200">
-                        <img src="https://www.shutterstock.com/image-photo/close-photo-cute-little-girl-600nw-2583433993.jpg" alt="Child" class="w-14 h-14 object-cover rounded-full">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Donor" class="w-14 h-14 object-cover rounded-full">
                     </div>
                     <div>
-                        <h2 class="font-bold text-lg">Emma S.</h2>
-                        <p class="text-gray-600">Age 10 • San Francisco, CA</p>
+                        <h2 class="font-bold text-lg">Michael T.</h2>
+                        <p class="text-gray-600">San Francisco, CA • 5 donations</p>
                     </div>
                 </div>
 
-                <!-- Wish Image -->
+                <!-- Donation Image -->
                 <div class="w-full h-64 bg-gray-100 overflow-hidden">
-                    <img src="https://png.pngtree.com/png-vector/20191028/ourmid/pngtree-bicycle-icon-outline-style-png-image_1903500.jpg" alt="Wish Item" class="w-full h-full object-contain">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/019/900/123/small_2x/old-book-watercolor-illustration-png.png" alt="Donation Item" class="w-full h-full object-contain">
                 </div>
 
-                <!-- Wish Content -->
+                <!-- Donation Content -->
                 <div class="px-5 pb-5 pt-3">
                     <div class="mb-4">
-                        <p class="text-gray-700">I need a bicycle to ride to school and play with my friends in the park.</p>
+                        <h3 class="font-semibold text-lg text-gray-800">Children's Bicycle</h3>
+                        <p class="text-gray-700 mt-1">Lightly used children's bicycle in excellent condition. Perfect for kids aged 8-10.</p>
                     </div>
 
-                    <!-- Wish Details -->
+                    <!-- Donation Details -->
                     <div class="mb-4">
-                        <div class="flex items-center text-sm text-gray-500">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
                             <i class="far fa-clock mr-2 text-primary"></i>
-                            <span>Posted: Oct 15, 2023</span>
+                            <span>Posted: Oct 18, 2023</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            <span>Available for pickup in San Francisco</span>
                         </div>
                     </div>
 
@@ -312,66 +319,72 @@
                     <div class="mb-5">
                         <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
                         <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
-                        <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Like New</span>
                     </div>
 
                     <!-- Action Buttons -->
                     <div class="flex space-x-3">
                         <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                            <i class="fas fa-gift mr-2"></i> Fulfill Wish
+                            <i class="fas fa-hands-helping mr-2"></i> Request Item
                         </button>
                         <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                            <i class="fas fa-comment mr-2"></i> Message Guardian
+                            <i class="fas fa-comment mr-2"></i> Message Donor
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Wish Card 2 -->
-            <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-                <!-- Child Info Section -->
+            <!-- Donation Card 2 -->
+            <div class="donation-card bg-white rounded-xl shadow-md overflow-hidden">
+                <!-- Donor Info Section -->
                 <div class="p-5 flex items-center">
                     <div class="w-16 h-16 rounded-full bg-blue-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200">
-                        <img src="https://www.shutterstock.com/image-photo/serious-pretty-boy-head-shot-600nw-2111421392.jpg" alt="Child" class="w-14 h-14 object-cover rounded-full">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Donor" class="w-14 h-14 object-cover rounded-full">
                     </div>
                     <div>
-                        <h2 class="font-bold text-lg">John W.</h2>
-                        <p class="text-gray-600">Age 7 • Oakland, CA</p>
+                        <h2 class="font-bold text-lg">Sarah J.</h2>
+                        <p class="text-gray-600">Oakland, CA • 12 donations</p>
                     </div>
                 </div>
 
-                <!-- Wish Image -->
+                <!-- Donation Image -->
                 <div class="w-full h-64 bg-gray-100 overflow-hidden">
-                    <img src="https://img.freepik.com/free-psd/view-children-s-stuffed-animal_23-2151517634.jpg" alt="Wish Item" class="w-full h-full object-contain">
+                    <img src="https://www.nicepng.com/png/detail/262-2629734_school-bags-college-bags-school-bag-hd-images.png" alt="Donation Item" class="w-full h-full object-contain">
                 </div>
 
-                <!-- Wish Content -->
+                <!-- Donation Content -->
                 <div class="px-5 pb-5 pt-3">
                     <div class="mb-4">
-                        <p class="text-gray-700">I would love a teddy bear to keep me company at night. It helps me feel safe and sleep better.</p>
+                        <h3 class="font-semibold text-lg text-gray-800">Teddy Bear Collection</h3>
+                        <p class="text-gray-700 mt-1">Collection of gently loved teddy bears. All are clean and in good condition, perfect for comforting children.</p>
                     </div>
 
-                    <!-- Wish Details -->
+                    <!-- Donation Details -->
                     <div class="mb-4">
-                        <div class="flex items-center text-sm text-gray-500">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
                             <i class="far fa-clock mr-2 text-primary"></i>
-                            <span>Posted: Oct 14, 2023</span>
+                            <span>Posted: Oct 17, 2023</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            <span>Can deliver within Oakland area</span>
                         </div>
                     </div>
 
                     <!-- Category Tags -->
                     <div class="mb-5">
-                        <span class="inline-block bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full mr-2">Stuffed Animal</span>
-                        <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Comfort</span>
+                        <span class="inline-block bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full mr-2">Stuffed Animals</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full mr-2">Comfort</span>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Multiple Items</span>
                     </div>
 
                     <!-- Action Buttons -->
                     <div class="flex space-x-3">
                         <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                            <i class="fas fa-gift mr-2"></i> Fulfill Wish
+                            <i class="fas fa-hands-helping mr-2"></i> Request Item
                         </button>
                         <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                            <i class="fas fa-comment mr-2"></i> Message Guardian
+                            <i class="fas fa-comment mr-2"></i> Message Donor
                         </button>
                     </div>
                 </div>
@@ -383,7 +396,7 @@
     <div class="w-full lg:w-1/4">
         <div class="bg-white rounded-xl shadow-md p-5 sticky top-24">
             <h2 class="text-lg font-bold text-gray-800 mb-5 flex items-center">
-                <i class="fas fa-star mr-2 text-secondary"></i> Popular Wishes
+                <i class="fas fa-star mr-2 text-secondary"></i> Popular Donations
             </h2>
 
             <!-- Wish List -->
@@ -397,7 +410,7 @@
                         <p class="text-sm font-semibold truncate">Jennifer C.</p>
                         <p class="text-xs text-gray-500 truncate">Art supplies</p>
                     </div>
-                    <button class="text-xs bg-primary text-white px-2 py-1 rounded hover:bg-green-600">Donate</button>
+                    <button class="text-xs bg-primary text-white px-2 py-1 rounded hover:bg-green-600">Request Item</button>
                 </div>
 
                 <!-- Wish Item 2 -->
@@ -409,7 +422,7 @@
                         <p class="text-sm font-semibold truncate">Michael T.</p>
                         <p class="text-xs text-gray-500 truncate">Science kit</p>
                     </div>
-                    <button class="text-xs bg-primary text-white px-2 py-1 rounded hover:bg-green-600">Donate</button>
+                    <button class="text-xs bg-primary text-white px-2 py-1 rounded hover:bg-green-600">Request Item</button>
                 </div>
 
                 <!-- Wish Item 3 -->
@@ -421,7 +434,7 @@
                         <p class="text-sm font-semibold truncate">David L.</p>
                         <p class="text-xs text-gray-500 truncate">Winter jacket</p>
                     </div>
-                    <button class="text-xs bg-primary text-white px-2 py-1 rounded hover:bg-green-600">Donate</button>
+                    <button class="text-xs bg-primary text-white px-2 py-1 rounded hover:bg-green-600">Request Item</button>
                 </div>
 
                 <!-- Wish Item 4 -->
@@ -433,7 +446,7 @@
                         <p class="text-sm font-semibold truncate">Alex K.</p>
                         <p class="text-xs text-gray-500 truncate">Books collection</p>
                     </div>
-                    <button class="text-xs bg-primary text-white px-2 py-1 rounded hover:bg-green-600">Donate</button>
+                    <button class="text-xs bg-primary text-white px-2 py-1 rounded hover:bg-green-600">Request Item</button>
                 </div>
             </div>
 
@@ -442,7 +455,7 @@
 
             <!-- Suggested Donations -->
             <h2 class="text-lg font-bold text-gray-800 mb-5 flex items-center">
-                <i class="fas fa-gift mr-2 text-accent"></i> Suggested Donations
+                <i class="fas fa-hands-helping mr-2 text-accent"></i> Suggested Wishes
             </h2>
 
             <div class="space-y-4">
@@ -483,25 +496,25 @@
     </div>
 </main>
 
-<!-- Donation Modal -->
-<div id="donationModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+<!-- Wish Modal -->
+<div id="wishModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
     <div class="bg-white rounded-xl shadow-lg w-full max-w-xl mx-4">
-        <div class="bg-primary text-white p-4 rounded-t-xl flex justify-between items-center">
-            <h3 class="text-xl font-semibold">Create Donation</h3>
-            <button onclick="closeDonationModal()" class="text-white hover:text-gray-200">
+        <div class="bg-secondary text-white p-4 rounded-t-xl flex justify-between items-center">
+            <h3 class="text-xl font-semibold">Make a Wish</h3>
+            <button onclick="closeWishModal()" class="text-white hover:text-gray-200">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         <div class="p-6">
-            <form id="donationForm" class="space-y-4">
+            <form id="wishForm" class="space-y-4">
                 <div>
-                    <label class="block text-gray-700 font-semibold mb-2">What would you like to donate?</label>
-                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary" placeholder="Describe the item you want to donate" required>
+                    <label class="block text-gray-700 font-semibold mb-2">What do you wish for?</label>
+                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary" placeholder="Describe what you need" required>
                 </div>
 
                 <div>
                     <label class="block text-gray-700 font-semibold mb-2">Category</label>
-                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary" required>
+                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary" required>
                         <option value="">Select Category</option>
                         <option value="toy">Toy</option>
                         <option value="book">Book</option>
@@ -514,19 +527,19 @@
                     <label class="block text-gray-700 font-semibold mb-2">Upload Photo (Optional)</label>
                     <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
                         <i class="fas fa-cloud-upload-alt text-gray-400 text-2xl mb-2"></i>
-                        <p class="text-gray-500">Drag & drop or <span class="text-primary font-semibold">browse</span> files</p>
-                        <input type="file" class="hidden" id="donationPhoto">
-                        <label for="donationPhoto" class="inline-block mt-2 px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">Select Image</label>
+                        <p class="text-gray-500">Drag & drop or <span class="text-secondary font-semibold">browse</span> files</p>
+                        <input type="file" class="hidden" id="wishPhoto">
+                        <label for="wishPhoto" class="inline-block mt-2 px-4 py-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">Select Image</label>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-gray-700 font-semibold mb-2">Why are you donating this item? (Optional)</label>
-                    <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary" rows="3" placeholder="Share why you want to donate this item..."></textarea>
+                    <label class="block text-gray-700 font-semibold mb-2">Why is this wish important to you? (Optional)</label>
+                    <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary" rows="3" placeholder="Share why this item would be meaningful to you..."></textarea>
                 </div>
 
                 <div class="pt-4">
-                    <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-green-600">Create Donation</button>
+                    <button type="submit" class="w-full bg-secondary text-white py-3 rounded-lg font-semibold hover:bg-orange-600">Make Wish</button>
                 </div>
             </form>
         </div>
@@ -590,27 +603,21 @@
     </div>
 </footer>
 <script>
-    function openDonationModal() {
-        document.getElementById('donationModal').classList.remove('hidden');
+    function openWishModal() {
+        document.getElementById('wishModal').classList.remove('hidden');
     }
 
-    function closeDonationModal() {
-        document.getElementById('donationModal').classList.add('hidden');
+    function closeWishModal() {
+        document.getElementById('wishModal').classList.add('hidden');
     }
 
     // Close modal when clicking outside
-    document.getElementById('donationModal').addEventListener('click', function(e) {
-        if (e.target.id === 'donationModal') {
-            closeDonationModal();
+    document.getElementById('wishModal').addEventListener('click', function(e) {
+        if (e.target.id === 'wishModal') {
+            closeWishModal();
         }
     });
 
-    // Form submission
-    document.getElementById('donationForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Donation created successfully!');
-        closeDonationModal();
-    });
 </script>
 
 </body>
