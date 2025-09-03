@@ -117,7 +117,7 @@
                         <i class="fas fa-chevron-down text-xs"></i>
                     </div>
                     <ul class="ml-8 mt-1 space-y-2">
-                        <li><a target="_blank" href="my-donation.html" class="text-sm text-gray-600 hover:text-primary block py-1">My Donations</a></li>
+                        <li><a href="wish.html" class="text-sm text-gray-600 hover:text-primary block py-1">My Donations</a></li>
                         <li><a href="#" onclick="openDonationModal()" class="text-sm text-gray-600 hover:text-primary block py-1">Create Donation</a></li>
                     </ul>
                 </li>
@@ -198,183 +198,91 @@
 
     <!-- Middle Feed -->
     <div class="w-full lg:w-2/4 mb-6 lg:mb-0 mt-[65px]">
-        <!-- Filter Section -->
-        <div class="filter-section bg-white rounded-xl shadow-md p-6 mb-6 bg-gradient-to-br from-green-50 to-green-100">
-            <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                <i class="fas fa-filter mr-2 text-primary"></i> Filter Wishes
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <!-- Search Field -->
-                <div>
-                    <label class="block text-sm font-medium font-bold text-gray-700 mb-2 text-left font-semibold">Search Wishes</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <i class="fas fa-search text-gray-400"></i>
-                        </div>
-                        <input
-                                type="text"
-                                placeholder="Search by item, description..."
-                                class="pl-10 pr-4 py-3 border border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-primary focus:border-transparent"
-                        >
-                    </div>
-                </div>
-
-                <!-- Category Dropdown -->
-                <div>
-                    <label class="block text-sm font-medium font-bold text-gray-700 mb-2 text-left font-semibold">Category</label>
-                    <div class="relative">
-                        <select class="w-full pl-3 pr-10 py-3 border border-gray-300 rounded-lg appearance-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                            <option value="">All Categories</option>
-                            <option value="toy">Toys</option>
-                            <option value="book">Books</option>
-                            <option value="clothing">Clothing</option>
-                            <option value="educational">Educational</option>
-                            <option value="sports">Sports Equipment</option>
-                            <option value="art">Art Supplies</option>
-                            <option value="electronics">Electronics</option>
-                            <option value="other">Other</option>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Location Dropdown -->
-                <div>
-                    <label class="block text-sm font-medium font-bold text-gray-700 mb-2 text-left font-semibold">Location</label>
-                    <div class="relative">
-                        <select class="w-full pl-3 pr-10 py-3 border border-gray-300 rounded-lg appearance-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                            <option value="">All Locations</option>
-                            <option value="sf">San Francisco, CA</option>
-                            <option value="ny">New York, NY</option>
-                            <option value="la">Los Angeles, CA</option>
-                            <option value="chi">Chicago, IL</option>
-                            <option value="hou">Houston, TX</option>
-                            <option value="phi">Philadelphia, PA</option>
-                            <option value="phx">Phoenix, AZ</option>
-                            <option value="sa">San Antonio, TX</option>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                    </div>
-                </div>
+        <!-- Available Donations -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+            <div class="bg-green-100 p-4">
+                <h3 class="text-xl font-semibold flex items-center">
+                    <i class="fas fa-gift mr-2 text-primary"></i> My Donations
+                </h3>
+                <p class="text-sm text-gray-600">Items you created</p>
             </div>
-
-            <!-- Action Buttons -->
-            <div class="flex justify-end space-x-3">
-                <button class="filter-btn px-5 py-2 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50">
-                    <i class="fas fa-times mr-2"></i> Clear Filters
-                </button>
-                <button class="filter-btn px-5 py-2 bg-primary text-white rounded-lg font-medium hover:bg-green-600">
-                    <i class="fas fa-check mr-2"></i> Apply Filters
-                </button>
-            </div>
-        </div>
-
-        <!-- Wish Cards Feed -->
-        <div class="space-y-6">
-            <!-- Wish Card 1 -->
-            <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-                <!-- Child Info Section -->
-                <div class="p-5 flex items-center">
-                    <div class="w-16 h-16 rounded-full bg-blue-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200">
-                        <img src="https://www.shutterstock.com/image-photo/close-photo-cute-little-girl-600nw-2583433993.jpg" alt="Child" class="w-14 h-14 object-cover rounded-full">
-                    </div>
-                    <div>
-                        <h2 class="font-bold text-lg">Emma S.</h2>
-                        <p class="text-gray-600">Age 10 • San Francisco, CA</p>
-                    </div>
-                </div>
-
-                <!-- Wish Image -->
-                <div class="w-full h-64 bg-gray-100 overflow-hidden">
-                    <img src="https://png.pngtree.com/png-vector/20191028/ourmid/pngtree-bicycle-icon-outline-style-png-image_1903500.jpg" alt="Wish Item" class="w-full h-full object-contain">
-                </div>
-
-                <!-- Wish Content -->
-                <div class="px-5 pb-5 pt-3">
-                    <div class="mb-4">
-                        <p class="text-gray-700">I need a bicycle to ride to school and play with my friends in the park.</p>
-                    </div>
-
-                    <!-- Wish Details -->
-                    <div class="mb-4">
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="far fa-clock mr-2 text-primary"></i>
-                            <span>Posted: Oct 15, 2023</span>
-                        </div>
-                    </div>
-
-                    <!-- Category Tags -->
-                    <div class="mb-5">
-                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
-                        <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
-                        <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="flex space-x-3">
-                        <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                            <i class="fas fa-gift mr-2"></i> Fulfill Wish
-                        </button>
-                        <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                            <i class="fas fa-comment mr-2"></i> Message Guardian
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Wish Card 2 -->
-            <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-                <!-- Child Info Section -->
-                <div class="p-5 flex items-center">
-                    <div class="w-16 h-16 rounded-full bg-blue-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200">
-                        <img src="https://www.shutterstock.com/image-photo/serious-pretty-boy-head-shot-600nw-2111421392.jpg" alt="Child" class="w-14 h-14 object-cover rounded-full">
-                    </div>
-                    <div>
-                        <h2 class="font-bold text-lg">John W.</h2>
-                        <p class="text-gray-600">Age 7 • Oakland, CA</p>
-                    </div>
-                </div>
-
-                <!-- Wish Image -->
-                <div class="w-full h-64 bg-gray-100 overflow-hidden">
-                    <img src="https://img.freepik.com/free-psd/view-children-s-stuffed-animal_23-2151517634.jpg" alt="Wish Item" class="w-full h-full object-contain">
-                </div>
-
-                <!-- Wish Content -->
-                <div class="px-5 pb-5 pt-3">
-                    <div class="mb-4">
-                        <p class="text-gray-700">I would love a teddy bear to keep me company at night. It helps me feel safe and sleep better.</p>
-                    </div>
-
-                    <!-- Wish Details -->
-                    <div class="mb-4">
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="far fa-clock mr-2 text-primary"></i>
-                            <span>Posted: Oct 14, 2023</span>
-                        </div>
-                    </div>
-
-                    <!-- Category Tags -->
-                    <div class="mb-5">
-                        <span class="inline-block bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full mr-2">Stuffed Animal</span>
-                        <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Comfort</span>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="flex space-x-3">
-                        <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                            <i class="fas fa-gift mr-2"></i> Fulfill Wish
-                        </button>
-                        <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                            <i class="fas fa-comment mr-2"></i> Message Guardian
-                        </button>
-                    </div>
-                </div>
+            <div class="p-4 overflow-x-auto">
+                <table class="wish-table w-full">
+                    <thead>
+                    <tr>
+                        <th class="text-left p-3">Item</th>
+                        <th class="text-left p-3">Category</th>
+                        <th class="text-left p-3">Location</th>
+                        <th class="text-left p-3">Distance</th>
+                        <th class="text-left p-3">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="p-3">Story Books Collection</td>
+                        <td class="p-3">Book</td>
+                        <td class="p-3">San Francisco</td>
+                        <td class="p-3">2.3 km</td>
+                        <td class="p-3"><button class="text-sm bg-secondary text-white px-3 py-1 rounded hover:bg-orange-600">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Art Supplies</td>
+                        <td class="p-3">Other</td>
+                        <td class="p-3">Oakland</td>
+                        <td class="p-3">5.1 km</td>
+                        <td class="p-3"><button class="text-sm bg-secondary text-white px-3 py-1 rounded hover:bg-orange-600">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Bicycle</td>
+                        <td class="p-3">Toy</td>
+                        <td class="p-3">San Jose</td>
+                        <td class="p-3">12.7 km</td>
+                        <td class="p-3"><button class="text-sm bg-secondary text-white px-3 py-1 rounded hover:bg-orange-600">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Story Books Collection</td>
+                        <td class="p-3">Book</td>
+                        <td class="p-3">San Francisco</td>
+                        <td class="p-3">2.3 km</td>
+                        <td class="p-3"><button class="text-sm bg-secondary text-white px-3 py-1 rounded hover:bg-orange-600">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Art Supplies</td>
+                        <td class="p-3">Other</td>
+                        <td class="p-3">Oakland</td>
+                        <td class="p-3">5.1 km</td>
+                        <td class="p-3"><button class="text-sm bg-secondary text-white px-3 py-1 rounded hover:bg-orange-600">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Bicycle</td>
+                        <td class="p-3">Toy</td>
+                        <td class="p-3">San Jose</td>
+                        <td class="p-3">12.7 km</td>
+                        <td class="p-3"><button class="text-sm bg-secondary text-white px-3 py-1 rounded hover:bg-orange-600">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Art Supplies</td>
+                        <td class="p-3">Other</td>
+                        <td class="p-3">Oakland</td>
+                        <td class="p-3">5.1 km</td>
+                        <td class="p-3"><button class="text-sm bg-secondary text-white px-3 py-1 rounded hover:bg-orange-600">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Bicycle</td>
+                        <td class="p-3">Toy</td>
+                        <td class="p-3">San Jose</td>
+                        <td class="p-3">12.7 km</td>
+                        <td class="p-3"><button class="text-sm bg-secondary text-white px-3 py-1 rounded hover:bg-orange-600">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Bicycle</td>
+                        <td class="p-3">Toy</td>
+                        <td class="p-3">San Jose</td>
+                        <td class="p-3">12.7 km</td>
+                        <td class="p-3"><button class="text-sm bg-secondary text-white px-3 py-1 rounded hover:bg-orange-600">Edit</button></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
