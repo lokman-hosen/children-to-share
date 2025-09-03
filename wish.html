@@ -30,11 +30,25 @@
     <style>
         .wish-card {
             transition: all 0.3s ease;
-            /*max-width: 320px;*/
         }
         .wish-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .nav-item.active {
+            border-bottom: 3px solid #4CAF50;
+            color: #4CAF50;
+        }
+        .sidebar-item {
+            transition: all 0.2s ease;
+        }
+        .sidebar-item:hover {
+            background-color: #f0f9ff;
+            border-left: 4px solid #4CAF50;
+        }
+        .sidebar-item.active {
+            background-color: #e6f7ee;
+            border-left: 4px solid #4CAF50;
         }
     </style>
 </head>
@@ -71,25 +85,107 @@
     </div>
 </header>
 
-<!--<section class="bg-gradient-to-br from-green-100 to-green-200 py-20">-->
-<!--    <div class="container mx-auto px-4 text-center">-->
-<!--        <div class="max-w-3xl mx-auto">-->
-<!--            <h2 class="text-4xl md:text-5xl font-bold mb-6 hero-title">Share Joy, Create Smiles</h2>-->
-<!--            <p class="text-xl text-gray-600 mb-8">A safe platform for children to share gifts, make wishes come true, and build stronger communities together</p>-->
-<!--            <div class="flex flex-col sm:flex-row justify-center gap-4">-->
-<!--                <a href="registration.html" class="px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-green-600 transition-colors">Make a Wish</a>-->
-<!--                <a href="registration.html" class="px-6 py-3 rounded-full bg-secondary text-white font-semibold hover:bg-orange-500 transition-colors">Donate an Item</a>-->
-<!--                <a href="registration.html" class="px-6 py-3 rounded-full bg-accent text-white font-semibold hover:bg-blue-600 transition-colors">Learn More</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
+<!-- Main Content - Three Column Layout -->
+<main class="container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6">
+    <!-- Left Sidebar -->
+    <div class="w-full lg:w-1/4 mb-6 lg:mb-0">
+        <div class="bg-white rounded-xl shadow-md p-5 sticky top-24">
+            <h2 class="text-lg font-bold text-gray-800 mb-5 flex items-center">
+                <i class="fas fa-bars mr-2 text-primary"></i> Menu
+            </h2>
 
-<div class="container mx-auto">
-    <!-- Page Title -->
-    <div class="my-8 text-center">
+            <ul class="space-y-2">
+                <!-- Single Menu Items -->
+                <li>
+                    <a href="#" class="sidebar-item active flex items-center p-3 rounded-lg">
+                        <i class="fas fa-home mr-3 text-primary"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-item flex items-center p-3 rounded-lg">
+                        <i class="fas fa-star mr-3 text-secondary"></i>
+                        <span>My Wishes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-item flex items-center p-3 rounded-lg">
+                        <i class="fas fa-gift mr-3 text-accent"></i>
+                        <span>My Donations</span>
+                    </a>
+                </li>
+
+                <!-- Parent-Child Menu -->
+                <li>
+                    <div class="flex items-center justify-between p-3 rounded-lg cursor-pointer sidebar-item">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-circle mr-3 text-gray-600"></i>
+                            <span>My Profile</span>
+                        </div>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </div>
+                    <ul class="ml-8 mt-1 space-y-2">
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-primary block py-1">Personal Info</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-primary block py-1">Account Settings</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-primary block py-1">Privacy</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <div class="flex items-center justify-between p-3 rounded-lg cursor-pointer sidebar-item">
+                        <div class="flex items-center">
+                            <i class="fas fa-cog mr-3 text-gray-600"></i>
+                            <span>Settings</span>
+                        </div>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </div>
+                    <ul class="ml-8 mt-1 space-y-2">
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-primary block py-1">Notifications</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-primary block py-1">Security</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-primary block py-1">Preferences</a></li>
+                    </ul>
+                </li>
+
+                <!-- More Single Menu Items -->
+                <li>
+                    <a href="#" class="sidebar-item flex items-center p-3 rounded-lg">
+                        <i class="fas fa-question-circle mr-3 text-gray-600"></i>
+                        <span>Help & Support</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-item flex items-center p-3 rounded-lg">
+                        <i class="fas fa-sign-out-alt mr-3 text-gray-600"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Quick Stats -->
+            <div class="mt-8 pt-5 border-t border-gray-200">
+                <h3 class="text-sm font-semibold text-gray-700 mb-3">Quick Stats</h3>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Wishes Made</span>
+                        <span class="font-semibold">5</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Wishes Granted</span>
+                        <span class="font-semibold">3</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Items Donated</span>
+                        <span class="font-semibold">2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Middle Feed -->
+    <div class="w-full lg:w-2/4 mb-6 lg:mb-0">
         <!-- Filter Section -->
-        <div class="filter-section bg-white rounded-xl shadow-md p-6 w-full bg-gradient-to-br from-green-50 to-green-100">
+        <div class="filter-section bg-white rounded-xl shadow-md p-6 mb-6 bg-gradient-to-br from-green-50 to-green-100">
             <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
                 <i class="fas fa-filter mr-2 text-primary"></i> Filter Wishes
             </h2>
@@ -162,335 +258,223 @@
                     <i class="fas fa-check mr-2"></i> Apply Filters
                 </button>
             </div>
+        </div>
 
-            <!-- Active Filters (will appear when filters are applied) -->
-            <div class="mt-6 pt-4 border-t border-gray-200 hidden" id="activeFilters">
-                <h3 class="text-sm font-medium text-gray-700 mb-2">Active Filters:</h3>
-                <div class="flex flex-wrap gap-2">
-                    <!-- Active filters will be added here dynamically -->
+        <!-- Wish Cards Feed -->
+        <div class="space-y-6">
+            <!-- Wish Card 1 -->
+            <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
+                <!-- Child Info Section -->
+                <div class="p-5 flex items-center">
+                    <div class="w-16 h-16 rounded-full bg-blue-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200">
+                        <img src="https://www.shutterstock.com/image-photo/close-photo-cute-little-girl-600nw-2583433993.jpg" alt="Child" class="w-14 h-14 object-cover rounded-full">
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-lg">Emma S.</h2>
+                        <p class="text-gray-600">Age 10 • San Francisco, CA</p>
+                    </div>
+                </div>
+
+                <!-- Wish Image -->
+                <div class="w-full h-64 bg-gray-100 overflow-hidden">
+                    <img src="https://png.pngtree.com/png-vector/20191028/ourmid/pngtree-bicycle-icon-outline-style-png-image_1903500.jpg" alt="Wish Item" class="w-full h-full object-contain">
+                </div>
+
+                <!-- Wish Content -->
+                <div class="px-5 pb-5 pt-3">
+                    <div class="mb-4">
+                        <p class="text-gray-700">I need a bicycle to ride to school and play with my friends in the park.</p>
+                    </div>
+
+                    <!-- Wish Details -->
+                    <div class="mb-4">
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="far fa-clock mr-2 text-primary"></i>
+                            <span>Posted: Oct 15, 2023</span>
+                        </div>
+                    </div>
+
+                    <!-- Category Tags -->
+                    <div class="mb-5">
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex space-x-3">
+                        <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                            <i class="fas fa-gift mr-2"></i> Fulfill Wish
+                        </button>
+                        <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                            <i class="fas fa-comment mr-2"></i> Message Guardian
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wish Card 2 -->
+            <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
+                <!-- Child Info Section -->
+                <div class="p-5 flex items-center">
+                    <div class="w-16 h-16 rounded-full bg-blue-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200">
+                        <img src="https://www.shutterstock.com/image-photo/serious-pretty-boy-head-shot-600nw-2111421392.jpg" alt="Child" class="w-14 h-14 object-cover rounded-full">
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-lg">John W.</h2>
+                        <p class="text-gray-600">Age 7 • Oakland, CA</p>
+                    </div>
+                </div>
+
+                <!-- Wish Image -->
+                <div class="w-full h-64 bg-gray-100 overflow-hidden">
+                    <img src="https://img.freepik.com/free-psd/view-children-s-stuffed-animal_23-2151517634.jpg" alt="Wish Item" class="w-full h-full object-contain">
+                </div>
+
+                <!-- Wish Content -->
+                <div class="px-5 pb-5 pt-3">
+                    <div class="mb-4">
+                        <p class="text-gray-700">I would love a teddy bear to keep me company at night. It helps me feel safe and sleep better.</p>
+                    </div>
+
+                    <!-- Wish Details -->
+                    <div class="mb-4">
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="far fa-clock mr-2 text-primary"></i>
+                            <span>Posted: Oct 14, 2023</span>
+                        </div>
+                    </div>
+
+                    <!-- Category Tags -->
+                    <div class="mb-5">
+                        <span class="inline-block bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full mr-2">Stuffed Animal</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Comfort</span>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex space-x-3">
+                        <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                            <i class="fas fa-gift mr-2"></i> Fulfill Wish
+                        </button>
+                        <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                            <i class="fas fa-comment mr-2"></i> Message Guardian
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <!-- Child Info Section -->
-            <div class="p-5 flex items-center">
-                <div class="w-1/2 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200 hover:ring-green-300">
-                    <img src="https://www.shutterstock.com/image-photo/close-photo-cute-little-girl-600nw-2583433993.jpg" alt="Max" class="w-48 h-48 object-cover">
-                </div>
-                <div class="w-1/2">
-                    <h2 class="font-bold text-lg">Maternity Concierge</h2>
-                    <p class="text-gray-600">Age 10</p>
-                    <div class="w-20 h-20 rounded bg-blue-100 overflow-hidden mr-4 flex items-center justify-center">
-                        <img src="https://png.pngtree.com/png-vector/20191028/ourmid/pngtree-bicycle-icon-outline-style-png-image_1903500.jpg" class="w-18 h-18 object-cover">
+
+    <!-- Right Sidebar -->
+    <div class="w-full lg:w-1/4">
+        <div class="bg-white rounded-xl shadow-md p-5 sticky top-24">
+            <h2 class="text-lg font-bold text-gray-800 mb-5 flex items-center">
+                <i class="fas fa-star mr-2 text-secondary"></i> Popular Wishes
+            </h2>
+
+            <!-- Wish List -->
+            <div class="space-y-4">
+                <!-- Wish Item 1 -->
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-100 overflow-hidden mr-3 flex-shrink-0">
+                        <img src="https://www.shutterstock.com/image-photo/headshot-portrait-smiling-little-girl-600nw-2579821615.jpg" alt="Child" class="w-full h-full object-cover">
                     </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold truncate">Jennifer C.</p>
+                        <p class="text-xs text-gray-500 truncate">Art supplies</p>
+                    </div>
+                    <button class="text-xs bg-primary text-white px-2 py-1 rounded hover:bg-green-600">Donate</button>
+                </div>
+
+                <!-- Wish Item 2 -->
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-100 overflow-hidden mr-3 flex-shrink-0">
+                        <img src="https://static8.depositphotos.com/1101639/814/i/450/depositphotos_8146463-stock-photo-smiling-boy.jpg" alt="Child" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold truncate">Michael T.</p>
+                        <p class="text-xs text-gray-500 truncate">Science kit</p>
+                    </div>
+                    <button class="text-xs bg-primary text-white px-2 py-1 rounded hover:bg-green-600">Donate</button>
+                </div>
+
+                <!-- Wish Item 3 -->
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-100 overflow-hidden mr-3 flex-shrink-0">
+                        <img src="https://st4.depositphotos.com/1372245/23901/i/450/depositphotos_239017380-stock-photo-portrait-emotional-boy-white-background.jpg" alt="Child" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold truncate">David L.</p>
+                        <p class="text-xs text-gray-500 truncate">Winter jacket</p>
+                    </div>
+                    <button class="text-xs bg-primary text-white px-2 py-1 rounded hover:bg-green-600">Donate</button>
+                </div>
+
+                <!-- Wish Item 4 -->
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-100 overflow-hidden mr-3 flex-shrink-0">
+                        <img src="https://st.depositphotos.com/1011643/4555/i/450/depositphotos_45553123-stock-photo-little-boy-looking-at-the.jpg" alt="Child" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold truncate">Alex K.</p>
+                        <p class="text-xs text-gray-500 truncate">Books collection</p>
+                    </div>
+                    <button class="text-xs bg-primary text-white px-2 py-1 rounded hover:bg-green-600">Donate</button>
                 </div>
             </div>
 
-            <!-- Wish Content -->
-            <div class="px-5 pb-5">
-                <div class="bg-gray-50 p-4 rounded-lg mb-4">
-                    <p class="text-gray-700">I need a bicycle to ride to school and play with my friends in the park.</p>
-                </div>
+            <!-- Divider -->
+            <div class="my-6 border-t border-gray-200"></div>
 
-                <!-- Wish Details -->
-                <div class="mb-4">
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
-                        <span>San Francisco, CA</span>
+            <!-- Suggested Donations -->
+            <h2 class="text-lg font-bold text-gray-800 mb-5 flex items-center">
+                <i class="fas fa-gift mr-2 text-accent"></i> Suggested Donations
+            </h2>
+
+            <div class="space-y-4">
+                <!-- Donation Item 1 -->
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded bg-gray-100 overflow-hidden mr-3 flex-shrink-0 flex items-center justify-center">
+                        <i class="fas fa-book text-gray-500"></i>
                     </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                        <i class="far fa-clock mr-2 text-primary"></i>
-                        <span>Posted: Oct 15, 2023</span>
-                    </div>
-                </div>
-
-                <!-- Category Tags -->
-                <div class="mb-5">
-                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
-                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
-                    <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex space-x-3">
-                    <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                        <i class="fas fa-gift mr-2"></i> Fulfill Wish
-                    </button>
-                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                        <i class="fas fa-comment mr-2"></i> Message Guardian
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <!-- Child Info Section -->
-            <div class="p-5 flex items-center">
-                <div class="w-1/2 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200 hover:ring-green-300">
-                    <img src="https://www.shutterstock.com/image-photo/serious-pretty-boy-head-shot-600nw-2111421392.jpg" alt="Max" class="w-48 h-48 object-cover">
-                </div>
-                <div class="w-1/2">
-                    <h2 class="font-bold text-lg">John Wick</h2>
-                    <p class="text-gray-600">Age 7</p>
-                    <div class="w-20 h-20 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center">
-                        <img src="https://img.freepik.com/free-psd/view-children-s-stuffed-animal_23-2151517634.jpg" alt="" class="w-18 h-18 object-cover">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Wish Content -->
-            <div class="px-5 pb-5">
-                <div class="bg-gray-50 p-4 rounded-lg mb-4">
-                    <p class="text-gray-700">"I need a bicycle to ride to school and play with my friends in the park."</p>
-                </div>
-
-                <!-- Wish Details -->
-                <div class="mb-4">
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
-                        <span>San Francisco, CA</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                        <i class="far fa-clock mr-2 text-primary"></i>
-                        <span>Posted: Oct 15, 2023</span>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold truncate">Children's Books</p>
+                        <p class="text-xs text-gray-500">12 needed</p>
                     </div>
                 </div>
 
-                <!-- Category Tags -->
-                <div class="mb-5">
-                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
-                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
-                    <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex space-x-3">
-                    <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                        <i class="fas fa-gift mr-2"></i> Fulfill Wish
-                    </button>
-                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                        <i class="fas fa-comment mr-2"></i> Message Guardian
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <!-- Child Info Section -->
-            <div class="p-5 flex items-center">
-                <div class="w-1/2 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200 hover:ring-green-300">
-                    <img src="https://www.shutterstock.com/image-photo/headshot-portrait-smiling-little-girl-600nw-2579821615.jpg" alt="Max" class="w-48 h-48 object-cover">
-                </div>
-                <div class="w-1/2">
-                    <h2 class="font-bold text-lg">Jennifer Caffelle</h2>
-                    <p class="text-gray-600">Age 12</p>
-                    <div class="w-20 h-20 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center">
-                        <img src="https://ds.rokomari.store/rokomari110/ProductNew20190903/260X372/School_Bags_For_Girls_Big_Capacity_Backp-Non_Brand-56df4-349666.jpg" alt="" class="w-18 h-18 object-cover">
+                <!-- Donation Item 2 -->
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded bg-gray-100 overflow-hidden mr-3 flex-shrink-0 flex items-center justify-center">
+                        <i class="fas fa-tshirt text-gray-500"></i>
                     </div>
-                </div>
-            </div>
-
-            <!-- Wish Content -->
-            <div class="px-5 pb-5">
-                <div class="bg-gray-50 p-4 rounded-lg mb-4">
-                    <p class="text-gray-700">"I need a bicycle to ride to school and play with my friends in the park."</p>
-                </div>
-
-                <!-- Wish Details -->
-                <div class="mb-4">
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
-                        <span>San Francisco, CA</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                        <i class="far fa-clock mr-2 text-primary"></i>
-                        <span>Posted: Oct 15, 2023</span>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold truncate">Winter Clothes</p>
+                        <p class="text-xs text-gray-500">8 needed</p>
                     </div>
                 </div>
 
-                <!-- Category Tags -->
-                <div class="mb-5">
-                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
-                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
-                    <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex space-x-3">
-                    <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                        <i class="fas fa-gift mr-2"></i> Fulfill Wish
-                    </button>
-                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                        <i class="fas fa-comment mr-2"></i> Message Guardian
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <!-- Child Info Section -->
-            <div class="p-5 flex items-center">
-                <div class="w-1/2 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200 hover:ring-green-300">
-                    <img src="https://st4.depositphotos.com/1372245/23901/i/450/depositphotos_239017380-stock-photo-portrait-emotional-boy-white-background.jpg" alt="Max" class="w-48 h-48 object-cover">
-                </div>
-                <div class="w-1/2">
-                    <h2 class="font-bold text-lg">Maternity Concierge</h2>
-                    <p class="text-gray-600">Age 10</p>
-                    <div class="w-20 h-20 rounded bg-blue-100 overflow-hidden mr-4 flex items-center justify-center">
-                        <img src="https://png.pngtree.com/png-vector/20191028/ourmid/pngtree-bicycle-icon-outline-style-png-image_1903500.jpg" class="w-18 h-18 object-cover">
+                <!-- Donation Item 3 -->
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded bg-gray-100 overflow-hidden mr-3 flex-shrink-0 flex items-center justify-center">
+                        <i class="fas fa-puzzle-piece text-gray-500"></i>
                     </div>
-                </div>
-            </div>
-
-            <!-- Wish Content -->
-            <div class="px-5 pb-5">
-                <div class="bg-gray-50 p-4 rounded-lg mb-4">
-                    <p class="text-gray-700">I need a bicycle to ride to school and play with my friends in the park.</p>
-                </div>
-
-                <!-- Wish Details -->
-                <div class="mb-4">
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
-                        <span>San Francisco, CA</span>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold truncate">Educational Toys</p>
+                        <p class="text-xs text-gray-500">5 needed</p>
                     </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                        <i class="far fa-clock mr-2 text-primary"></i>
-                        <span>Posted: Oct 15, 2023</span>
-                    </div>
-                </div>
-
-                <!-- Category Tags -->
-                <div class="mb-5">
-                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
-                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
-                    <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex space-x-3">
-                    <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                        <i class="fas fa-gift mr-2"></i> Fulfill Wish
-                    </button>
-                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                        <i class="fas fa-comment mr-2"></i> Message Guardian
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <!-- Child Info Section -->
-            <div class="p-5 flex items-center">
-                <div class="w-1/2 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200 hover:ring-green-300">
-                    <img src="https://st.depositphotos.com/1011643/4555/i/450/depositphotos_45553123-stock-photo-little-boy-looking-at-the.jpg" alt="Max" class="w-48 h-48 object-cover">
-                </div>
-                <div class="w-1/2">
-                    <h2 class="font-bold text-lg">John Wick</h2>
-                    <p class="text-gray-600">Age 7</p>
-                    <div class="w-20 h-20 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center">
-                        <img src="https://img.freepik.com/free-psd/view-children-s-stuffed-animal_23-2151517634.jpg" alt="" class="w-18 h-18 object-cover">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Wish Content -->
-            <div class="px-5 pb-5">
-                <div class="bg-gray-50 p-4 rounded-lg mb-4">
-                    <p class="text-gray-700">"I need a bicycle to ride to school and play with my friends in the park."</p>
-                </div>
-
-                <!-- Wish Details -->
-                <div class="mb-4">
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
-                        <span>San Francisco, CA</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                        <i class="far fa-clock mr-2 text-primary"></i>
-                        <span>Posted: Oct 15, 2023</span>
-                    </div>
-                </div>
-
-                <!-- Category Tags -->
-                <div class="mb-5">
-                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
-                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
-                    <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex space-x-3">
-                    <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                        <i class="fas fa-gift mr-2"></i> Fulfill Wish
-                    </button>
-                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                        <i class="fas fa-comment mr-2"></i> Message Guardian
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="wish-card bg-white rounded-xl shadow-md overflow-hidden">
-            <!-- Child Info Section -->
-            <div class="p-5 flex items-center">
-                <div class="w-1/2 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center ring-2 ring-green-200 hover:ring-green-300">
-                    <img src="https://static8.depositphotos.com/1101639/814/i/450/depositphotos_8146463-stock-photo-smiling-boy.jpg" alt="Max" class="w-48 h-48 object-cover">
-                </div>
-                <div class="w-1/2">
-                    <h2 class="font-bold text-lg">Jennifer Caffelle</h2>
-                    <p class="text-gray-600">Age 12</p>
-                    <div class="w-20 h-20 rounded bg-gray-100 overflow-hidden mr-4 flex items-center justify-center">
-                        <img src="https://ds.rokomari.store/rokomari110/ProductNew20190903/260X372/School_Bags_For_Girls_Big_Capacity_Backp-Non_Brand-56df4-349666.jpg" alt="" class="w-18 h-18 object-cover">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Wish Content -->
-            <div class="px-5 pb-5">
-                <div class="bg-gray-50 p-4 rounded-lg mb-4">
-                    <p class="text-gray-700">"I need a bicycle to ride to school and play with my friends in the park."</p>
-                </div>
-
-                <!-- Wish Details -->
-                <div class="mb-4">
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
-                        <span>San Francisco, CA</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                        <i class="far fa-clock mr-2 text-primary"></i>
-                        <span>Posted: Oct 15, 2023</span>
-                    </div>
-                </div>
-
-                <!-- Category Tags -->
-                <div class="mb-5">
-                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">Bicycle</span>
-                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-2">Outdoor</span>
-                    <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Transportation</span>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex space-x-3">
-                    <button class="flex-1 bg-primary hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                        <i class="fas fa-gift mr-2"></i> Fulfill Wish
-                    </button>
-                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center">
-                        <i class="fas fa-comment mr-2"></i> Message Guardian
-                    </button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Wish Card -->
-
-</div>
+</main>
 
 <!-- Footer -->
 <footer class="bg-gray-800 text-white pt-12 pb-8 mt-12">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
             <div>
-                <h3 class="text-xl font-semibold mb-6 logo-text">Children to Share</h3>
+                <h3 class="text-xl font-semibold mb-6">Children to Share</h3>
                 <p class="text-gray-300 mb-6">Making sharing safe and fun for children everywhere</p>
                 <div class="flex gap-4">
                     <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors">
