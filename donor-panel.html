@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreeWish - Donor Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page {
+            display: none;
+        }
+        .active-page {
+            display: block;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover, .nav-item.active {
+            border-left: 4px solid #3B82F6;
+            background-color: #f3f4f6;
+        }
+        .wish-card, .donation-card {
+            transition: all 0.3s ease;
+        }
+        .wish-card:hover, .donation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .distance-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .chat-container {
+            height: 400px;
+            overflow-y: auto;
+        }
+        .chat-message {
+            max-width: 80%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+<!-- Top Navigation -->
+<nav class="bg-white shadow-md fixed w-full z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <i class="fas fa-gift text-blue-500 text-2xl mr-2"></i>
+                    <span class="font-bold text-xl text-blue-600">ThreeWish Donor Panel</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="p-1 rounded-full text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <i class="fas fa-bell text-xl"></i>
+                        <span class="absolute top-0 right-0 h-4 w-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">3</span>
+                    </button>
+                </div>
+                <div class="relative">
+                    <button class="flex items-center text-sm text-gray-700 focus:outline-none" onclick="toggleDropdown()">
+                        <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
+                            <span class="font-medium text-blue-600">D</span>
+                        </div>
+                        <span class="ml-2">Donor User</span>
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="showPage('profile-page')">Your Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="flex pt-16">
+    <!-- Sidebar Navigation -->
+    <div class="w-64 bg-white h-screen shadow-md fixed hidden md:block">
+        <div class="p-4">
+            <h2 class="text-lg font-semibold text-gray-700">Donor Navigation</h2>
+            <ul class="mt-4">
+                <li class="mb-1">
+                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded active" onclick="showPage('dashboard-page')">
+                        <i class="fas fa-home mr-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="mb-1">
+                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded" onclick="showPage('browse-wishes-page')">
+                        <i class="fas fa-search mr-2"></i> Browse Wishes
+                    </a>
+                </li>
+                <li class="mb-1">
+                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded" onclick="showPage('create-donation-page')">
+                        <i class="fas fa-plus-circle mr-2"></i> Create Donation
+                    </a>
+                </li>
+                <li class="mb-1">
+                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded" onclick="showPage('my-donations-page')">
+                        <i class="fas fa-gift mr-2"></i> My Donations
+                    </a>
+                </li>
+                <li class="mb-1">
+                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded" onclick="showPage('messages-page')">
+                        <i class="fas fa-comments mr-2"></i> Messages
+                        <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">2</span>
+                    </a>
+                </li>
+                <li class="mb-1">
+                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded" onclick="showPage('organizations-page')">
+                        <i class="fas fa-building mr-2"></i> Organizations
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 md:ml-64">
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page active-page">
+            <div class="max-w-6xl mx-auto px-4 py-8">
+                <h1 class="text-2xl font-bold text-gray-900 mb-6">Donor Dashboard</h1>
+
+                <!-- Stats Overview -->
+                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
+                                    <i class="fas fa-star text-white"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <dl>
+                                        <dt class="text-sm font-medium text-gray-500 truncate">Wishes Fulfilled</dt>
+                                        <dd class="flex items-baseline">
+                                            <div class="text-2xl font-semibold text-gray-900">12</div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
+                                    <i class="fas fa-gift text-white"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <dl>
+                                        <dt class="text-sm font-medium text-gray-500 truncate">Active Donations</dt>
+                                        <dd class="flex items-baseline">
+                                            <div class="text-2xl font-semibold text-gray-900">5</div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-yellow-500 rounded-md p-3">
+                                    <i class="fas fa-comments text-white"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <dl>
+                                        <dt class="text-sm font-medium text-gray-500 truncate">Unread Messages</dt>
+                                        <dd class="flex items-baseline">
+                                            <div class="text-2xl font-semibold text-gray-900">2</div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-purple-500 rounded-md p-3">
+                                    <i class="fas fa-users text-white"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <dl>
+                                        <dt class="text-sm font-medium text-gray-500 truncate">Organizations</dt>
+                                        <dd class="flex items-baseline">
+                                            <div class="text-2xl font-semibold text-gray-900">3</div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white shadow rounded-lg mb-8">
+                    <div class="px-4 py-5 sm:px-6">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Activity</h3>
+                    </div>
+                    <div class="border-t border-gray-200">
+                        <ul class="divide-y divide-gray-200">
+                            <li class="p-4 sm:p-6">
+                                <div class="flex items-center">
+                                    <div class="bg-green-100 p-2 rounded-full mr-4">
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">You fulfilled a wish for books</p>
+                                        <p class="text-sm text-gray-500">2 hours ago • 3.2 km away</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="p-4 sm:p-6">
+                                <div class="flex items-center">
+                                    <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                        <i class="fas fa-plus-circle text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">You created a new donation item</p>
+                                        <p class="text-sm text-gray-500">1 day ago • Winter coat</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="p-4 sm:p-6">
+                                <div class="flex items-center">
+                                    <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                                        <i class="fas fa-comment text-yellow-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">New message from Emily's guardian</p>
+                                        <p class="text-sm text-gray-500">2 days ago • Regarding book donation</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Nearby Wishes -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Wishes Near You</h3>
+                        <a href="#" class="text-sm text-blue-600 hover:text-blue-800" onclick="showPage('browse-wishes-page')">View all</a>
+                    </div>
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <!-- Wish Card 1 -->
+                        <div class="bg-white overflow-hidden shadow rounded-lg wish-card relative">
+                                <span class="distance-badge bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                    3.2 km away
+                                </span>
+                            <div class="h-32 bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-book-open text-blue-500 text-4xl"></i>
+                            </div>
+                            <div class="px-4 py-4">
+                                <h3 class="text-lg font-medium text-gray-900">Story Books</h3>
+                                <p class="mt-1 text-sm text-gray-500">Looking for children's story books for my 7-year-old</p>
+                                <div class="mt-4 flex items-center">
+                                    <div class="flex-shrink-0">
+                                        <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center">
+                                            <span class="font-medium text-green-600">E</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-900">Emily, 7</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 px-4 py-3 sm:px-6">
+                                <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                    <i class="fas fa-star mr-2"></i> Fulfill Wish
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Wish Card 2 -->
+                        <div class="bg-white overflow-hidden shadow rounded-lg wish-card relative">
+                                <span class="distance-badge bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                    5.7 km away
+                                </span>
+                            <div class="h-32 bg-red-100 flex items-center justify-center">
+                                <i class="fas fa-tshirt text-red-500 text-4xl"></i>
+                            </div>
+                            <div class="px-4 py-4">
+                                <h3 class="text-lg font-medium text-gray-900">Winter Coat</h3>
+                                <p class="mt-1 text-sm text-gray-500">Need a warm coat for winter, size 10-12</p>
+                                <div class="mt-4 flex items-center">
+                                    <div class="flex-shrink-0">
+                                        <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
+                                            <span class="font-medium text-blue-600">M</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-900">Michael, 9</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 px-4 py-3 sm:px-6">
+                                <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                    <i class="fas fa-star mr-2"></i> Fulfill Wish
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Browse Wishes Page -->
+        <div id="browse-wishes-page" class="page">
+            <div class="max-w-6xl mx-auto px-4 py-8">
+                <h1 class="text-2xl font-bold text-gray-900 mb-6">Browse Wishes</h1>
+
+                <!-- Filters -->
+                <div class="bg-white shadow rounded-lg p-4 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Search Radius</label>
+                            <select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option>10 km</option>
+                                <option>25 km</option>
+                                <option>50 km</option>
+                                <option>100 km</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                            <select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option>All Categories</option>
+                                <option>Books</option>
+                                <option>Clothing</option>
+                                <option>Toys</option>
+                                <option>Electronics</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Age Group</label>
+                            <select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option>Any Age</option>
+                                <option>0-5 years</option>
+                                <option>6-10 years</option>
+                                <option>11-15 years</option>
+                                <option>16+ years</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Organization</label>
+                            <select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option>All Organizations</option>
+                                <option>Community Center A</option>
+                                <option>School B</option>
+                                <option>Youth Program C</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <i class="fas fa-filter mr-2"></i> Apply Filters
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Wishes Grid -->
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Wish Card 1 -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg wish-card relative">
+                            <span class="distance-badge bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                3.2 km away
+                            </span>
+                        <div class="h-40 bg-blue-100 flex items-center justify-center">
+                            <i class="fas fa-book-open text-blue-500 text-4xl"></i>
+                        </div>
+                        <div class="px-4 py-4">
+                            <h3 class="text-lg font-medium text-gray-900">Story Books</h3>
+                            <p class="mt-1 text-sm text-gray-500">Looking for children's story books for my 7-year-old</p>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center">
+                                        <span class="font-medium text-green-600">E</span>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">Emily, 7</p>
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-building mr-1"></i>
+                                        Community Center A
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6">
+                            <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                <i class="fas fa-star mr-2"></i> Fulfill Wish
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wish Card 2 -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg wish-card relative">
+                            <span class="distance-badge bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                5.7 km away
+                            </span>
+                        <div class="h-40 bg-red-100 flex items-center justify-center">
+                            <i class="fas fa-tshirt text-red-500 text-4xl"></i>
+                        </div>
+                        <div class="px-4 py-4">
+                            <h3 class="text-lg font-medium text-gray-900">Winter Coat</h3>
+                            <p class="mt-1 text-sm text-gray-500">Need a warm coat for winter, size 10-12</p>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
+                                        <span class="font-medium text-blue-600">M</span>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">Michael, 9</p>
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-building mr-1"></i>
+                                        School B
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6">
+                            <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                <i class="fas fa-star mr-2"></i> Fulfill Wish
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wish Card 3 -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg wish-card relative">
+                            <span class="distance-badge bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                8.1 km away
+                            </span>
+                        <div class="h-40 bg-yellow-100 flex items-center justify-center">
+                            <i class="fas fa-laptop text-yellow-500 text-4xl"></i>
+                        </div>
+                        <div class="px-4 py-4">
+                            <h3 class="text-lg font-medium text-gray-900">Laptop for School</h3>
+                            <p class="mt-1 text-sm text-gray-500">Need a laptop for online learning and homework</p>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
+                                        <span class="font-medium text-purple-600">J</span>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">Jessica, 15</p>
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-building mr-1"></i>
+                                        Youth Program C
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6">
+                            <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                <i class="fas fa-star mr-2"></i> Fulfill Wish
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wish Card 4 -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg wish-card relative">
+                            <span class="distance-badge bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                2.5 km away
+                            </span>
+                        <div class="h-40 bg-green-100 flex items-center justify-center">
+                            <i class="fas fa-bicycle text-green-500 text-4xl"></i>
+                        </div>
+                        <div class="px-4 py-4">
+                            <h3 class="text-lg font-medium text-gray-900">Bicycle</h3>
+                            <p class="mt-1 text-sm text-gray-500">Looking for a bicycle to get to school and work</p>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                                        <span class="font-medium text-red-600">D</span>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">David, 16</p>
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-building mr-1"></i>
+                                        Community Center A
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6">
+                            <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                <i class="fas fa-star mr-2"></i> Fulfill Wish
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wish Card 5 -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg wish-card relative">
+                            <span class="distance-badge bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                6.3 km away
+                            </span>
+                        <div class="h-40 bg-pink-100 flex items-center justify-center">
+                            <i class="fas fa-dumbbell text-pink-500 text-4xl"></i>
+                        </div>
+                        <div class="px-4 py-4">
+                            <h3 class="text-lg font-medium text-gray-900">Sports Equipment</h3>
+                            <p class="mt-1 text-sm text-gray-500">Need soccer ball and other sports equipment for team</p>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center">
+                                        <span class="font-medium text-indigo-600">S</span>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">Sam, 14</p>
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-building mr-1"></i>
+                                        School B
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6">
+                            <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                <i class="fas fa-star mr-2"></i> Fulfill Wish
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wish Card 6 -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg wish-card relative">
+                            <span class="distance-badge bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                4.8 km away
+                            </span>
+                        <div class="h-40 bg-indigo-100 flex items-center justify-center">
+                            <i class="fas fa-paint-brush text-indigo-500 text-4xl"></i>
+                        </div>
+                        <div class="px-4 py-4">
+                            <h3 class="text-lg font-medium text-gray-900">Art Supplies</h3>
+                            <p class="mt-1 text-sm text-gray-500">Looking for paints, brushes and canvases for art class</p>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="h-8 w-8 rounded-full bg-pink-100 flex items-center justify-center">
+                                        <span class="font-medium text-pink-600">A</span>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">Anna, 12</p>
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-building mr-1"></i>
+                                        Youth Program C
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6">
+                            <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                <i class="fas fa-star mr-2"></i> Fulfill Wish
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6 mt-8">
+                    <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                        <div>
+                            <p class="text-sm text-gray-700">
+                                Showing <span class="font-medium">1</span> to <span class="font-medium">6</span> of <span class="font-medium">24</span> results
+                            </p>
+                        </div>
+                        <div>
+                            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    <span class="sr-only">Previous</span>
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">1</a>
+                                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">2</a>
+                                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">3</a>
+                                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    <span class="sr-only">Next</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Donation Page -->
+    <div id="create-donation-page" class="page">
+        <div class="max-w-3xl mx-auto px-4 py-8">
+            <h1 class="text-2xl font-bold text-gray-900 mb-6">Create Donation Item</h1>
+
+            <div class="bg-white shadow rounded-lg p-6">
+                <form>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Item Name</label>
+                            <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="e.g., Winter Coat, Story Books, etc.">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Category</label>
+                            <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option>Select a category</option>
+                                <option>Books</option>
+                                <option>Clothing</option>
+                                <option>Toys</option>
+                                <option>Electronics</option>
+                                <option>Sports Equipment</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Condition</label>
+                            <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option>Select condition</option>
+                                <option>New</option>
+                                <option>Like New</option>
+                                <option>Good</option>
+                                <option>Fair</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Description</label>
+                            <textarea rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Provide details about the item"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Photos/Video</label>
+                            <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                <div class="space-y-1 text-center">
+                                    <div class="flex text-sm text-gray-600">
+                                        <label class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
+                                            <span>Upload files</span>
+                                            <input type="file" class="sr-only" multiple>
+                                        </label>
+                                        <p class="pl-1">or drag and drop</p>
+                                    </div>
+                                    <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                                    <p class="text-xs text-gray-500">Video length limit: 10 seconds</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Organization (optional)</label>
+                            <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option>Select an organization</option>
+                                <option>Community Center A</option>
+                                <option>School B</option>
+                                <option>Youth Program C</option>
+                                <option>Create new organization</option>
+                            </select>
+                        </div>
+
+                        <div class="flex items-center">
+                            <input id="admin-assistance" name="admin-assistance" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" checked>
+                            <label for="admin-assistance" class="ml-2 block text-sm text-gray-900">
+                                Request admin assistance for pickup/delivery
+                            </label>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                <i class="fas fa-plus-circle mr-2"></i> Create Donation
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Donations Page -->
+    <div id="my-donations-page" class="page">
+        <div class="max-w-6xl mx-auto px-4 py-8">
+            <h1 class="text-2xl font-bold text-gray-900 mb-6">My Donations</h1>
+
+            <div class="bg-white shadow rounded-lg overflow-hidden">
+                <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex">
+                        <a href="#" class="border-b-2 border-blue-500 text-blue-600 px-4 py-4 text-sm font-medium">Active (5)</a>
+                        <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">Pending (2)</a>
+                        <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">Completed (12)</a>
+                    </nav>
+                </div>
+
+                <ul class="divide-y divide-gray-200">
+                    <li class="p-4 sm:p-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="h-16 w-16 bg-blue-100 rounded-md flex items-center justify-center mr-4">
+                                    <i class="fas fa-tshirt text-blue-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium text-gray-900">Winter Coat</h3>
+                                    <p class="text-sm text-gray-500">Size 10-12, Good condition</p>
+                                    <div class="mt-1 flex items-center">
+                                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                                    Clothing
+                                                </span>
+                                        <span class="ml-2 bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                                    Pending pickup
+                                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end">
+                                <p class="text-sm text-gray-500">Created 2 days ago</p>
+                                <div class="mt-2">
+                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="p-4 sm:p-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="h-16 w-16 bg-green-100 rounded-md flex items-center justify-center mr-4">
+                                    <i class="fas fa-book-open text-green-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium text-gray-900">Children's Story Books</h3>
+                                    <p class="text-sm text-gray-500">Set of 12 books, Like new</p>
+                                    <div class="mt-1 flex items-center">
+                                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                                    Books
+                                                </span>
+                                        <span class="ml-2 bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                                    Fulfilling wish
+                                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end">
+                                <p class="text-sm text-gray-500">Created 5 days ago</p>
+                                <div class="mt-2">
+                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="p-4 sm:p-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="h-16 w-16 bg-yellow-100 rounded-md flex items-center justify-center mr-4">
+                                    <i class="fas fa-laptop text-yellow-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium text-gray-900">Laptop</h3>
+                                    <p class="text-sm text-gray-500">Dell Inspiron, 8GB RAM, Good condition</p>
+                                    <div class="mt-1 flex items-center">
+                                                <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                                    Electronics
+                                                </span>
+                                        <span class="ml-2 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                                    Available
+                                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end">
+                                <p class="text-sm text-gray-500">Created 1 week ago</p>
+                                <div class="mt-2">
+                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="p-4 sm:p-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="h-16 w-16 bg-red-100 rounded-md flex items-center justify-center mr-4">
+                                    <i class="fas fa-dumbbell text-red-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium text-gray-900">Soccer Equipment</h3>
+                                    <p class="text-sm text-gray-500">Ball, cones, and practice jersey</p>
+                                    <div class="mt-1 flex items-center">
+                                                <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                                    Sports
+                                                </span>
+                                        <span class="ml-2 bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                                    Fulfilling wish
+                                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end">
+                                <p class="text-sm text-gray-500">Created 1 week ago</p>
+                                <div class="mt-2">
+                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="p-4 sm:p-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="h-16 w-16 bg-purple-100 rounded-md flex items-center justify-center mr-4">
+                                    <i class="fas fa-paint-brush text-purple-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium text-gray-900">Art Supplies</h3>
+                                    <p class="text-sm text-gray-500">Paints, brushes, and canvases</p>
+                                    <div class="mt-1 flex items-center">
+                                                <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                                    Art
+                                                </span>
+                                        <span class="ml-2 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                                    Available
+                                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end">
+                                <p class="text-sm text-gray-500">Created 2 weeks ago</p>
+                                <div class="mt-2">
+                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages Page -->
+    <div id="messages-page" class="page">
+        <div class="max-w-4xl mx-auto px-4 py-8">
+            <h1 class="text-2xl font-bold text-gray-900 mb-6">Messages</h1>
+
+            <div class="bg-white shadow rounded-lg overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 h-96">
+                    <!-- Conversations List -->
+                    <div class="border-r border-gray-200 bg-gray-50 overflow-y-auto">
+                        <div class="p-4 border-b border-gray-200">
+                            <h2 class="text-lg font-medium text-gray-900">Conversations</h2>
+                        </div>
+                        <ul class="divide-y divide-gray-200">
+                            <li class="p-4 hover:bg-white cursor-pointer border-r-2 border-blue-500 bg-white">
+                                <div class="flex items-center">
+                                    <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                        <span class="font-medium text-green-600">E</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Emily's Guardian</p>
+                                        <p class="text-xs text-gray-500">Hi, thank you for the books!</p>
+                                    </div>
+                                </div>
+                                <div class="mt-2 flex justify-between items-center">
+                                    <span class="text-xs text-gray-500">2 hours ago</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded">2</span>
+                                </div>
+                            </li>
+                            <li class="p-4 hover:bg-white cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                        <span class="font-medium text-blue-600">M</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Michael's Guardian</p>
+                                        <p class="text-xs text-gray-500">When can we arrange pickup?</p>
+                                    </div>
+                                </div>
+                                <div class="mt-2 flex justify-between items-center">
+                                    <span class="text-xs text-gray-500">1 day ago</span>
+                                </div>
+                            </li>
+                            <li class="p-4 hover:bg-white cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                                        <span class="font-medium text-purple-600">J</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Jessica's Guardian</p>
+                                        <p class="text-xs text-gray-500">The laptop works perfectly!</p>
+                                    </div>
+                                </div>
+                                <div class="mt-2 flex justify-between items-center">
+                                    <span class="text-xs text-gray-500">3 days ago</span>
+                                </div>
+                            </li>
+                            <li class="p-4 hover:bg-white cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center mr-3">
+                                        <span class="font-medium text-red-600">D</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">David's Guardian</p>
+                                        <p class="text-xs text-gray-500">Thanks for the bicycle!</p>
+                                    </div>
+                                </div>
+                                <div class="mt-2 flex justify-between items-center">
+                                    <span class="text-xs text-gray-500">1 week ago</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Chat Messages -->
+                    <div class="md:col-span-2 flex flex-col">
+                        <div class="p-4 border-b border-gray-200">
+                            <h2 class="text-lg font-medium text-gray-900">Emily's Guardian</h2>
+                            <p class="text-sm text-gray-500">Fulfilling wish: Story Books</p>
+                        </div>
+                        <div class="flex-1 overflow-y-auto p-4 bg-gray-50 chat-container">
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                        <span class="font-medium text-green-600">E</span>
+                                    </div>
+                                    <div class="bg-white rounded-lg py-2 px-4 chat-message">
+                                        <p class="text-sm">Hi, thank you so much for offering to donate the books!</p>
+                                        <p class="text-xs text-gray-500 mt-1">10:15 AM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start justify-end">
+                                    <div class="bg-blue-100 rounded-lg py-2 px-4 chat-message">
+                                        <p class="text-sm">You're welcome! My daughter loved these books and I hope Emily will too.</p>
+                                        <p class="text-xs text-gray-500 mt-1">10:18 AM</p>
+                                    </div>
+                                    <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center ml-3">
+                                        <span class="font-medium text-blue-600">D</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                        <span class="font-medium text-green-600">E</span>
+                                    </div>
+                                    <div class="bg-white rounded-lg py-2 px-4 chat-message">
+                                        <p class="text-sm">She will be thrilled! When would be a good time to pick them up?</p>
+                                        <p class="text-xs text-gray-500 mt-1">10:20 AM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start justify-end">
+                                    <div class="bg-blue-100 rounded-lg py-2 px-4 chat-message">
+                                        <p class="text-sm">I've requested admin assistance for pickup. They'll contact you to arrange a time.</p>
+                                        <p class="text-xs text-gray-500 mt-1">10:22 AM</p>
+                                    </div>
+                                    <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center ml-3">
+                                        <span class="font-medium text-blue-600">D</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                        <span class="font-medium text-green-600">E</span>
+                                    </div>
+                                    <div class="bg-white rounded-lg py-2 px-4 chat-message">
+                                        <p class="text-sm">Perfect, thank you! I'll wait for their call.</p>
+                                        <p class="text-xs text-gray-500 mt-1">10:25 AM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t border-gray-200">
+                            <div class="flex items-center">
+                                <input type="text" placeholder="Type your message..." class="flex-1 border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <button class="ml-3 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
+                                    <i class="fas fa-paperclip"></i>
+                                </button>
+                                <button class="ml-1 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
+                                    <i class="fas fa-image"></i>
+                                </button>
+                                <button class="ml-1 inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                                    Send
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Organizations Page -->
+    <div id="organizations-page" class="page">
+        <div class="max-w-6xl mx-auto px-4 py-8">
+            <h1 class="text-2xl font-bold text-gray-900 mb-6">Organizations</h1>
+
+            <div class="bg-white shadow rounded-lg p-6 mb-8">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-medium text-gray-900">My Organizations</h2>
+                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                        <i class="fas fa-plus mr-2"></i> Join New Organization
+                    </button>
+                </div>
+                <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                        <div class="flex items-center">
+                            <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-building text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">Community Center A</h3>
+                                <p class="text-sm text-gray-500">15 members • 32 wishes fulfilled</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                View Organization
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                        <div class="flex items-center">
+                            <div class="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-school text-green-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">School B</h3>
+                                <p class="text-sm text-gray-500">28 members • 47 wishes fulfilled</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                View Organization
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white shadow rounded-lg p-6">
+                <h2 class="text-lg font-medium text-gray-900 mb-4">All Organizations</h2>
+                <div class="flex items-center mb-4">
+                    <input type="text" placeholder="Search organizations..." class="flex-1 border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    <button class="ml-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                        <i class="fas fa-search mr-2"></i> Search
+                    </button>
+                </div>
+                <ul class="divide-y divide-gray-200">
+                    <li class="py-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-building text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium text-gray-900">Community Center A</h3>
+                                    <p class="text-sm text-gray-500">Serving the downtown community since 2010</p>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                                    Join
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="py-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-school text-green-500"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium text-gray-900">School B</h3>
+                                    <p class="text-sm text-gray-500">Elementary school serving grades K-5</p>
+                                </div>
+                            </div>
+                            <div>
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                            Member
+                                        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="py-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-child text-purple-500"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium text-gray-900">Youth Program C</h3>
+                                    <p class="text-sm text-gray-500">After-school programs for teens</p>
+                                </div>
+                            </div>
+                            <div>
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                            Member
+                                        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="py-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="h-12 w-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-baseball-ball text-yellow-500"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium text-gray-900">Sports League D</h3>
+                                    <p class="text-sm text-gray-500">Community sports organization</p>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                                    Join
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profile-page" class="page">
+        <div class="max-w-3xl mx-auto px-4 py-8">
+            <h1 class="text-2xl font-bold text-gray-900 mb-6">Your Profile</h1>
+
+            <div class="bg-white shadow rounded-lg p-6">
+                <div class="flex items-center border-b border-gray-200 pb-6">
+                    <div class="h-24 w-24 rounded-full bg-blue-100 flex items-center justify-center mr-6">
+                        <span class="font-medium text-blue-600 text-2xl">D</span>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900">Donor User</h2>
+                        <p class="text-sm text-gray-500">Member since January 2023</p>
+                        <div class="mt-2 flex items-center">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2">
+                                        12 Wishes Fulfilled
+                                    </span>
+                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                        5 Active Donations
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Contact Information</h3>
+                        <dl class="space-y-2">
+                            <div>
+                                <dt class="text-sm font-medium text-gray-500">Email</dt>
+                                <dd class="text-sm text-gray-900">donor@example.com</dd>
+                            </div>
+                            <div>
+                                <dt class="text-sm font-medium text-gray-500">Phone</dt>
+                                <dd class="text-sm text-gray-900">+1 (555) 123-4567</dd>
+                            </div>
+                            <div>
+                                <dt class="text-sm font-medium text-gray-500">Location</dt>
+                                <dd class="text-sm text-gray-900">Seattle, WA</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Preferences</h3>
+                        <dl class="space-y-2">
+                            <div>
+                                <dt class="text-sm font-medium text-gray-500">Default Search Radius</dt>
+                                <dd class="text-sm text-gray-900">10 km</dd>
+                            </div>
+                            <div>
+                                <dt class="text-sm font-medium text-gray-500">Notification Settings</dt>
+                                <dd class="text-sm text-gray-900">Email & In-App</dd>
+                            </div>
+                            <div>
+                                <dt class="text-sm font-medium text-gray-500">Admin Assistance</dt>
+                                <dd class="text-sm text-gray-900">Enabled by default</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Your Organizations</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <div class="h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center mr-2">
+                                <i class="fas fa-building text-blue-500 text-sm"></i>
+                            </div>
+                            <span class="text-sm text-gray-900">Community Center A</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="h-8 w-8 bg-green-100 rounded-full flex items-center justify-center mr-2">
+                                <i class="fas fa-school text-green-500 text-sm"></i>
+                            </div>
+                            <span class="text-sm text-gray-900">School B</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="h-8 w-8 bg-purple-100 rounded-full flex items-center justify-center mr-2">
+                                <i class="fas fa-child text-purple-500 text-sm"></i>
+                            </div>
+                            <span class="text-sm text-gray-900">Youth Program C</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-6 flex">
+                    <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        <i class="fas fa-edit mr-2"></i> Edit Profile
+                    </button>
+                    <button class="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                        <i class="fas fa-lock mr-2"></i> Change Password
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white shadow rounded-lg p-6 mt-6">
+                <h2 class="text-lg font-medium text-gray-900 mb-4">Your Impact</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <div class="text-3xl font-bold text-blue-600">12</div>
+                        <div class="text-sm font-medium text-gray-700">Wishes Fulfilled</div>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <div class="text-3xl font-bold text-green-600">8</div>
+                        <div class="text-sm font-medium text-gray-700">Children Helped</div>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg">
+                        <div class="text-3xl font-bold text-yellow-600">5</div>
+                        <div class="text-sm font-medium text-gray-700">Organizations Supported</div>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded-lg">
+                        <div class="text-3xl font-bold text-purple-600">24</div>
+                        <div class="text-sm font-medium text-gray-700">Items Donated</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    // Function to show a specific page and hide others
+    function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active-page');
+        });
+
+        // Show the requested page
+        document.getElementById(pageId).classList.add('active-page');
+
+        // Update navigation active state
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.remove('active');
+        });
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+    }
+
+    // Function to toggle user dropdown
+    function toggleDropdown() {
+        document.getElementById('user-dropdown').classList.toggle('hidden');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('user-dropdown');
+        const button = document.querySelector('button[onclick="toggleDropdown()"]');
+
+        if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
+</script>
+</body>
+</html>
