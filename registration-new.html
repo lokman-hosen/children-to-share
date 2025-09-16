@@ -91,13 +91,47 @@
                     <a href="#organizations" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Organizations</a>
                 </div>
             </div>
-            <div class="flex items-center">
+
+            <!-- Desktop buttons -->
+            <div class="hidden md:flex items-center">
                 <a href="registration-new.html" class="ml-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                     Sign Up
                 </a>
                 <a href="login-new.html" class="ml-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                     Login
                 </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden flex items-center">
+                <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <!-- Hamburger icon -->
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <!-- X icon (hidden by default) -->
+                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state -->
+    <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="home-page.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Home</a>
+            <a href="home-page.html#how-it-works" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">How It Works</a>
+            <a href="wish-new.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Wishes</a>
+            <a href="donation-new.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Donations</a>
+            <a href="#organizations" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Organizations</a>
+        </div>
+        <div class="pt-4 pb-3 border-t border-gray-200">
+            <div class="mt-3 px-2 space-y-1">
+                <a href="registration-new.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Sign Up</a>
+                <a href="login-new.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Login</a>
             </div>
         </div>
     </div>
@@ -320,6 +354,23 @@
 </footer>
 
 <script>
+    // Mobile menu functionality
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+        // Toggle menu visibility
+        menu.classList.toggle('hidden');
+
+        // Update aria-expanded attribute
+        this.setAttribute('aria-expanded', !isExpanded);
+
+        // Toggle hamburger/X icons
+        const hamburgerIcon = this.querySelector('svg:first-child');
+        const xIcon = this.querySelector('svg:last-child');
+        hamburgerIcon.classList.toggle('hidden');
+        xIcon.classList.toggle('hidden');
+    });
     // Role selection functionality
     document.querySelectorAll('.role-option').forEach(option => {
         option.addEventListener('click', function() {
