@@ -7,12 +7,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Fredoka', sans-serif;
       background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
 
     .login-card {
@@ -70,6 +69,14 @@
     .footer-link:hover {
       color: #8B5CF6;
     }
+    .nav-item {
+      transition: all 0.2s ease;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      border-left: 4px solid #8B5CF6;
+      background-color: #f3f4f6;
+    }
   </style>
 </head>
 <body class="min-h-screen">
@@ -83,15 +90,19 @@
           <span class="font-bold text-xl text-purple-600">ThreeWish</span>
         </div>
         <div class="hidden md:ml-6 md:flex md:space-x-8">
-          <a href="index.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
-          <a href="wishes.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Wishes</a>
-          <a href="donations.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Donations</a>
-          <a href="#" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">How It Works</a>
+          <a href="home-page.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+          <a href="#how-it-works" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">How It Works</a>
+          <a href="wish-new.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Wishes</a>
+          <a href="donation-new.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Donations</a>
+          <a href="#organizations" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Organizations</a>
         </div>
       </div>
       <div class="flex items-center">
-        <a href="registration-new.html" target="_blank" class="ml-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+        <a href="registration-new.html" class="ml-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
           Sign Up
+        </a>
+        <a href="login-new.html" class="ml-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+          Login
         </a>
       </div>
     </div>
