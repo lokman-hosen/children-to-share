@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThreeWish - Browse Donations</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+
+    .card {
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .donation-card {
+      border-left: 4px solid #10B981;
+    }
+
+    .wish-card {
+      border-left: 4px solid #8B5CF6;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .pagination button {
+      margin: 0 5px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid #D1D5DB;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .pagination button:hover {
+      background: #EDE9FE;
+      border-color: #8B5CF6;
+    }
+
+    .pagination button.active {
+      background: #8B5CF6;
+      color: white;
+      border-color: #8B5CF6;
+    }
+
+    .nav-item {
+      transition: all 0.2s ease;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      border-left: 4px solid #8B5CF6;
+      background-color: #f3f4f6;
+    }
+
+    .filter-section {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+<!-- Navigation -->
+<nav class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <i class="fas fa-gift text-purple-500 text-2xl mr-2"></i>
+          <span class="font-bold text-xl text-purple-600">ThreeWish</span>
+        </div>
+        <div class="hidden md:ml-6 md:flex md:space-x-8">
+          <a href="index.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+          <a href="wishes.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Wishes</a>
+          <a href="donations.html" class="nav-item active text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Donations</a>
+          <a href="#" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">How It Works</a>
+          <a href="#" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Organizations</a>
+        </div>
+      </div>
+      <div class="flex items-center">
+        <a href="#" class="ml-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+          Sign Up
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Donations Header -->
+<div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl font-bold mb-4">Available Donations</h1>
+    <p class="text-xl max-w-3xl mx-auto">Browse items that generous donors are sharing with children in their community</p>
+  </div>
+</div>
+
+<!-- Main Content -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Filters -->
+  <div class="filter-section">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4 md:mb-0">Filter Donations</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <select class="border-gray-300 rounded-md shadow-sm py-2 px-3 border focus:outline-none focus:ring-purple-500 focus:border-purple-500">
+          <option>All Categories</option>
+          <option>Books</option>
+          <option>Clothing</option>
+          <option>Toys</option>
+          <option>Electronics</option>
+          <option>Sports Equipment</option>
+        </select>
+        <select class="border-gray-300 rounded-md shadow-sm py-2 px-3 border focus:outline-none focus:ring-purple-500 focus:border-purple-500">
+          <option>All Locations</option>
+          <option>Within 5 km</option>
+          <option>Within 10 km</option>
+          <option>Within 25 km</option>
+          <option>Within 50 km</option>
+        </select>
+        <select class="border-gray-300 rounded-md shadow-sm py-2 px-3 border focus:outline-none focus:ring-purple-500 focus:border-purple-500">
+          <option>Sort By: Newest</option>
+          <option>Sort By: Closest</option>
+          <option>Sort By: Most Popular</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Donations Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+    <!-- Donation Card 1 -->
+    <div class="card donation-card bg-white rounded-lg shadow">
+      <div class="h-48 bg-green-100 flex items-center justify-center">
+        <i class="fas fa-bicycle text-green-500 text-5xl"></i>
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-medium text-gray-900">Bicycle</h3>
+        <p class="text-gray-600 text-sm mt-1">Good condition bicycle, perfect for a teenager</p>
+        <div class="flex items-center mt-4">
+          <div class="bg-green-100 rounded-full h-10 w-10 flex items-center justify-center">
+            <span class="text-green-600 font-medium">D</span>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-gray-900">David, 16</p>
+            <p class="text-xs text-gray-500">2.5 km away</p>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            Sports
+                        </span>
+          <span class="ml-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            Like New
+                        </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donation Card 2 -->
+    <div class="card donation-card bg-white rounded-lg shadow">
+      <div class="h-48 bg-red-100 flex items-center justify-center">
+        <i class="fas fa-dumbbell text-red-500 text-5xl"></i>
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-medium text-gray-900">Sports Equipment</h3>
+        <p class="text-gray-600 text-sm mt-1">Soccer ball and other sports equipment for team</p>
+        <div class="flex items-center mt-4">
+          <div class="bg-red-100 rounded-full h-10 w-10 flex items-center justify-center">
+            <span class="text-red-600 font-medium">S</span>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-gray-900">Sam, 14</p>
+            <p class="text-xs text-gray-500">6.3 km away</p>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center">
+                        <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            Sports
+                        </span>
+          <span class="ml-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            Good Condition
+                        </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donation Card 3 -->
+    <div class="card donation-card bg-white rounded-lg shadow">
+      <div class="h-48 bg-indigo-100 flex items-center justify-center">
+        <i class="fas fa-paint-brush text-indigo-500 text-5xl"></i>
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-medium text-gray-900">Art Supplies</h3>
+        <p class="text-gray-600 text-sm mt-1">Paints, brushes and canvases for art class</p>
+        <div class="flex items-center mt-4">
+          <div class="bg-indigo-100 rounded-full h-10 w-10 flex items-center justify-center">
+            <span class="text-indigo-600 font-medium">A</span>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-gray-900">Anna, 12</p>
+            <p class="text-xs text-gray-500">4.8 km away</p>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center">
+                        <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            Art
+                        </span>
+          <span class="ml-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            New
+                        </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donation Card 4 -->
+    <div class="card donation-card bg-white rounded-lg shadow">
+      <div class="h-48 bg-blue-100 flex items-center justify-center">
+        <i class="fas fa-book-open text-blue-500 text-5xl"></i>
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-medium text-gray-900">Children's Books</h3>
+        <p class="text-gray-600 text-sm mt-1">Set of 20 children's books for ages 5-10</p>
+        <div class="flex items-center mt-4">
+          <div class="bg-blue-100 rounded-full h-10 w-10 flex items-center justify-center">
+            <span class="text-blue-600 font-medium">J</span>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-gray-900">Jessica, 15</p>
+            <p class="text-xs text-gray-500">3.2 km away</p>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            Books
+                        </span>
+          <span class="ml-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            Like New
+                        </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donation Card 5 -->
+    <div class="card donation-card bg-white rounded-lg shadow">
+      <div class="h-48 bg-yellow-100 flex items-center justify-center">
+        <i class="fas fa-laptop text-yellow-500 text-5xl"></i>
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-medium text-gray-900">Laptop</h3>
+        <p class="text-gray-600 text-sm mt-1">Dell Inspiron, 8GB RAM, good condition</p>
+        <div class="flex items-center mt-4">
+          <div class="bg-yellow-100 rounded-full h-10 w-10 flex items-center justify-center">
+            <span class="text-yellow-600 font-medium">M</span>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-gray-900">Mike, 17</p>
+            <p class="text-xs text-gray-500">5.1 km away</p>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center">
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            Electronics
+                        </span>
+          <span class="ml-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            Good Condition
+                        </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donation Card 6 -->
+    <div class="card donation-card bg-white rounded-lg shadow">
+      <div class="h-48 bg-pink-100 flex items-center justify-center">
+        <i class="fas fa-tshirt text-pink-500 text-5xl"></i>
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-medium text-gray-900">Winter Clothes</h3>
+        <p class="text-gray-600 text-sm mt-1">Winter coats and sweaters in various sizes</p>
+        <div class="flex items-center mt-4">
+          <div class="bg-pink-100 rounded-full h-10 w-10 flex items-center justify-center">
+            <span class="text-pink-600 font-medium">T</span>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-gray-900">Taylor, 15</p>
+            <p class="text-xs text-gray-500">4.2 km away</p>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center">
+                        <span class="bg-pink-100 text-pink-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            Clothing
+                        </span>
+          <span class="ml-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            Gently Used
+                        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <button class="prev">&laquo; Previous</button>
+    <button class="active">1</button>
+    <button>2</button>
+    <button>3</button>
+    <button class="next">Next &raquo;</button>
+  </div>
+</main>
+
+<!-- CTA Section -->
+<section class="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold mb-6">Want to See More?</h2>
+    <p class="text-xl mb-8 max-w-3xl mx-auto">Sign up for a free account to view all donations and connect with donors in your community</p>
+    <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-purple-600 bg-white hover:bg-gray-100">
+      Create Free Account
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold mb-4">ThreeWish</h3>
+        <p class="text-gray-400">Building compassionate communities through the joy of giving.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+          <li><a href="wishes.html" class="text-gray-400 hover:text-white">Wishes</a></li>
+          <li><a href="donations.html" class="text-gray-400 hover:text-white">Donations</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">How It Works</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Support</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">Safety Guidelines</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">Community Rules</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-gray-400 text-center">
+      <p>&copy; 2023 ThreeWish. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Simple pagination functionality
+  document.querySelectorAll('.pagination button').forEach(button => {
+    button.addEventListener('click', function() {
+      document.querySelector('.pagination button.active').classList.remove('active');
+      this.classList.add('active');
+
+      // In a real application, this would fetch the next page of results
+      // For this demo, we'll just simulate loading
+      document.querySelector('main').style.opacity = '0.7';
+      setTimeout(() => {
+        document.querySelector('main').style.opacity = '1';
+      }, 300);
+    });
+  });
+</script>
+</body>
+</html>
