@@ -87,9 +87,20 @@
 
 <div class="flex pt-16">
   <!-- Sidebar Navigation -->
-  <div class="w-64 bg-white h-screen shadow-md fixed hidden md:block">
+  <div class="w-64 bg-white h-screen shadow-md fixed hidden md:block" id="sidebar">
     <div class="p-4">
-      <h2 class="text-lg font-semibold text-gray-700">Wisher Navigation</h2>
+      <div class="flex items-left mb-6">
+        <div class="md:hidden flex items-center">
+          <button type="button" id="close-sidebar-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <!-- X icon (hidden by default) -->
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <h2 class="text-lg font-semibold text-gray-700 mt-1">Wisher Navigation</h2>
+      </div>
       <ul class="mt-4">
         <li class="mb-1">
           <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded active" onclick="showPage('wisher-dashboard-page')">
@@ -131,7 +142,18 @@
     <!-- Wisher Dashboard Page -->
     <div id="wisher-dashboard-page" class="page active-page">
       <div class="max-w-6xl mx-auto px-4 py-8">
-        <h1 class="text-2xl font-bold text-gray-900 mb-6">Wisher Dashboard</h1>
+        <div class="flex items-left mb-6">
+          <div class="md:hidden flex items-center">
+            <button type="button" id="sidebar-mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <!-- Hamburger icon -->
+              <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+          <h1 class="text-2xl font-bold text-gray-900 mt-1">Wisher Dashboard</h1>
+        </div>
 
         <!-- Stats Overview -->
         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
@@ -1046,6 +1068,21 @@
 </div>
 
 <script>
+  const sidebarMobileButton = document.getElementById('sidebar-mobile-menu-button');
+  const closeSidebarButton = document.getElementById('close-sidebar-button');
+  const sidebar = document.getElementById('sidebar');
+
+  if (sidebarMobileButton) {
+    sidebarMobileButton.addEventListener('click', function() {
+      sidebar.classList.remove('hidden');
+    });
+  }
+
+  if (closeSidebarButton) {
+    closeSidebarButton.addEventListener('click', function() {
+      sidebar.classList.add('hidden');
+    });
+  }
   // Function to show a specific page and hide others
   function showPage(pageId) {
     // Hide all pages
