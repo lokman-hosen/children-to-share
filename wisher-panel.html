@@ -640,7 +640,7 @@
         <h1 class="text-2xl font-bold text-gray-900 mb-6">Messages</h1>
 
         <div class="bg-white shadow rounded-lg overflow-hidden">
-          <div class="grid grid-cols-1 md:grid-cols-3 h-96">
+          <div class="grid grid-cols-1 md:grid-cols-3">
             <!-- Conversations List -->
             <div class="border-r border-gray-200 bg-gray-50 overflow-y-auto">
               <div class="p-4 border-b border-gray-200">
@@ -783,9 +783,9 @@
                 </div>
               </div>
               <div class="mt-4">
-                <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                <a href="#" onclick="showPage('organization-detail-page')" class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
                   View Organization
-                </button>
+                </a>
               </div>
             </div>
             <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -799,9 +799,9 @@
                 </div>
               </div>
               <div class="mt-4">
-                <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                <a href="#" onclick="showPage('organization-detail-page')" class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
                   View Organization
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -823,7 +823,13 @@
                     <i class="fas fa-building text-purple-500"></i>
                   </div>
                   <div>
-                    <h3 class="text-lg font-medium text-gray-900">Community Center A</h3>
+                    <h3 class="text-lg font-medium text-gray-900">
+                      <a href="#"
+                          onclick="showPage('organization-detail-page')"
+                          class="text-blue-500 hover:text-blue-700">
+                        Community Center A
+                      </a>
+                    </h3>
                     <p class="text-sm text-gray-500">Serving the downtown community since 2010</p>
                   </div>
                 </div>
@@ -841,14 +847,20 @@
                     <i class="fas fa-school text-blue-500"></i>
                   </div>
                   <div>
-                    <h3 class="text-lg font-medium text-gray-900">School B</h3>
+                    <h3 class="text-lg font-medium text-gray-900">
+                      <a href="#"
+                         onclick="showPage('organization-detail-page')"
+                         class="text-blue-500 hover:text-blue-700">
+                        School B
+                      </a>
+                    </h3>
                     <p class="text-sm text-gray-500">Elementary school serving grades K-5</p>
                   </div>
                 </div>
                 <div>
-                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                                            Member
-                                        </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                    Member
+                </span>
                 </div>
               </div>
             </li>
@@ -859,7 +871,13 @@
                     <i class="fas fa-child text-green-500"></i>
                   </div>
                   <div>
-                    <h3 class="text-lg font-medium text-gray-900">Youth Program C</h3>
+                    <h3 class="text-lg font-medium text-gray-900">
+                      <a href="#"
+                         onclick="showPage('organization-detail-page')"
+                         class="text-blue-500 hover:text-blue-700">
+                        Youth Program C
+                      </a>
+                    </h3>
                     <p class="text-sm text-gray-500">After-school programs for teens</p>
                   </div>
                 </div>
@@ -1059,6 +1077,303 @@
             <div class="bg-yellow-50 p-4 rounded-lg">
               <div class="text-3xl font-bold text-yellow-600">12</div>
               <div class="text-sm font-medium text-gray-700">Donor Connections</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Organization detail Page -->
+    <div id="organization-detail-page" class="page">
+      <!-- Organization Header -->
+      <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-8 px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex flex-col md:flex-row items-center">
+            <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
+              <div class="w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-lg">
+                <i class="fas fa-school text-blue-500 text-4xl"></i>
+              </div>
+            </div>
+            <div class="text-center md:text-left">
+              <h1 class="text-3xl font-bold mb-2">Sunshine Elementary School</h1>
+              <p class="text-lg opacity-90">Serving the community since 2005</p>
+              <div class="flex flex-wrap justify-center md:justify-start mt-4 gap-3">
+                                <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+                                    <i class="fas fa-users mr-1"></i> 28 Members
+                                </span>
+                <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+                                    <i class="fas fa-gift mr-1"></i> 47 Wishes Fulfilled
+                                </span>
+                <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+                                    <i class="fas fa-map-marker-alt mr-1"></i> Seattle, WA
+                                </span>
+              </div>
+            </div>
+            <div class="ml-auto mt-4 md:mt-0">
+              <button class="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                Join Organization
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="px-10 py-8">
+        <!-- Stats Overview -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-5 mb-8">
+          <div class="stats-card bg-white overflow-hidden shadow rounded-lg border-l-4 border-blue-500">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 bg-blue-100 rounded-md p-3">
+                  <i class="fas fa-users text-blue-600"></i>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 truncate">Total Members</dt>
+                    <dd class="flex items-baseline">
+                      <div class="text-2xl font-semibold text-gray-900">28</div>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-card bg-white overflow-hidden shadow rounded-lg border-l-4 border-green-500">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 bg-green-100 rounded-md p-3">
+                  <i class="fas fa-gift text-green-600"></i>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 truncate">Wishes Fulfilled</dt>
+                    <dd class="flex items-baseline">
+                      <div class="text-2xl font-semibold text-gray-900">47</div>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-card bg-white overflow-hidden shadow rounded-lg border-l-4 border-yellow-500">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 bg-yellow-100 rounded-md p-3">
+                  <i class="fas fa-star text-yellow-600"></i>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 truncate">Active Wishes</dt>
+                    <dd class="flex items-baseline">
+                      <div class="text-2xl font-semibold text-gray-900">12</div>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-card bg-white overflow-hidden shadow rounded-lg border-l-4 border-purple-500">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 bg-purple-100 rounded-md p-3">
+                  <i class="fas fa-hand-holding-heart text-purple-600"></i>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 truncate">Total Donations</dt>
+                    <dd class="flex items-baseline">
+                      <div class="text-2xl font-semibold text-gray-900">63</div>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Left Column - Description -->
+          <div class="lg:col-span-2">
+            <!-- Description -->
+            <div class="bg-white shadow rounded-lg p-6 mb-8">
+              <h2 class="text-xl font-semibold text-gray-900 mb-4">About Our Organization</h2>
+              <p class="text-gray-600 mb-4">
+                Sunshine Elementary School has been serving the community since 2005, providing quality education
+                to children from diverse backgrounds. We believe in fostering not just academic excellence but
+                also compassion and community spirit.
+              </p>
+              <p class="text-gray-600 mb-4">
+                Through ThreeWish, we connect families in need with generous donors who can help make children's
+                wishes come true. Whether it's school supplies, winter clothing, or books for our library, every
+                donation makes a significant impact on our students' lives.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-clock mr-2"></i>
+                <span>Joined ThreeWish: January 2022</span>
+              </div>
+            </div>
+
+            <!-- Donations List -->
+            <div class="bg-white shadow rounded-lg p-6">
+              <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900">Recent Donations</h2>
+                <button class="text-sm text-blue-600 hover:text-blue-800">View All</button>
+              </div>
+
+              <div class="space-y-4">
+                <!-- Donation 1 -->
+                <div class="donation-card bg-gray-50 p-4 rounded-lg">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 mr-4">
+                      <div class="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-book text-green-600"></i>
+                      </div>
+                    </div>
+                    <div class="flex-1">
+                      <h3 class="font-medium text-gray-900">Children's Books Collection</h3>
+                      <p class="text-sm text-gray-500">Donated by Sarah Johnson • 2 days ago</p>
+                    </div>
+                    <div class="text-right">
+                      <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Delivered</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Donation 2 -->
+                <div class="donation-card bg-gray-50 p-4 rounded-lg">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 mr-4">
+                      <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-tshirt text-blue-600"></i>
+                      </div>
+                    </div>
+                    <div class="flex-1">
+                      <h3 class="font-medium text-gray-900">Winter Coats (Various Sizes)</h3>
+                      <p class="text-sm text-gray-500">Donated by Robert Chen • 5 days ago</p>
+                    </div>
+                    <div class="text-right">
+                      <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">In Progress</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Donation 3 -->
+                <div class="donation-card bg-gray-50 p-4 rounded-lg">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 mr-4">
+                      <div class="h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-laptop text-purple-600"></i>
+                      </div>
+                    </div>
+                    <div class="flex-1">
+                      <h3 class="font-medium text-gray-900">Laptops for Distance Learning</h3>
+                      <p class="text-sm text-gray-500">Donated by Tech4Good Foundation • 1 week ago</p>
+                    </div>
+                    <div class="text-right">
+                      <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Delivered</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button class="w-full mt-6 bg-gray-100 text-gray-700 py-2 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+                Load More Donations
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column - Members -->
+          <div>
+            <!-- Members List -->
+            <div class="bg-white shadow rounded-lg p-6 mb-8">
+              <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900">Organization Members</h2>
+                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">28 Members</span>
+              </div>
+
+              <div class="space-y-4">
+                <!-- Member 1 -->
+                <div class="member-card flex items-center p-3 rounded-lg hover:bg-gray-50">
+                  <div class="flex-shrink-0 mr-4">
+                    <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                      <span class="font-medium text-blue-600">M</span>
+                    </div>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-medium text-gray-900">Maria Rodriguez</h3>
+                    <p class="text-sm text-gray-500">Principal</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Admin</span>
+                  </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="member-card flex items-center p-3 rounded-lg hover:bg-gray-50">
+                  <div class="flex-shrink-0 mr-4">
+                    <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
+                      <span class="font-medium text-green-600">J</span>
+                    </div>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-medium text-gray-900">James Wilson</h3>
+                    <p class="text-sm text-gray-500">Teacher</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Moderator</span>
+                  </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="member-card flex items-center p-3 rounded-lg hover:bg-gray-50">
+                  <div class="flex-shrink-0 mr-4">
+                    <div class="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
+                      <span class="font-medium text-purple-600">S</span>
+                    </div>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-medium text-gray-900">Sarah Johnson</h3>
+                    <p class="text-sm text-gray-500">Parent Volunteer</p>
+                  </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="member-card flex items-center p-3 rounded-lg hover:bg-gray-50">
+                  <div class="flex-shrink-0 mr-4">
+                    <div class="h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center">
+                      <span class="font-medium text-yellow-600">R</span>
+                    </div>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-medium text-gray-900">Robert Chen</h3>
+                    <p class="text-sm text-gray-500">Community Donor</p>
+                  </div>
+                </div>
+              </div>
+
+              <button class="w-full mt-6 bg-gray-100 text-gray-700 py-2 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+                View All Members
+              </button>
+            </div>
+
+            <!-- Organization Actions -->
+            <div class="bg-white shadow rounded-lg p-6">
+              <h2 class="text-xl font-semibold text-gray-900 mb-4">Organization Actions</h2>
+              <div class="space-y-3">
+                <button class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                  <i class="fas fa-plus-circle mr-2"></i> Create Wish for Organization
+                </button>
+                <button class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                  <i class="fas fa-envelope mr-2"></i> Message Organization
+                </button>
+                <button class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                  <i class="fas fa-share-alt mr-2"></i> Share Organization
+                </button>
+              </div>
             </div>
           </div>
         </div>
