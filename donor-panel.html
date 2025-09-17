@@ -619,667 +619,662 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Create Donation Page -->
-    <div id="create-donation-page" class="page">
-        <div class="max-w-3xl mx-auto px-4 py-8">
-            <h1 class="text-2xl font-bold text-gray-900 mb-6">Create Donation Item</h1>
+        <!-- Create Donation Page -->
+        <div id="create-donation-page" class="page">
+            <div class="max-w-6xl mx-auto px-4 py-8">
+                <h1 class="text-2xl font-bold text-gray-900 mb-6">Create Donation Item</h1>
 
-            <div class="bg-white shadow rounded-lg p-6">
-                <form>
-                    <div class="grid grid-cols-1 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Item Name</label>
-                            <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="e.g., Winter Coat, Story Books, etc.">
-                        </div>
+                <div class="bg-white shadow rounded-lg p-6">
+                    <form>
+                        <div class="grid grid-cols-1 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Item Name</label>
+                                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="e.g., Winter Coat, Story Books, etc.">
+                            </div>
 
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Category</label>
-                            <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                <option>Select a category</option>
-                                <option>Books</option>
-                                <option>Clothing</option>
-                                <option>Toys</option>
-                                <option>Electronics</option>
-                                <option>Sports Equipment</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Category</label>
+                                <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                    <option>Select a category</option>
+                                    <option>Books</option>
+                                    <option>Clothing</option>
+                                    <option>Toys</option>
+                                    <option>Electronics</option>
+                                    <option>Sports Equipment</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
 
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Condition</label>
-                            <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                <option>Select condition</option>
-                                <option>New</option>
-                                <option>Like New</option>
-                                <option>Good</option>
-                                <option>Fair</option>
-                            </select>
-                        </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Condition</label>
+                                <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                    <option>Select condition</option>
+                                    <option>New</option>
+                                    <option>Like New</option>
+                                    <option>Good</option>
+                                    <option>Fair</option>
+                                </select>
+                            </div>
 
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Description</label>
-                            <textarea rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Provide details about the item"></textarea>
-                        </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Description</label>
+                                <textarea rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Provide details about the item"></textarea>
+                            </div>
 
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Photos/Video</label>
-                            <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                <div class="space-y-1 text-center">
-                                    <div class="flex text-sm text-gray-600">
-                                        <label class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
-                                            <span>Upload files</span>
-                                            <input type="file" class="sr-only" multiple>
-                                        </label>
-                                        <p class="pl-1">or drag and drop</p>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Photos/Video</label>
+                                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                    <div class="space-y-1 text-center">
+                                        <div class="flex text-sm text-gray-600">
+                                            <label class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
+                                                <span>Upload files</span>
+                                                <input type="file" class="sr-only" multiple>
+                                            </label>
+                                            <p class="pl-1">or drag and drop</p>
+                                        </div>
+                                        <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                                        <p class="text-xs text-gray-500">Video length limit: 10 seconds</p>
                                     </div>
-                                    <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-                                    <p class="text-xs text-gray-500">Video length limit: 10 seconds</p>
                                 </div>
                             </div>
-                        </div>
 
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Organization (optional)</label>
-                            <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                <option>Select an organization</option>
-                                <option>Community Center A</option>
-                                <option>School B</option>
-                                <option>Youth Program C</option>
-                                <option>Create new organization</option>
-                            </select>
-                        </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Organization (optional)</label>
+                                <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                    <option>Select an organization</option>
+                                    <option>Community Center A</option>
+                                    <option>School B</option>
+                                    <option>Youth Program C</option>
+                                    <option>Create new organization</option>
+                                </select>
+                            </div>
 
-                        <div class="flex items-center">
-                            <input id="admin-assistance" name="admin-assistance" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" checked>
-                            <label for="admin-assistance" class="ml-2 block text-sm text-gray-900">
-                                Request admin assistance for pickup/delivery
-                            </label>
-                        </div>
+                            <div class="flex items-center">
+                                <input id="admin-assistance" name="admin-assistance" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" checked>
+                                <label for="admin-assistance" class="ml-2 block text-sm text-gray-900">
+                                    Request admin assistance for pickup/delivery
+                                </label>
+                            </div>
 
-                        <div>
-                            <button type="submit" class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                <i class="fas fa-plus-circle mr-2"></i> Create Donation
-                            </button>
+                            <div>
+                                <button type="submit" class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    <i class="fas fa-plus-circle mr-2"></i> Create Donation
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+        <!-- My Donations Page -->
+        <div id="my-donations-page" class="page">
+            <div class="max-w-6xl mx-auto px-4 py-8">
+                <h1 class="text-2xl font-bold text-gray-900 mb-6">My Donations</h1>
 
-    <!-- My Donations Page -->
-    <div id="my-donations-page" class="page">
-        <div class="max-w-6xl mx-auto px-4 py-8">
-            <h1 class="text-2xl font-bold text-gray-900 mb-6">My Donations</h1>
+                <div class="bg-white shadow rounded-lg overflow-hidden">
+                    <div class="border-b border-gray-200">
+                        <nav class="-mb-px flex">
+                            <a href="#" class="border-b-2 border-blue-500 text-blue-600 px-4 py-4 text-sm font-medium">Active (5)</a>
+                            <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">Pending (2)</a>
+                            <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">Completed (12)</a>
+                        </nav>
+                    </div>
 
-            <div class="bg-white shadow rounded-lg overflow-hidden">
-                <div class="border-b border-gray-200">
-                    <nav class="-mb-px flex">
-                        <a href="#" class="border-b-2 border-blue-500 text-blue-600 px-4 py-4 text-sm font-medium">Active (5)</a>
-                        <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">Pending (2)</a>
-                        <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">Completed (12)</a>
-                    </nav>
-                </div>
-
-                <ul class="divide-y divide-gray-200">
-                    <li class="p-4 sm:p-6">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <div class="h-16 w-16 bg-blue-100 rounded-md flex items-center justify-center mr-4">
-                                    <i class="fas fa-tshirt text-blue-500 text-xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-medium text-gray-900">Winter Coat</h3>
-                                    <p class="text-sm text-gray-500">Size 10-12, Good condition</p>
-                                    <div class="mt-1 flex items-center">
+                    <ul class="divide-y divide-gray-200">
+                        <li class="p-4 sm:p-6">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="h-16 w-16 bg-blue-100 rounded-md flex items-center justify-center mr-4">
+                                        <i class="fas fa-tshirt text-blue-500 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900">Winter Coat</h3>
+                                        <p class="text-sm text-gray-500">Size 10-12, Good condition</p>
+                                        <div class="mt-1 flex items-center">
                                                 <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                                                     Clothing
                                                 </span>
-                                        <span class="ml-2 bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                            <span class="ml-2 bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                                                     Pending pickup
                                                 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-end">
+                                    <p class="text-sm text-gray-500">Created 2 days ago</p>
+                                    <div class="mt-2">
+                                        <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                            View Details
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex flex-col items-end">
-                                <p class="text-sm text-gray-500">Created 2 days ago</p>
-                                <div class="mt-2">
-                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        View Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
 
-                    <li class="p-4 sm:p-6">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <div class="h-16 w-16 bg-green-100 rounded-md flex items-center justify-center mr-4">
-                                    <i class="fas fa-book-open text-green-500 text-xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-medium text-gray-900">Children's Story Books</h3>
-                                    <p class="text-sm text-gray-500">Set of 12 books, Like new</p>
-                                    <div class="mt-1 flex items-center">
+                        <li class="p-4 sm:p-6">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="h-16 w-16 bg-green-100 rounded-md flex items-center justify-center mr-4">
+                                        <i class="fas fa-book-open text-green-500 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900">Children's Story Books</h3>
+                                        <p class="text-sm text-gray-500">Set of 12 books, Like new</p>
+                                        <div class="mt-1 flex items-center">
                                                 <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                                                     Books
                                                 </span>
-                                        <span class="ml-2 bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                            <span class="ml-2 bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                                                     Fulfilling wish
                                                 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-end">
+                                    <p class="text-sm text-gray-500">Created 5 days ago</p>
+                                    <div class="mt-2">
+                                        <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                            View Details
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex flex-col items-end">
-                                <p class="text-sm text-gray-500">Created 5 days ago</p>
-                                <div class="mt-2">
-                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        View Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
 
-                    <li class="p-4 sm:p-6">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <div class="h-16 w-16 bg-yellow-100 rounded-md flex items-center justify-center mr-4">
-                                    <i class="fas fa-laptop text-yellow-500 text-xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-medium text-gray-900">Laptop</h3>
-                                    <p class="text-sm text-gray-500">Dell Inspiron, 8GB RAM, Good condition</p>
-                                    <div class="mt-1 flex items-center">
+                        <li class="p-4 sm:p-6">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="h-16 w-16 bg-yellow-100 rounded-md flex items-center justify-center mr-4">
+                                        <i class="fas fa-laptop text-yellow-500 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900">Laptop</h3>
+                                        <p class="text-sm text-gray-500">Dell Inspiron, 8GB RAM, Good condition</p>
+                                        <div class="mt-1 flex items-center">
                                                 <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                                                     Electronics
                                                 </span>
-                                        <span class="ml-2 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                            <span class="ml-2 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                                                     Available
                                                 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-end">
+                                    <p class="text-sm text-gray-500">Created 1 week ago</p>
+                                    <div class="mt-2">
+                                        <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                            View Details
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex flex-col items-end">
-                                <p class="text-sm text-gray-500">Created 1 week ago</p>
-                                <div class="mt-2">
-                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        View Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
 
-                    <li class="p-4 sm:p-6">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <div class="h-16 w-16 bg-red-100 rounded-md flex items-center justify-center mr-4">
-                                    <i class="fas fa-dumbbell text-red-500 text-xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-medium text-gray-900">Soccer Equipment</h3>
-                                    <p class="text-sm text-gray-500">Ball, cones, and practice jersey</p>
-                                    <div class="mt-1 flex items-center">
+                        <li class="p-4 sm:p-6">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="h-16 w-16 bg-red-100 rounded-md flex items-center justify-center mr-4">
+                                        <i class="fas fa-dumbbell text-red-500 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900">Soccer Equipment</h3>
+                                        <p class="text-sm text-gray-500">Ball, cones, and practice jersey</p>
+                                        <div class="mt-1 flex items-center">
                                                 <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                                                     Sports
                                                 </span>
-                                        <span class="ml-2 bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                            <span class="ml-2 bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                                                     Fulfilling wish
                                                 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-end">
+                                    <p class="text-sm text-gray-500">Created 1 week ago</p>
+                                    <div class="mt-2">
+                                        <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                            View Details
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex flex-col items-end">
-                                <p class="text-sm text-gray-500">Created 1 week ago</p>
-                                <div class="mt-2">
-                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        View Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
 
-                    <li class="p-4 sm:p-6">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <div class="h-16 w-16 bg-purple-100 rounded-md flex items-center justify-center mr-4">
-                                    <i class="fas fa-paint-brush text-purple-500 text-xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-medium text-gray-900">Art Supplies</h3>
-                                    <p class="text-sm text-gray-500">Paints, brushes, and canvases</p>
-                                    <div class="mt-1 flex items-center">
+                        <li class="p-4 sm:p-6">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="h-16 w-16 bg-purple-100 rounded-md flex items-center justify-center mr-4">
+                                        <i class="fas fa-paint-brush text-purple-500 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900">Art Supplies</h3>
+                                        <p class="text-sm text-gray-500">Paints, brushes, and canvases</p>
+                                        <div class="mt-1 flex items-center">
                                                 <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                                                     Art
                                                 </span>
-                                        <span class="ml-2 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                            <span class="ml-2 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                                                     Available
                                                 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-end">
+                                    <p class="text-sm text-gray-500">Created 2 weeks ago</p>
+                                    <div class="mt-2">
+                                        <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                            View Details
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex flex-col items-end">
-                                <p class="text-sm text-gray-500">Created 2 weeks ago</p>
-                                <div class="mt-2">
-                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        View Details
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Messages Page -->
+        <div id="messages-page" class="page">
+            <div class="max-w-6xl mx-auto px-4 py-8">
+                <h1 class="text-2xl font-bold text-gray-900 mb-6">Messages</h1>
+
+                <div class="bg-white shadow rounded-lg overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-3 h-96">
+                        <!-- Conversations List -->
+                        <div class="border-r border-gray-200 bg-gray-50 overflow-y-auto">
+                            <div class="p-4 border-b border-gray-200">
+                                <h2 class="text-lg font-medium text-gray-900">Conversations</h2>
+                            </div>
+                            <ul class="divide-y divide-gray-200">
+                                <li class="p-4 hover:bg-white cursor-pointer border-r-2 border-blue-500 bg-white">
+                                    <div class="flex items-center">
+                                        <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                            <span class="font-medium text-green-600">E</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900">Emily's Guardian</p>
+                                            <p class="text-xs text-gray-500">Hi, thank you for the books!</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 flex justify-between items-center">
+                                        <span class="text-xs text-gray-500">2 hours ago</span>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded">2</span>
+                                    </div>
+                                </li>
+                                <li class="p-4 hover:bg-white cursor-pointer">
+                                    <div class="flex items-center">
+                                        <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                            <span class="font-medium text-blue-600">M</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900">Michael's Guardian</p>
+                                            <p class="text-xs text-gray-500">When can we arrange pickup?</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 flex justify-between items-center">
+                                        <span class="text-xs text-gray-500">1 day ago</span>
+                                    </div>
+                                </li>
+                                <li class="p-4 hover:bg-white cursor-pointer">
+                                    <div class="flex items-center">
+                                        <div class="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                                            <span class="font-medium text-purple-600">J</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900">Jessica's Guardian</p>
+                                            <p class="text-xs text-gray-500">The laptop works perfectly!</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 flex justify-between items-center">
+                                        <span class="text-xs text-gray-500">3 days ago</span>
+                                    </div>
+                                </li>
+                                <li class="p-4 hover:bg-white cursor-pointer">
+                                    <div class="flex items-center">
+                                        <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center mr-3">
+                                            <span class="font-medium text-red-600">D</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900">David's Guardian</p>
+                                            <p class="text-xs text-gray-500">Thanks for the bicycle!</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 flex justify-between items-center">
+                                        <span class="text-xs text-gray-500">1 week ago</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Chat Messages -->
+                        <div class="md:col-span-2 flex flex-col">
+                            <div class="p-4 border-b border-gray-200">
+                                <h2 class="text-lg font-medium text-gray-900">Emily's Guardian</h2>
+                                <p class="text-sm text-gray-500">Fulfilling wish: Story Books</p>
+                            </div>
+                            <div class="flex-1 overflow-y-auto p-4 bg-gray-50 chat-container">
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                            <span class="font-medium text-green-600">E</span>
+                                        </div>
+                                        <div class="bg-white rounded-lg py-2 px-4 chat-message">
+                                            <p class="text-sm">Hi, thank you so much for offering to donate the books!</p>
+                                            <p class="text-xs text-gray-500 mt-1">10:15 AM</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start justify-end">
+                                        <div class="bg-blue-100 rounded-lg py-2 px-4 chat-message">
+                                            <p class="text-sm">You're welcome! My daughter loved these books and I hope Emily will too.</p>
+                                            <p class="text-xs text-gray-500 mt-1">10:18 AM</p>
+                                        </div>
+                                        <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center ml-3">
+                                            <span class="font-medium text-blue-600">D</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                            <span class="font-medium text-green-600">E</span>
+                                        </div>
+                                        <div class="bg-white rounded-lg py-2 px-4 chat-message">
+                                            <p class="text-sm">She will be thrilled! When would be a good time to pick them up?</p>
+                                            <p class="text-xs text-gray-500 mt-1">10:20 AM</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start justify-end">
+                                        <div class="bg-blue-100 rounded-lg py-2 px-4 chat-message">
+                                            <p class="text-sm">I've requested admin assistance for pickup. They'll contact you to arrange a time.</p>
+                                            <p class="text-xs text-gray-500 mt-1">10:22 AM</p>
+                                        </div>
+                                        <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center ml-3">
+                                            <span class="font-medium text-blue-600">D</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                            <span class="font-medium text-green-600">E</span>
+                                        </div>
+                                        <div class="bg-white rounded-lg py-2 px-4 chat-message">
+                                            <p class="text-sm">Perfect, thank you! I'll wait for their call.</p>
+                                            <p class="text-xs text-gray-500 mt-1">10:25 AM</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4 border-t border-gray-200">
+                                <div class="flex items-center">
+                                    <input type="text" placeholder="Type your message..." class="flex-1 border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                    <button class="ml-3 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
+                                        <i class="fas fa-paperclip"></i>
+                                    </button>
+                                    <button class="ml-1 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
+                                        <i class="fas fa-image"></i>
+                                    </button>
+                                    <button class="ml-1 inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                                        Send
                                     </button>
                                 </div>
                             </div>
                         </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Messages Page -->
-    <div id="messages-page" class="page">
-        <div class="max-w-4xl mx-auto px-4 py-8">
-            <h1 class="text-2xl font-bold text-gray-900 mb-6">Messages</h1>
-
-            <div class="bg-white shadow rounded-lg overflow-hidden">
-                <div class="grid grid-cols-1 md:grid-cols-3 h-96">
-                    <!-- Conversations List -->
-                    <div class="border-r border-gray-200 bg-gray-50 overflow-y-auto">
-                        <div class="p-4 border-b border-gray-200">
-                            <h2 class="text-lg font-medium text-gray-900">Conversations</h2>
-                        </div>
-                        <ul class="divide-y divide-gray-200">
-                            <li class="p-4 hover:bg-white cursor-pointer border-r-2 border-blue-500 bg-white">
-                                <div class="flex items-center">
-                                    <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                                        <span class="font-medium text-green-600">E</span>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-medium text-gray-900">Emily's Guardian</p>
-                                        <p class="text-xs text-gray-500">Hi, thank you for the books!</p>
-                                    </div>
-                                </div>
-                                <div class="mt-2 flex justify-between items-center">
-                                    <span class="text-xs text-gray-500">2 hours ago</span>
-                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded">2</span>
-                                </div>
-                            </li>
-                            <li class="p-4 hover:bg-white cursor-pointer">
-                                <div class="flex items-center">
-                                    <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                                        <span class="font-medium text-blue-600">M</span>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-medium text-gray-900">Michael's Guardian</p>
-                                        <p class="text-xs text-gray-500">When can we arrange pickup?</p>
-                                    </div>
-                                </div>
-                                <div class="mt-2 flex justify-between items-center">
-                                    <span class="text-xs text-gray-500">1 day ago</span>
-                                </div>
-                            </li>
-                            <li class="p-4 hover:bg-white cursor-pointer">
-                                <div class="flex items-center">
-                                    <div class="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
-                                        <span class="font-medium text-purple-600">J</span>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-medium text-gray-900">Jessica's Guardian</p>
-                                        <p class="text-xs text-gray-500">The laptop works perfectly!</p>
-                                    </div>
-                                </div>
-                                <div class="mt-2 flex justify-between items-center">
-                                    <span class="text-xs text-gray-500">3 days ago</span>
-                                </div>
-                            </li>
-                            <li class="p-4 hover:bg-white cursor-pointer">
-                                <div class="flex items-center">
-                                    <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center mr-3">
-                                        <span class="font-medium text-red-600">D</span>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-medium text-gray-900">David's Guardian</p>
-                                        <p class="text-xs text-gray-500">Thanks for the bicycle!</p>
-                                    </div>
-                                </div>
-                                <div class="mt-2 flex justify-between items-center">
-                                    <span class="text-xs text-gray-500">1 week ago</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Chat Messages -->
-                    <div class="md:col-span-2 flex flex-col">
-                        <div class="p-4 border-b border-gray-200">
-                            <h2 class="text-lg font-medium text-gray-900">Emily's Guardian</h2>
-                            <p class="text-sm text-gray-500">Fulfilling wish: Story Books</p>
-                        </div>
-                        <div class="flex-1 overflow-y-auto p-4 bg-gray-50 chat-container">
-                            <div class="space-y-4">
-                                <div class="flex items-start">
-                                    <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                                        <span class="font-medium text-green-600">E</span>
-                                    </div>
-                                    <div class="bg-white rounded-lg py-2 px-4 chat-message">
-                                        <p class="text-sm">Hi, thank you so much for offering to donate the books!</p>
-                                        <p class="text-xs text-gray-500 mt-1">10:15 AM</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start justify-end">
-                                    <div class="bg-blue-100 rounded-lg py-2 px-4 chat-message">
-                                        <p class="text-sm">You're welcome! My daughter loved these books and I hope Emily will too.</p>
-                                        <p class="text-xs text-gray-500 mt-1">10:18 AM</p>
-                                    </div>
-                                    <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center ml-3">
-                                        <span class="font-medium text-blue-600">D</span>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                                        <span class="font-medium text-green-600">E</span>
-                                    </div>
-                                    <div class="bg-white rounded-lg py-2 px-4 chat-message">
-                                        <p class="text-sm">She will be thrilled! When would be a good time to pick them up?</p>
-                                        <p class="text-xs text-gray-500 mt-1">10:20 AM</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start justify-end">
-                                    <div class="bg-blue-100 rounded-lg py-2 px-4 chat-message">
-                                        <p class="text-sm">I've requested admin assistance for pickup. They'll contact you to arrange a time.</p>
-                                        <p class="text-xs text-gray-500 mt-1">10:22 AM</p>
-                                    </div>
-                                    <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center ml-3">
-                                        <span class="font-medium text-blue-600">D</span>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                                        <span class="font-medium text-green-600">E</span>
-                                    </div>
-                                    <div class="bg-white rounded-lg py-2 px-4 chat-message">
-                                        <p class="text-sm">Perfect, thank you! I'll wait for their call.</p>
-                                        <p class="text-xs text-gray-500 mt-1">10:25 AM</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4 border-t border-gray-200">
-                            <div class="flex items-center">
-                                <input type="text" placeholder="Type your message..." class="flex-1 border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                                <button class="ml-3 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
-                                    <i class="fas fa-paperclip"></i>
-                                </button>
-                                <button class="ml-1 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
-                                    <i class="fas fa-image"></i>
-                                </button>
-                                <button class="ml-1 inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
-                                    Send
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <!-- Organizations Page -->
+        <div id="organizations-page" class="page">
+            <div class="max-w-6xl mx-auto px-4 py-8">
+                <h1 class="text-2xl font-bold text-gray-900 mb-6">Organizations</h1>
 
-    <!-- Organizations Page -->
-    <div id="organizations-page" class="page">
-        <div class="max-w-6xl mx-auto px-4 py-8">
-            <h1 class="text-2xl font-bold text-gray-900 mb-6">Organizations</h1>
-
-            <div class="bg-white shadow rounded-lg p-6 mb-8">
-                <div class="flex items-center justify-between">
-                    <h2 class="text-lg font-medium text-gray-900">My Organizations</h2>
-                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
-                        <i class="fas fa-plus mr-2"></i> Join New Organization
-                    </button>
-                </div>
-                <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                        <div class="flex items-center">
-                            <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-building text-blue-500"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-medium text-gray-900">Community Center A</h3>
-                                <p class="text-sm text-gray-500">15 members • 32 wishes fulfilled</p>
-                            </div>
-                        </div>
-                        <div class="mt-4">
-                            <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                View Organization
-                            </button>
-                        </div>
+                <div class="bg-white shadow rounded-lg p-6 mb-8">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-medium text-gray-900">My Organizations</h2>
+                        <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                            <i class="fas fa-plus mr-2"></i> Join New Organization
+                        </button>
                     </div>
-                    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-                        <div class="flex items-center">
-                            <div class="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-school text-green-500"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-medium text-gray-900">School B</h3>
-                                <p class="text-sm text-gray-500">28 members • 47 wishes fulfilled</p>
-                            </div>
-                        </div>
-                        <div class="mt-4">
-                            <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                View Organization
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white shadow rounded-lg p-6">
-                <h2 class="text-lg font-medium text-gray-900 mb-4">All Organizations</h2>
-                <div class="flex items-center mb-4">
-                    <input type="text" placeholder="Search organizations..." class="flex-1 border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    <button class="ml-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
-                        <i class="fas fa-search mr-2"></i> Search
-                    </button>
-                </div>
-                <ul class="divide-y divide-gray-200">
-                    <li class="py-4">
-                        <div class="flex items-center justify-between">
+                    <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
                             <div class="flex items-center">
                                 <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
                                     <i class="fas fa-building text-blue-500"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-medium text-gray-900">Community Center A</h3>
-                                    <p class="text-sm text-gray-500">Serving the downtown community since 2010</p>
+                                    <p class="text-sm text-gray-500">15 members • 32 wishes fulfilled</p>
                                 </div>
                             </div>
-                            <div>
-                                <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
-                                    Join
+                            <div class="mt-4">
+                                <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    View Organization
                                 </button>
                             </div>
                         </div>
-                    </li>
-                    <li class="py-4">
-                        <div class="flex items-center justify-between">
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
                             <div class="flex items-center">
                                 <div class="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
                                     <i class="fas fa-school text-green-500"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-medium text-gray-900">School B</h3>
-                                    <p class="text-sm text-gray-500">Elementary school serving grades K-5</p>
+                                    <p class="text-sm text-gray-500">28 members • 47 wishes fulfilled</p>
                                 </div>
                             </div>
-                            <div>
-                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                                            Member
-                                        </span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="py-4">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <div class="h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-child text-purple-500"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-medium text-gray-900">Youth Program C</h3>
-                                    <p class="text-sm text-gray-500">After-school programs for teens</p>
-                                </div>
-                            </div>
-                            <div>
-                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                                            Member
-                                        </span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="py-4">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <div class="h-12 w-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-baseball-ball text-yellow-500"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-medium text-gray-900">Sports League D</h3>
-                                    <p class="text-sm text-gray-500">Community sports organization</p>
-                                </div>
-                            </div>
-                            <div>
-                                <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
-                                    Join
+                            <div class="mt-4">
+                                <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    View Organization
                                 </button>
                             </div>
                         </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Profile Page -->
-    <div id="profile-page" class="page">
-        <div class="max-w-3xl mx-auto px-4 py-8">
-            <h1 class="text-2xl font-bold text-gray-900 mb-6">Your Profile</h1>
-
-            <div class="bg-white shadow rounded-lg p-6">
-                <div class="flex items-center border-b border-gray-200 pb-6">
-                    <div class="h-24 w-24 rounded-full bg-blue-100 flex items-center justify-center mr-6">
-                        <span class="font-medium text-blue-600 text-2xl">D</span>
-                    </div>
-                    <div>
-                        <h2 class="text-2xl font-bold text-gray-900">Donor User</h2>
-                        <p class="text-sm text-gray-500">Member since January 2023</p>
-                        <div class="mt-2 flex items-center">
-                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2">
-                                        12 Wishes Fulfilled
-                                    </span>
-                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                        5 Active Donations
-                                    </span>
-                        </div>
                     </div>
                 </div>
 
-                <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    <div>
-                        <h3 class="text-lg font-medium text-gray-900 mb-2">Contact Information</h3>
-                        <dl class="space-y-2">
-                            <div>
-                                <dt class="text-sm font-medium text-gray-500">Email</dt>
-                                <dd class="text-sm text-gray-900">donor@example.com</dd>
-                            </div>
-                            <div>
-                                <dt class="text-sm font-medium text-gray-500">Phone</dt>
-                                <dd class="text-sm text-gray-900">+1 (555) 123-4567</dd>
-                            </div>
-                            <div>
-                                <dt class="text-sm font-medium text-gray-500">Location</dt>
-                                <dd class="text-sm text-gray-900">Seattle, WA</dd>
-                            </div>
-                        </dl>
+                <div class="bg-white shadow rounded-lg p-6">
+                    <h2 class="text-lg font-medium text-gray-900 mb-4">All Organizations</h2>
+                    <div class="flex items-center mb-4">
+                        <input type="text" placeholder="Search organizations..." class="flex-1 border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        <button class="ml-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                            <i class="fas fa-search mr-2"></i> Search
+                        </button>
                     </div>
-
-                    <div>
-                        <h3 class="text-lg font-medium text-gray-900 mb-2">Preferences</h3>
-                        <dl class="space-y-2">
-                            <div>
-                                <dt class="text-sm font-medium text-gray-500">Default Search Radius</dt>
-                                <dd class="text-sm text-gray-900">10 km</dd>
+                    <ul class="divide-y divide-gray-200">
+                        <li class="py-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-building text-blue-500"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900">Community Center A</h3>
+                                        <p class="text-sm text-gray-500">Serving the downtown community since 2010</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                                        Join
+                                    </button>
+                                </div>
                             </div>
-                            <div>
-                                <dt class="text-sm font-medium text-gray-500">Notification Settings</dt>
-                                <dd class="text-sm text-gray-900">Email & In-App</dd>
-                            </div>
-                            <div>
-                                <dt class="text-sm font-medium text-gray-500">Admin Assistance</dt>
-                                <dd class="text-sm text-gray-900">Enabled by default</dd>
-                            </div>
-                        </dl>
-                    </div>
-                </div>
-
-                <div class="mt-6">
-                    <h3 class="text-lg font-medium text-gray-900 mb-2">Your Organizations</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <div class="h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center mr-2">
-                                <i class="fas fa-building text-blue-500 text-sm"></i>
-                            </div>
-                            <span class="text-sm text-gray-900">Community Center A</span>
                         </li>
-                        <li class="flex items-center">
-                            <div class="h-8 w-8 bg-green-100 rounded-full flex items-center justify-center mr-2">
-                                <i class="fas fa-school text-green-500 text-sm"></i>
+                        <li class="py-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-school text-green-500"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900">School B</h3>
+                                        <p class="text-sm text-gray-500">Elementary school serving grades K-5</p>
+                                    </div>
+                                </div>
+                                <div>
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                            Member
+                                        </span>
+                                </div>
                             </div>
-                            <span class="text-sm text-gray-900">School B</span>
                         </li>
-                        <li class="flex items-center">
-                            <div class="h-8 w-8 bg-purple-100 rounded-full flex items-center justify-center mr-2">
-                                <i class="fas fa-child text-purple-500 text-sm"></i>
+                        <li class="py-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-child text-purple-500"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900">Youth Program C</h3>
+                                        <p class="text-sm text-gray-500">After-school programs for teens</p>
+                                    </div>
+                                </div>
+                                <div>
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                            Member
+                                        </span>
+                                </div>
                             </div>
-                            <span class="text-sm text-gray-900">Youth Program C</span>
+                        </li>
+                        <li class="py-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="h-12 w-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-baseball-ball text-yellow-500"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900">Sports League D</h3>
+                                        <p class="text-sm text-gray-500">Community sports organization</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                                        Join
+                                    </button>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
-
-                <div class="mt-6 flex">
-                    <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                        <i class="fas fa-edit mr-2"></i> Edit Profile
-                    </button>
-                    <button class="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
-                        <i class="fas fa-lock mr-2"></i> Change Password
-                    </button>
-                </div>
             </div>
+        </div>
+        <!-- Profile Page -->
+        <div id="profile-page" class="page">
+            <div class="max-w-6xl mx-auto px-4 py-8">
+                <h1 class="text-2xl font-bold text-gray-900 mb-6">Your Profile</h1>
 
-            <div class="bg-white shadow rounded-lg p-6 mt-6">
-                <h2 class="text-lg font-medium text-gray-900 mb-4">Your Impact</h2>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <div class="text-3xl font-bold text-blue-600">12</div>
-                        <div class="text-sm font-medium text-gray-700">Wishes Fulfilled</div>
+                <div class="bg-white shadow rounded-lg p-6">
+                    <div class="flex items-center border-b border-gray-200 pb-6">
+                        <div class="h-24 w-24 rounded-full bg-blue-100 flex items-center justify-center mr-6">
+                            <span class="font-medium text-blue-600 text-2xl">D</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-900">Donor User</h2>
+                            <p class="text-sm text-gray-500">Member since January 2023</p>
+                            <div class="mt-2 flex items-center">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2">
+                                        12 Wishes Fulfilled
+                                    </span>
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                        5 Active Donations
+                                    </span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-green-50 p-4 rounded-lg">
-                        <div class="text-3xl font-bold text-green-600">8</div>
-                        <div class="text-sm font-medium text-gray-700">Children Helped</div>
+
+                    <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">Contact Information</h3>
+                            <dl class="space-y-2">
+                                <div>
+                                    <dt class="text-sm font-medium text-gray-500">Email</dt>
+                                    <dd class="text-sm text-gray-900">donor@example.com</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-sm font-medium text-gray-500">Phone</dt>
+                                    <dd class="text-sm text-gray-900">+1 (555) 123-4567</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-sm font-medium text-gray-500">Location</dt>
+                                    <dd class="text-sm text-gray-900">Seattle, WA</dd>
+                                </div>
+                            </dl>
+                        </div>
+
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">Preferences</h3>
+                            <dl class="space-y-2">
+                                <div>
+                                    <dt class="text-sm font-medium text-gray-500">Default Search Radius</dt>
+                                    <dd class="text-sm text-gray-900">10 km</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-sm font-medium text-gray-500">Notification Settings</dt>
+                                    <dd class="text-sm text-gray-900">Email & In-App</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-sm font-medium text-gray-500">Admin Assistance</dt>
+                                    <dd class="text-sm text-gray-900">Enabled by default</dd>
+                                </div>
+                            </dl>
+                        </div>
                     </div>
-                    <div class="bg-yellow-50 p-4 rounded-lg">
-                        <div class="text-3xl font-bold text-yellow-600">5</div>
-                        <div class="text-sm font-medium text-gray-700">Organizations Supported</div>
+
+                    <div class="mt-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Your Organizations</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <div class="h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center mr-2">
+                                    <i class="fas fa-building text-blue-500 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-900">Community Center A</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="h-8 w-8 bg-green-100 rounded-full flex items-center justify-center mr-2">
+                                    <i class="fas fa-school text-green-500 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-900">School B</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="h-8 w-8 bg-purple-100 rounded-full flex items-center justify-center mr-2">
+                                    <i class="fas fa-child text-purple-500 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-900">Youth Program C</span>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="bg-purple-50 p-4 rounded-lg">
-                        <div class="text-3xl font-bold text-purple-600">24</div>
-                        <div class="text-sm font-medium text-gray-700">Items Donated</div>
+
+                    <div class="mt-6 flex">
+                        <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                            <i class="fas fa-edit mr-2"></i> Edit Profile
+                        </button>
+                        <button class="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                            <i class="fas fa-lock mr-2"></i> Change Password
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow rounded-lg p-6 mt-6">
+                    <h2 class="text-lg font-medium text-gray-900 mb-4">Your Impact</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-blue-600">12</div>
+                            <div class="text-sm font-medium text-gray-700">Wishes Fulfilled</div>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-green-600">8</div>
+                            <div class="text-sm font-medium text-gray-700">Children Helped</div>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-yellow-600">5</div>
+                            <div class="text-sm font-medium text-gray-700">Organizations Supported</div>
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-purple-600">24</div>
+                            <div class="text-sm font-medium text-gray-700">Items Donated</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <script>
