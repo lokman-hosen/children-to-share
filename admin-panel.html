@@ -3,98 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThreeWish - Admin Panel</title>
+    <title>Organization Details - ThreeWish</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .page {
-            display: none;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f3f4f6;
         }
-        .active-page {
-            display: block;
-        }
-        .nav-item {
-            transition: all 0.2s ease;
-        }
-        .nav-item:hover, .nav-item.active {
-            border-left: 4px solid #DC2626;
-            background-color: #f3f4f6;
-        }
-        .data-card {
+
+        .card {
             transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
         }
-        .data-card:hover {
+
+        .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        .status-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-        .notification-dot {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            height: 18px;
-            width: 18px;
-            background-color: #DC2626;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: bold;
-        }
-        .log-entry {
-            border-left: 3px solid #DC2626;
+
+        .nav-item {
             transition: all 0.2s ease;
         }
-        .log-entry:hover {
-            background-color: #FEF2F2;
+
+        .nav-item:hover, .nav-item.active {
+            border-left: 4px solid #3B82F6;
+            background-color: #f3f4f6;
         }
-        .task-highlight {
-            animation: pulse 2s infinite;
+
+        .stats-card {
+            border-left: 4px solid;
         }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+
+        .member-card, .donation-card {
+            transition: all 0.3s ease;
+        }
+
+        .member-card:hover, .donation-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="bg-red-50 font-sans">
+<body class="bg-gray-50 font-sans">
 <!-- Top Navigation -->
 <nav class="bg-white shadow-md fixed w-full z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <i class="fas fa-gift text-red-500 text-2xl mr-2"></i>
-                    <span class="font-bold text-xl text-red-600">ThreeWish Admin Panel</span>
+                    <i class="fas fa-gift text-blue-500 text-2xl mr-2"></i>
+                    <span class="font-bold text-xl text-blue-600">ThreeWish</span>
                 </div>
             </div>
             <div class="flex items-center space-x-4">
                 <div class="relative">
-                    <button class="p-1 rounded-full text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    <button class="p-1 rounded-full text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         <i class="fas fa-bell text-xl"></i>
-                        <span class="notification-dot">3</span>
+                        <span class="absolute top-0 right-0 h-4 w-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">3</span>
                     </button>
                 </div>
                 <div class="relative">
-                    <button class="flex items-center text-sm text-gray-700 focus:outline-none" onclick="toggleDropdown()">
-                        <div class="h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
-                            <span class="font-medium text-red-600">A</span>
+                    <button class="flex items-center text-sm text-gray-700 focus:outline-none">
+                        <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
+                            <span class="font-medium text-blue-600">D</span>
                         </div>
-                        <span class="ml-2">Admin User</span>
+                        <span class="ml-2">Donor User</span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
-                    <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="showPage('admin-profile-page')">Admin Profile</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -103,856 +80,343 @@
 
 <div class="flex pt-16">
     <!-- Sidebar Navigation -->
-    <div class="w-64 bg-white h-screen shadow-md fixed hidden md:block" id="sidebar">
+    <div class="w-64 bg-white h-screen shadow-md fixed hidden md:block">
         <div class="p-4">
-            <div class="flex items-left mb-6">
-                <div class="md:hidden flex items-center">
-                    <button type="button" id="close-sidebar-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <!-- X icon (hidden by default) -->
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-                <h2 class="text-lg font-semibold text-gray-700 mt-1">Admin Navigation</h2>
-            </div>
+            <h2 class="text-lg font-semibold text-gray-700">Dashboard Navigation</h2>
             <ul class="mt-4">
                 <li class="mb-1">
-                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded active" onclick="showPage('admin-dashboard-page')">
-                        <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded">
+                        <i class="fas fa-home mr-2"></i> Dashboard
                     </a>
                 </li>
                 <li class="mb-1">
-                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded" onclick="showPage('user-management-page')">
-                        <i class="fas fa-users mr-2"></i> User Management
-                        <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">5</span>
+                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded">
+                        <i class="fas fa-search mr-2"></i> Browse Wishes
                     </a>
                 </li>
                 <li class="mb-1">
-                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded" onclick="showPage('content-moderation-page')">
-                        <i class="fas fa-clipboard-check mr-2"></i> Content Moderation
-                        <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">12</span>
+                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded">
+                        <i class="fas fa-plus-circle mr-2"></i> Create Donation
                     </a>
                 </li>
                 <li class="mb-1">
-                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded" onclick="showPage('org-management-page')">
+                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded">
+                        <i class="fas fa-gift mr-2"></i> My Donations
+                    </a>
+                </li>
+                <li class="mb-1">
+                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded">
+                        <i class="fas fa-comments mr-2"></i> Messages
+                    </a>
+                </li>
+                <li class="mb-1">
+                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded active">
                         <i class="fas fa-building mr-2"></i> Organizations
                     </a>
                 </li>
-                <li class="mb-1">
-                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded" onclick="showPage('admin-inbox-page')">
-                        <i class="fas fa-inbox mr-2"></i> Admin Inbox
-                        <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">8</span>
-                    </a>
-                </li>
-<!--                <li class="mb-1">-->
-<!--                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded" onclick="showPage('logistics-page')">-->
-<!--                        <i class="fas fa-tasks mr-2"></i> Logistics Tasks-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="mb-1">-->
-<!--                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded" onclick="showPage('activity-logs-page')">-->
-<!--                        <i class="fas fa-history mr-2"></i> Activity Logs-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="mb-1">-->
-<!--                    <a href="#" class="nav-item block px-4 py-2 text-gray-700 rounded" onclick="showPage('comms-page')">-->
-<!--                        <i class="fas fa-phone mr-2"></i> Communications-->
-<!--                    </a>-->
-<!--                </li>-->
             </ul>
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="flex-1 md:ml-64">
-        <!-- Admin Dashboard Page -->
-        <div id="admin-dashboard-page" class="page active-page">
-            <div class="px-10 py-8">
-                <div class="flex items-left mb-6">
-                    <div class="md:hidden flex items-center">
-                        <button type="button" id="sidebar-mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" aria-expanded="false">
-                            <span class="sr-only">Open main menu</span>
-                            <!-- Hamburger icon -->
-                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
-                    </div>
-                    <h1 class="text-2xl font-bold text-gray-900 mt-1">Admin Dashboard</h1>
-                </div>
-
-                <!-- Stats Overview -->
-                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
-                    <div class="bg-white overflow-hidden shadow rounded-lg data-card">
-                        <div class="px-4 py-5 sm:p-6">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 bg-red-500 rounded-md p-3">
-                                    <i class="fas fa-users text-white"></i>
-                                </div>
-                                <div class="ml-5 w-0 flex-1">
-                                    <dl>
-                                        <dt class="text-sm font-medium text-gray-500 truncate">Pending Users</dt>
-                                        <dd class="flex items-baseline">
-                                            <div class="text-2xl font-semibold text-gray-900">5</div>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <a href="#" class="text-sm font-medium text-red-600 hover:text-red-500" onclick="showPage('user-management-page')">
-                                    View all
-                                </a>
-                            </div>
+        <!-- Organization Header -->
+        <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-8 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
+                        <div class="w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-lg">
+                            <i class="fas fa-school text-blue-500 text-4xl"></i>
                         </div>
                     </div>
-
-                    <div class="bg-white overflow-hidden shadow rounded-lg data-card">
-                        <div class="px-4 py-5 sm:p-6">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 bg-yellow-500 rounded-md p-3">
-                                    <i class="fas fa-clipboard-check text-white"></i>
-                                </div>
-                                <div class="ml-5 w-0 flex-1">
-                                    <dl>
-                                        <dt class="text-sm font-medium text-gray-500 truncate">Pending Moderation</dt>
-                                        <dd class="flex items-baseline">
-                                            <div class="text-2xl font-semibold text-gray-900">12</div>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <a href="#" class="text-sm font-medium text-red-600 hover:text-red-500" onclick="showPage('content-moderation-page')">
-                                    View all
-                                </a>
-                            </div>
+                    <div class="text-center md:text-left">
+                        <h1 class="text-3xl font-bold mb-2">Sunshine Elementary School</h1>
+                        <p class="text-lg opacity-90">Serving the community since 2005</p>
+                        <div class="flex flex-wrap justify-center md:justify-start mt-4 gap-3">
+                                <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+                                    <i class="fas fa-users mr-1"></i> 28 Members
+                                </span>
+                            <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+                                    <i class="fas fa-gift mr-1"></i> 47 Wishes Fulfilled
+                                </span>
+                            <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+                                    <i class="fas fa-map-marker-alt mr-1"></i> Seattle, WA
+                                </span>
                         </div>
                     </div>
-
-                    <div class="bg-white overflow-hidden shadow rounded-lg data-card">
-                        <div class="px-4 py-5 sm:p-6">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
-                                    <i class="fas fa-inbox text-white"></i>
-                                </div>
-                                <div class="ml-5 w-0 flex-1">
-                                    <dl>
-                                        <dt class="text-sm font-medium text-gray-500 truncate">Fulfillment Requests</dt>
-                                        <dd class="flex items-baseline">
-                                            <div class="text-2xl font-semibold text-gray-900">8</div>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <a href="#" class="text-sm font-medium text-red-600 hover:text-red-500" onclick="showPage('admin-inbox-page')">
-                                    View all
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white overflow-hidden shadow rounded-lg data-card">
-                        <div class="px-4 py-5 sm:p-6">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
-                                    <i class="fas fa-tasks text-white"></i>
-                                </div>
-                                <div class="ml-5 w-0 flex-1">
-                                    <dl>
-                                        <dt class="text-sm font-medium text-gray-500 truncate">Active Tasks</dt>
-                                        <dd class="flex items-baseline">
-                                            <div class="text-2xl font-semibold text-gray-900">15</div>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <a href="#" class="text-sm font-medium text-red-600 hover:text-red-500" onclick="showPage('logistics-page')">
-                                    View all
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recent Activity -->
-                <div class="bg-white shadow rounded-lg mb-8">
-                    <div class="px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Activity</h3>
-                    </div>
-                    <div class="border-t border-gray-200">
-                        <ul class="divide-y divide-gray-200">
-                            <li class="p-4 sm:p-6">
-                                <div class="flex items-center">
-                                    <div class="bg-red-100 p-2 rounded-full mr-4">
-                                        <i class="fas fa-user-plus text-red-600"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-medium text-gray-900">New user registration requires approval</p>
-                                        <p class="text-sm text-gray-500">Community Leader application from John Smith</p>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <span class="text-xs text-gray-500">10 minutes ago</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="p-4 sm:p-6">
-                                <div class="flex items-center">
-                                    <div class="bg-yellow-100 p-2 rounded-full mr-4">
-                                        <i class="fas fa-exclamation-triangle text-yellow-600"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-medium text-gray-900">Content flagged for review</p>
-                                        <p class="text-sm text-gray-500">Wish item "Winter Coat" flagged by automated system</p>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <span class="text-xs text-gray-500">45 minutes ago</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="p-4 sm:p-6">
-                                <div class="flex items-center">
-                                    <div class="bg-blue-100 p-2 rounded-full mr-4">
-                                        <i class="fas fa-gift text-blue-600"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-medium text-gray-900">New fulfillment request</p>
-                                        <p class="text-sm text-gray-500">Donor Sarah Johnson wants to fulfill a wish for books</p>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <span class="text-xs text-gray-500">2 hours ago</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Quick Actions -->
-                <div class="bg-white shadow rounded-lg p-6">
-                    <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Quick Actions</h3>
-                    <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
-                        <a href="#" class="quick-action" onclick="showPage('user-management-page')">
-                            <div class="bg-red-100 p-3 rounded-md inline-flex">
-                                <i class="fas fa-user-check text-red-600 text-xl"></i>
-                            </div>
-                            <p class="mt-2 text-sm font-medium text-gray-900">Approve Users</p>
-                        </a>
-                        <a href="#" class="quick-action" onclick="showPage('content-moderation-page')">
-                            <div class="bg-yellow-100 p-3 rounded-md inline-flex">
-                                <i class="fas fa-eye text-yellow-600 text-xl"></i>
-                            </div>
-                            <p class="mt-2 text-sm font-medium text-gray-900">Moderate Content</p>
-                        </a>
-                        <a href="#" class="quick-action" onclick="showPage('admin-inbox-page')">
-                            <div class="bg-blue-100 p-3 rounded-md inline-flex">
-                                <i class="fas fa-inbox text-blue-600 text-xl"></i>
-                            </div>
-                            <p class="mt-2 text-sm font-medium text-gray-900">Process Requests</p>
-                        </a>
-                        <a href="#" class="quick-action" onclick="showPage('org-management-page')">
-                            <div class="bg-green-100 p-3 rounded-md inline-flex">
-                                <i class="fas fa-building text-green-600 text-xl"></i>
-                            </div>
-                            <p class="mt-2 text-sm font-medium text-gray-900">Manage Orgs</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- User Management Page -->
-        <div id="user-management-page" class="page">
-            <div class="px-10 py-8">
-                <h1 class="text-2xl font-bold text-gray-900 mb-6">User Management</h1>
-
-                <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
-                    <div class="border-b border-gray-200">
-                        <nav class="-mb-px flex">
-                            <a href="#" class="border-b-2 border-red-500 text-red-600 px-4 py-4 text-sm font-medium">Pending Approval (5)</a>
-                            <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">All Users (243)</a>
-                            <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">Donors (142)</a>
-                            <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">Wishers (89)</a>
-                            <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">Community Leaders (12)</a>
-                        </nav>
-                    </div>
-
-                    <div class="px-4 py-4 bg-gray-50 flex items-center justify-between">
-                        <div class="flex-1">
-                            <input type="text" placeholder="Search users..." class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                        </div>
-                        <div class="ml-3">
-                            <select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                                <option>All Statuses</option>
-                                <option>Pending</option>
-                                <option>Approved</option>
-                                <option>Disabled</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <ul class="divide-y divide-gray-200">
-                        <li class="p-4 sm:p-6">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-                                        <span class="font-medium text-blue-600">J</span>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900">John Smith</h3>
-                                        <p class="text-sm text-gray-500">Community Leader Applicant • john.smith@example.com</p>
-                                        <div class="mt-1 flex items-center">
-                                                <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    Pending Verification
-                                                </span>
-                                            <span class="ml-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    Applied 2 days ago
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end space-y-2">
-                                    <div class="flex space-x-2">
-                                        <button class="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700">
-                                            Approve
-                                        </button>
-                                        <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                            Details
-                                        </button>
-                                    </div>
-                                    <button class="text-sm text-red-600 hover:text-red-500">
-                                        Disable Account
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="p-4 sm:p-6">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
-                                        <span class="font-medium text-green-600">S</span>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900">Sarah Johnson</h3>
-                                        <p class="text-sm text-gray-500">Donor • sarah@example.com</p>
-                                        <div class="mt-1 flex items-center">
-                                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    Verified Donor
-                                                </span>
-                                            <span class="ml-2 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    12 Wishes Fulfilled
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end space-y-2">
-                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        View Profile
-                                    </button>
-                                    <button class="text-sm text-red-600 hover:text-red-500">
-                                        Disable Account
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="p-4 sm:p-6">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
-                                        <span class="font-medium text-purple-600">M</span>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900">Maria Johnson</h3>
-                                        <p class="text-sm text-gray-500">Wisher Guardian • maria@example.com</p>
-                                        <div class="mt-1 flex items-center">
-                                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    Verified Guardian
-                                                </span>
-                                            <span class="ml-2 bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    5 Wishes Created
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end space-y-2">
-                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        View Profile
-                                    </button>
-                                    <button class="text-sm text-red-600 hover:text-red-500">
-                                        Disable Account
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-white shadow rounded-lg p-6">
-                    <h2 class="text-lg font-medium text-gray-900 mb-4">Bulk Actions</h2>
-                    <div class="flex items-center space-x-4">
-                        <select class="block w-48 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                            <option>Select bulk action</option>
-                            <option>Approve selected</option>
-                            <option>Disable selected</option>
-                            <option>Export selected</option>
-                        </select>
-                        <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700">
-                            Apply
-                        </button>
-                        <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                            Export All
+                    <div class="ml-auto mt-4 md:mt-0">
+                        <button class="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                            Join Organization
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Content Moderation Page -->
-        <div id="content-moderation-page" class="page">
-            <div class="px-10 py-8">
-                <h1 class="text-2xl font-bold text-gray-900 mb-6">Content Moderation</h1>
-
-                <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
-                    <div class="border-b border-gray-200">
-                        <nav class="-mb-px flex">
-                            <a href="#" class="border-b-2 border-red-500 text-red-600 px-4 py-4 text-sm font-medium">Flagged Content (8)</a>
-                            <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">Pending Approval (4)</a>
-                            <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">All Wishes (142)</a>
-                            <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">All Donations (89)</a>
-                        </nav>
-                    </div>
-
-                    <div class="px-4 py-4 bg-gray-50 flex items-center justify-between">
-                        <div class="flex-1">
-                            <input type="text" placeholder="Search content..." class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                        </div>
-                        <div class="ml-3">
-                            <select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                                <option>All Types</option>
-                                <option>Wishes</option>
-                                <option>Donations</option>
-                            </select>
+        <!-- Main Content -->
+        <div class="max-w-6xl mx-auto px-4 py-8">
+            <!-- Stats Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-5 mb-8">
+                <div class="stats-card bg-white overflow-hidden shadow rounded-lg border-l-4 border-blue-500">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-blue-100 rounded-md p-3">
+                                <i class="fas fa-users text-blue-600"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Total Members</dt>
+                                    <dd class="flex items-baseline">
+                                        <div class="text-2xl font-semibold text-gray-900">28</div>
+                                    </dd>
+                                </dl>
+                            </div>
                         </div>
                     </div>
-
-                    <ul class="divide-y divide-gray-200">
-                        <li class="p-4 sm:p-6">
-                            <div class="flex items-start justify-between">
-                                <div class="flex items-start">
-                                    <div class="h-16 w-16 bg-red-100 rounded-md flex items-center justify-center mr-4">
-                                        <i class="fas fa-tshirt text-red-500 text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900">Winter Coat</h3>
-                                        <p class="text-sm text-gray-500">Wish by Michael, 9 • Size 10-12 winter coat</p>
-                                        <div class="mt-2 flex items-center">
-                                                <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    Flagged by System
-                                                </span>
-                                            <span class="ml-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    NSFW Detection: 92%
-                                                </span>
-                                        </div>
-                                        <p class="mt-2 text-sm text-red-600">Automated system detected potentially inappropriate content in image</p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end space-y-2">
-                                    <div class="flex space-x-2">
-                                        <button class="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700">
-                                            Approve
-                                        </button>
-                                        <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                            View Details
-                                        </button>
-                                    </div>
-                                    <button class="text-sm text-red-600 hover:text-red-500">
-                                        Remove Content
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="p-4 sm:p-6">
-                            <div class="flex items-start justify-between">
-                                <div class="flex items-start">
-                                    <div class="h-16 w-16 bg-blue-100 rounded-md flex items-center justify-center mr-4">
-                                        <i class="fas fa-book-open text-blue-500 text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900">Story Books</h3>
-                                        <p class="text-sm text-gray-500">Donation by Sarah Johnson • Children's story books</p>
-                                        <div class="mt-2 flex items-center">
-                                                <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    Pending Approval
-                                                </span>
-                                            <span class="ml-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    Created 2 days ago
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end space-y-2">
-                                    <div class="flex space-x-2">
-                                        <button class="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700">
-                                            Approve
-                                        </button>
-                                        <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                            View Details
-                                        </button>
-                                    </div>
-                                    <button class="text-sm text-red-600 hover:text-red-500">
-                                        Reject
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
 
-                <div class="bg-white shadow rounded-lg p-6">
-                    <h2 class="text-lg font-medium text-gray-900 mb-4">Moderation Settings</h2>
-                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">NSFW Detection Sensitivity</label>
-                            <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                                <option>Low</option>
-                                <option selected>Medium</option>
-                                <option>High</option>
-                                <option>Very High</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Auto-Tagging</label>
-                            <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                                <option>Enabled</option>
-                                <option>Disabled</option>
-                            </select>
+                <div class="stats-card bg-white overflow-hidden shadow rounded-lg border-l-4 border-green-500">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-green-100 rounded-md p-3">
+                                <i class="fas fa-gift text-green-600"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Wishes Fulfilled</dt>
+                                    <dd class="flex items-baseline">
+                                        <div class="text-2xl font-semibold text-gray-900">47</div>
+                                    </dd>
+                                </dl>
+                            </div>
                         </div>
                     </div>
-                    <div class="mt-4">
-                        <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700">
-                            Save Settings
-                        </button>
+                </div>
+
+                <div class="stats-card bg-white overflow-hidden shadow rounded-lg border-l-4 border-yellow-500">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-yellow-100 rounded-md p-3">
+                                <i class="fas fa-star text-yellow-600"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Active Wishes</dt>
+                                    <dd class="flex items-baseline">
+                                        <div class="text-2xl font-semibold text-gray-900">12</div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-card bg-white overflow-hidden shadow rounded-lg border-l-4 border-purple-500">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-purple-100 rounded-md p-3">
+                                <i class="fas fa-hand-holding-heart text-purple-600"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Total Donations</dt>
+                                    <dd class="flex items-baseline">
+                                        <div class="text-2xl font-semibold text-gray-900">63</div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Organizations Management Page -->
-        <div id="org-management-page" class="page">
-            <div class="px-10 py-8">
-                <h1 class="text-2xl font-bold text-gray-900 mb-6">Organization Management</h1>
-
-                <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
-                    <div class="px-4 py-4 bg-gray-50 flex items-center justify-between">
-                        <div class="flex-1">
-                            <input type="text" placeholder="Search organizations..." class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Left Column - Description -->
+                <div class="lg:col-span-2">
+                    <!-- Description -->
+                    <div class="bg-white shadow rounded-lg p-6 mb-8">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">About Our Organization</h2>
+                        <p class="text-gray-600 mb-4">
+                            Sunshine Elementary School has been serving the community since 2005, providing quality education
+                            to children from diverse backgrounds. We believe in fostering not just academic excellence but
+                            also compassion and community spirit.
+                        </p>
+                        <p class="text-gray-600 mb-4">
+                            Through ThreeWish, we connect families in need with generous donors who can help make children's
+                            wishes come true. Whether it's school supplies, winter clothing, or books for our library, every
+                            donation makes a significant impact on our students' lives.
+                        </p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>Joined ThreeWish: January 2022</span>
                         </div>
-                        <div class="ml-3">
-                            <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700">
-                                <i class="fas fa-plus mr-2"></i> New Organization
+                    </div>
+
+                    <!-- Donations List -->
+                    <div class="bg-white shadow rounded-lg p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-xl font-semibold text-gray-900">Recent Donations</h2>
+                            <button class="text-sm text-blue-600 hover:text-blue-800">View All</button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Donation 1 -->
+                            <div class="donation-card bg-gray-50 p-4 rounded-lg">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 mr-4">
+                                        <div class="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-book text-green-600"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="font-medium text-gray-900">Children's Books Collection</h3>
+                                        <p class="text-sm text-gray-500">Donated by Sarah Johnson • 2 days ago</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Delivered</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Donation 2 -->
+                            <div class="donation-card bg-gray-50 p-4 rounded-lg">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 mr-4">
+                                        <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-tshirt text-blue-600"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="font-medium text-gray-900">Winter Coats (Various Sizes)</h3>
+                                        <p class="text-sm text-gray-500">Donated by Robert Chen • 5 days ago</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">In Progress</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Donation 3 -->
+                            <div class="donation-card bg-gray-50 p-4 rounded-lg">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 mr-4">
+                                        <div class="h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-laptop text-purple-600"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="font-medium text-gray-900">Laptops for Distance Learning</h3>
+                                        <p class="text-sm text-gray-500">Donated by Tech4Good Foundation • 1 week ago</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Delivered</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="w-full mt-6 bg-gray-100 text-gray-700 py-2 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+                            Load More Donations
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column - Members -->
+                <div>
+                    <!-- Members List -->
+                    <div class="bg-white shadow rounded-lg p-6 mb-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-xl font-semibold text-gray-900">Organization Members</h2>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">28 Members</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Member 1 -->
+                            <div class="member-card flex items-center p-3 rounded-lg hover:bg-gray-50">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                        <span class="font-medium text-blue-600">M</span>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-medium text-gray-900">Maria Rodriguez</h3>
+                                    <p class="text-sm text-gray-500">Principal</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Admin</span>
+                                </div>
+                            </div>
+
+                            <!-- Member 2 -->
+                            <div class="member-card flex items-center p-3 rounded-lg hover:bg-gray-50">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
+                                        <span class="font-medium text-green-600">J</span>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-medium text-gray-900">James Wilson</h3>
+                                    <p class="text-sm text-gray-500">Teacher</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Moderator</span>
+                                </div>
+                            </div>
+
+                            <!-- Member 3 -->
+                            <div class="member-card flex items-center p-3 rounded-lg hover:bg-gray-50">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
+                                        <span class="font-medium text-purple-600">S</span>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-medium text-gray-900">Sarah Johnson</h3>
+                                    <p class="text-sm text-gray-500">Parent Volunteer</p>
+                                </div>
+                            </div>
+
+                            <!-- Member 4 -->
+                            <div class="member-card flex items-center p-3 rounded-lg hover:bg-gray-50">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center">
+                                        <span class="font-medium text-yellow-600">R</span>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-medium text-gray-900">Robert Chen</h3>
+                                    <p class="text-sm text-gray-500">Community Donor</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="w-full mt-6 bg-gray-100 text-gray-700 py-2 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+                            View All Members
+                        </button>
+                    </div>
+
+                    <!-- Organization Actions -->
+                    <div class="bg-white shadow rounded-lg p-6">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Organization Actions</h2>
+                        <div class="space-y-3">
+                            <button class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                <i class="fas fa-plus-circle mr-2"></i> Create Wish for Organization
+                            </button>
+                            <button class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                <i class="fas fa-envelope mr-2"></i> Message Organization
+                            </button>
+                            <button class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                <i class="fas fa-share-alt mr-2"></i> Share Organization
                             </button>
                         </div>
                     </div>
-
-                    <ul class="divide-y divide-gray-200">
-                        <li class="p-4 sm:p-6">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                                        <i class="fas fa-building text-blue-500"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900">Community Center A</h3>
-                                        <p class="text-sm text-gray-500">Serving the downtown community since 2010</p>
-                                        <div class="mt-1 flex items-center">
-                                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    15 Members
-                                                </span>
-                                            <span class="ml-2 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    32 Wishes Fulfilled
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end space-y-2">
-                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        View Details
-                                    </button>
-                                    <button class="text-sm text-red-600 hover:text-red-500">
-                                        Disable Organization
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="p-4 sm:p-6">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <div class="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                                        <i class="fas fa-school text-green-500"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900">School B</h3>
-                                        <p class="text-sm text-gray-500">Elementary school serving grades K-5</p>
-                                        <div class="mt-1 flex items-center">
-                                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    28 Members
-                                                </span>
-                                            <span class="ml-2 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    47 Wishes Fulfilled
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end space-y-2">
-                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        View Details
-                                    </button>
-                                    <button class="text-sm text-red-600 hover:text-red-500">
-                                        Disable Organization
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="p-4 sm:p-6">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <div class="h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                                        <i class="fas fa-child text-purple-500"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900">Youth Program C</h3>
-                                        <p class="text-sm text-gray-500">After-school programs for teens</p>
-                                        <div class="mt-1 flex items-center">
-                                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    12 Members
-                                                </span>
-                                            <span class="ml-2 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    18 Wishes Fulfilled
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end space-y-2">
-                                    <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        View Details
-                                    </button>
-                                    <button class="text-sm text-red-600 hover:text-red-500">
-                                        Disable Organization
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-white shadow rounded-lg p-6">
-                    <h2 class="text-lg font-medium text-gray-900 mb-4">Organization Statistics</h2>
-                    <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
-                        <div class="bg-blue-50 p-4 rounded-lg">
-                            <div class="text-2xl font-bold text-blue-600">12</div>
-                            <div class="text-sm font-medium text-gray-700">Active Organizations</div>
-                        </div>
-                        <div class="bg-green-50 p-4 rounded-lg">
-                            <div class="text-2xl font-bold text-green-600">142</div>
-                            <div class="text-sm font-medium text-gray-700">Organization Members</div>
-                        </div>
-                        <div class="bg-purple-50 p-4 rounded-lg">
-                            <div class="text-2xl font-bold text-purple-600">97</div>
-                            <div class="text-sm font-medium text-gray-700">Wishes Fulfilled</div>
-                        </div>
-                        <div class="bg-yellow-50 p-4 rounded-lg">
-                            <div class="text-2xl font-bold text-yellow-600">3</div>
-                            <div class="text-sm font-medium text-gray-700">Pending Approval</div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Admin Inbox Page -->
-        <div id="admin-inbox-page" class="page">
-            <div class="px-10 py-8">
-                <h1 class="text-2xl font-bold text-gray-900 mb-6">Admin Inbox</h1>
-
-                <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
-                    <div class="border-b border-gray-200">
-                        <nav class="-mb-px flex">
-                            <a href="#" class="border-b-2 border-red-500 text-red-600 px-4 py-4 text-sm font-medium">Fulfillment Requests (8)</a>
-                            <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">Pickup Requests (3)</a>
-                            <a href="#" class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium">All Messages (24)</a>
-                        </nav>
-                    </div>
-
-                    <div class="px-4 py-4 bg-gray-50 flex items-center justify-between">
-                        <div class="flex-1">
-                            <input type="text" placeholder="Search requests..." class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                        </div>
-                        <div class="ml-3">
-                            <select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                                <option>All Statuses</option>
-                                <option>New</option>
-                                <option>In Progress</option>
-                                <option>Completed</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <ul class="divide-y divide-gray-200">
-                        <li class="p-4 sm:p-6 task-highlight">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-                                        <span class="font-medium text-blue-600">S</span>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900">Book Donation Fulfillment</h3>
-                                        <p class="text-sm text-gray-500">Donor: Sarah Johnson → Wisher: Emily, 7</p>
-                                        <div class="mt-1 flex items-center">
-                                                <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    New Request
-                                                </span>
-                                            <span class="ml-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    3.2 km distance
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end space-y-2">
-                                    <div class="flex space-x-2">
-                                        <button class="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700">
-                                            Assign to Me
-                                        </button>
-                                        <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                            View Details
-                                        </button>
-                                    </div>
-                                    <span class="text-xs text-gray-500">Received 2 hours ago</span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="p-4 sm:p-6">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
-                                        <span class="font-medium text-green-600">R</span>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900">Winter Coat Fulfillment</h3>
-                                        <p class="text-sm text-gray-500">Donor: Robert Chen → Wisher: Michael, 9</p>
-                                        <div class="mt-1 flex items-center">
-                                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    In Progress
-                                                </span>
-                                            <span class="ml-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    5.7 km distance
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end space-y-2">
-                                    <div class="flex space-x-2">
-                                        <button class="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700">
-                                            Complete
-                                        </button>
-                                        <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                            View Details
-                                        </button>
-                                    </div>
-                                    <span class="text-xs text-gray-500">Assigned to you • Started 1 day ago</span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="p-4 sm:p-6">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
-                                        <span class="font-medium text-purple-600">M</span>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900">Pickup Assistance Request</h3>
-                                        <p class="text-sm text-gray-500">Guardian: Maria Johnson → Donor: Sarah Johnson</p>
-                                        <div class="mt-1 flex items-center">
-                                                <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    New Request
-                                                </span>
-                                            <span class="ml-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                                    3.2 km distance
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end space-y-2">
-                                    <div class="flex space-x-2">
-                                        <button class="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700">
-                                            Assign to Me
-                                        </button>
-                                        <button class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                            View Details
-                                        </button>
-                                    </div>
-                                    <span class="text-xs text-gray-500">Received 3 hours ago</span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-white shadow rounded-lg p-6">
-                    <h2 class="text-lg font-medium text-gray-900 mb-4">Request Statistics</h2>
-                    <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
-                        <div class="bg-red-50 p-4 rounded-lg">
-                            <div class="text-2xl font-bold text-red-600">8</div>
-                            <div class="text-sm font-medium text-gray-700">New Requests</div>
-                        </div>
-                        <div class="bg-blue-50 p-4 rounded-lg">
-                            <div class="text-2xl font-bold text-blue-600">5</div>
-                            <div class="text-sm font-medium text-gray-700">In Progress</div>
-                        </div>
-                        <div class="bg-green-50 p-4 rounded-lg">
-                            <div class="text-2xl font-bold text-green-600">32</div>
-                            <div class="text-sm font-medium text-gray-700">Completed Today</div>
-                        </div>
-                        <div class="bg-yellow-50 p-4 rounded-lg">
-                            <div class="text-2xl font-bold text-yellow-600">2.3h</div>
-                            <div class="text-sm font-medium text-gray-700">Avg. Response Time</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Additional pages would follow the same pattern -->
-        <!-- Logistics Tasks, Activity Logs, Communications, etc. -->
-
     </div>
 </div>
 
 <script>
-    const sidebarMobileButton = document.getElementById('sidebar-mobile-menu-button');
-    const closeSidebarButton = document.getElementById('close-sidebar-button');
-    const sidebar = document.getElementById('sidebar');
-
-    if (sidebarMobileButton) {
-        sidebarMobileButton.addEventListener('click', function() {
-            sidebar.classList.remove('hidden');
-        });
-    }
-
-    if (closeSidebarButton) {
-        closeSidebarButton.addEventListener('click', function() {
-            sidebar.classList.add('hidden');
-        });
-    }
     // Function to show a specific page and hide others
     function showPage(pageId) {
         // Hide all pages
@@ -985,11 +449,6 @@
         if (!dropdown.contains(event.target) && !button.contains(event.target)) {
             dropdown.classList.add('hidden');
         }
-    });
-
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', function() {
-        showPage('admin-dashboard-page');
     });
 </script>
 </body>
