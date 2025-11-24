@@ -6,530 +6,794 @@
     <title>ThreeWish - Share the Joy of Giving</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
-
         body {
-            font-family: 'Fredoka', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #374151;
         }
 
-        .hero-section {
-            background: linear-gradient(rgba(92, 107, 192, 0.8), rgba(92, 107, 192, 0.8)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik00MCAxMEM0My4zMTM3IDEwIDQ2IDEyLjY4NjMgNDYgMTZDNDYgMTkuMzEzNyA0My4zMTM3IDIyIDQwIDIyQzM2LjY4NjMgMjIgMzQgMTkuMzEzNyAzNCAxNkMzNCAxMi42ODYzIDM2LjY4NjMgMTAgNDAgMTBaIiBmaWxsPSIjMzk0QTZGIi8+CjxwYXRoIGQ9Ik00MCA0MEM1MS4wNDU3IDQwIDYwIDMxLjA0NTcgNjAgMjBDNjAgOC45NTQzMDUgNTEuMDQ1NyAwIDQwIDBDMjguOTU0MyAwIDIwIDguOTU0MzA1IDIwIDIwQzIwIDMxLjA0NTcgMjguOTU0MyA0MCA0MCA0MFoiIGZpbGw9IiM2QjcyODAiIGZpbGwtb3BhY2l0eT0iMC4yIi8+Cjwvc3ZnPgo=');
-            background-size: cover;
-            background-position: center;
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
         }
 
-        .card {
+        .category-card {
             transition: all 0.3s ease;
-            border-radius: 16px;
+            border-radius: 8px;
             overflow: hidden;
+            background: white;
+            border: 1px solid #e5e7eb;
         }
 
-        .card:hover {
+        .category-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border-color: #d1d5db;
         }
 
-        .wish-card, .donation-card {
-            border-left: 4px solid;
-        }
-
-        .wish-card {
-            border-left-color: #8B5CF6;
-        }
-
-        .donation-card {
-            border-left-color: #10B981;
-        }
-
-        .step-card {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
+        .product-card {
             transition: all 0.3s ease;
-        }
-
-        .step-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-weight: bold;
-        }
-
-        .org-card {
-            background: white;
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
+            background: white;
+            border: 1px solid #e5e7eb;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border-color: #d1d5db;
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-wish {
+            background: #1f2937;
+            color: white;
+        }
+
+        .badge-donation {
+            background: #374151;
+            color: white;
+        }
+
+        .btn-primary {
+            background: #1f2937;
+            color: white;
             transition: all 0.3s ease;
+            border: 1px solid #1f2937;
         }
 
-        .org-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
+        .btn-primary:hover {
+            background: #374151;
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(139, 92, 246, 0.3);
+            box-shadow: 0 4px 12px rgba(31, 41, 55, 0.15);
         }
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .nav-item {
-            transition: all 0.2s ease;
+        .btn-outline {
+            background: white;
+            color: #1f2937;
+            border: 1px solid #d1d5db;
+            transition: all 0.3s ease;
         }
 
-        .nav-item:hover, .nav-item.active {
-            border-left: 4px solid #8B5CF6;
-            background-color: #f3f4f6;
+        .btn-outline:hover {
+            background: #f9fafb;
+            border-color: #9ca3af;
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 12px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #1f2937;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            padding: 24px;
+        }
+
+        .footer {
+            background: #111827;
+        }
+
+        .input-search {
+            border-radius: 6px 0 0 6px;
+            border: 1px solid #d1d5db;
+            padding: 10px 15px;
+            width: 100%;
+        }
+
+        .btn-search {
+            border-radius: 0 6px 6px 0;
+            background: #1f2937;
+            color: white;
+            padding: 10px 20px;
+            border: 1px solid #1f2937;
+        }
+
+        .dropdown-menu {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .mobile-menu {
+            transition: all 0.3s ease;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+
+        .deal-section {
+            background: #1f2937;
+        }
+
+        .stats-section {
+            background: #f9fafb;
         }
     </style>
 </head>
 <body class="min-h-screen">
 <!-- Navigation -->
-<nav class="bg-white shadow-md">
+<nav class="navbar sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <i class="fas fa-gift text-purple-500 text-2xl mr-2"></i>
-                    <span class="font-bold text-xl text-purple-600">ThreeWish</span>
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+                <i class="fas fa-gift text-gray-900 text-xl mr-2"></i>
+                <span class="font-semibold text-lg text-gray-900">ThreeWish</span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-900 font-medium hover:text-gray-700 transition">Home</a>
+                <div class="relative group">
+                    <a href="#" class="text-gray-700 font-medium hover:text-gray-900 transition flex items-center">
+                        Categories <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </a>
+                    <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg dropdown-menu opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                        <div class="py-2">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Books & Education</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Clothing</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Toys & Games</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Electronics</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Sports Equipment</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="hidden md:ml-6 md:flex md:space-x-8">
-                    <a href="index.html" class="nav-item active text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
-                    <a href="#how-it-works" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">How It Works</a>
-                    <a href="wish-new.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Wishes</a>
-                    <a href="donation-new.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Donations</a>
-                    <a href="#organizations" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Organizations</a>
+                <a href="wish-new.html" class="text-gray-700 font-medium hover:text-gray-900 transition">Wishes</a>
+                <a href="donation-new.html" class="text-gray-700 font-medium hover:text-gray-900 transition">Donations</a>
+                <a href="#testimonials" class="text-gray-700 font-medium hover:text-gray-900 transition">Success Stories</a>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="hidden lg:flex flex-1 max-w-md mx-8">
+                <div class="relative w-full">
+                    <input type="text" class="input-search" placeholder="Search for wishes or donations...">
+                    <button class="absolute right-0 top-0 h-full px-4 btn-search">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- Desktop buttons -->
-            <div class="hidden md:flex items-center">
-                <a href="registration-new.html" class="ml-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+            <!-- Desktop Icons -->
+            <div class="hidden lg:flex items-center space-x-5">
+                <a href="#" class="text-gray-700 hover:text-gray-900 relative">
+                    <i class="fas fa-heart text-lg"></i>
+                </a>
+                <a href="#" class="text-gray-700 hover:text-gray-900 relative">
+                    <i class="fas fa-bell text-lg"></i>
+                </a>
+                <a href="registration-new.html" class="btn-primary px-4 py-2 rounded-md text-sm font-medium">
                     Sign Up
                 </a>
-                <a href="login-new.html" class="ml-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                <a href="login-new.html" class="text-gray-700 font-medium hover:text-gray-900">
                     Login
                 </a>
             </div>
 
             <!-- Mobile menu button -->
-            <div class="md:hidden flex items-center">
-                <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" aria-expanded="false">
-                    <span class="sr-only">Open main menu</span>
-                    <!-- Hamburger icon -->
-                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                    <!-- X icon (hidden by default) -->
-                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+            <div class="lg:hidden flex items-center">
+                <button type="button" id="mobile-menu-button" class="text-gray-700 hover:text-gray-900 p-2">
+                    <i class="fas fa-bars text-lg"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Mobile menu, show/hide based on menu state -->
-    <div class="md:hidden hidden" id="mobile-menu">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Home</a>
-            <a href="#how-it-works" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">How It Works</a>
-            <a href="wish-new.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Wishes</a>
-            <a href="donation-new.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Donations</a>
-            <a href="#organizations" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Organizations</a>
-        </div>
-        <div class="pt-4 pb-3 border-t border-gray-200">
-<!--            <div class="flex items-center px-5">-->
-<!--                <div class="flex-shrink-0">-->
-<!--                    <div class="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">-->
-<!--                        <i class="fas fa-user text-purple-600"></i>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="ml-3">-->
-<!--                    <div class="text-base font-medium text-gray-800">Guest User</div>-->
-<!--                    <div class="text-sm font-medium text-gray-500">Not signed in</div>-->
-<!--                </div>-->
-<!--            </div>-->
-            <div class="mt-3 px-2 space-y-1">
-                <a href="registration-new.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Sign Up</a>
-                <a href="login-new.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Login</a>
+    <!-- Mobile menu -->
+    <div class="lg:hidden mobile-menu hidden bg-white" id="mobile-menu">
+        <div class="px-4 py-6 space-y-6">
+            <a href="index.html" class="block text-gray-900 font-medium">Home</a>
+            <a href="#" class="block text-gray-700 font-medium">Categories</a>
+            <a href="wish-new.html" class="block text-gray-700 font-medium">Wishes</a>
+            <a href="donation-new.html" class="block text-gray-700 font-medium">Donations</a>
+            <a href="#testimonials" class="block text-gray-700 font-medium">Success Stories</a>
+            <div class="pt-4 border-t border-gray-200">
+                <a href="registration-new.html" class="block btn-primary text-center py-3 rounded-md font-medium mb-3">
+                    Sign Up
+                </a>
+                <a href="login-new.html" class="block text-center btn-outline py-3 rounded-md font-medium">
+                    Login
+                </a>
             </div>
         </div>
     </div>
 </nav>
 
 <!-- Hero Section -->
-<section class="hero-section text-white py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">Where Children Learn the Joy of Giving</h1>
-        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">A platform that connects children who have items to share with those who have wishes to fulfill</p>
-        <a href="registration-new.html" class="cta-button inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white">
-            Join ThreeWish Today
-            <i class="fas fa-arrow-right ml-2"></i>
-        </a>
+<section class="hero-bg py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Where Children Learn the Joy of Giving</h1>
+                <p class="text-lg text-gray-700 mb-8">A platform that connects children who have items to share with those who have wishes to fulfill</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="registration-new.html" class="btn-primary px-6 py-3 rounded-md text-base font-medium text-center">
+                        Join ThreeWish Today
+                    </a>
+                    <a href="#how-it-works" class="btn-outline px-6 py-3 rounded-md text-base font-medium text-center">
+                        How It Works
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-gray-100 rounded-full h-10 w-10 flex items-center justify-center mr-4">
+                                <i class="fas fa-book text-gray-700"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Emily's Wish</h3>
+                                <p class="text-gray-600 text-sm">7 years old • 3.2 km away</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-4">"I love reading stories but I don't have many books. I wish I could get some storybooks to read."</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Posted 2 days ago</span>
+                            <button class="btn-primary px-4 py-2 rounded-md text-sm font-medium">
+                                Fulfill This Wish
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-10 section-title">Browse Categories</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div class="category-card text-center p-5">
+                <div class="bg-gray-100 rounded-full h-14 w-14 flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-book text-gray-700 text-xl"></i>
+                </div>
+                <h3 class="font-medium text-gray-900 text-sm">Books</h3>
+                <p class="text-gray-500 text-xs mt-1">124 wishes</p>
+            </div>
+            <div class="category-card text-center p-5">
+                <div class="bg-gray-100 rounded-full h-14 w-14 flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-tshirt text-gray-700 text-xl"></i>
+                </div>
+                <h3 class="font-medium text-gray-900 text-sm">Clothing</h3>
+                <p class="text-gray-500 text-xs mt-1">89 wishes</p>
+            </div>
+            <div class="category-card text-center p-5">
+                <div class="bg-gray-100 rounded-full h-14 w-14 flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-laptop text-gray-700 text-xl"></i>
+                </div>
+                <h3 class="font-medium text-gray-900 text-sm">Electronics</h3>
+                <p class="text-gray-500 text-xs mt-1">67 wishes</p>
+            </div>
+            <div class="category-card text-center p-5">
+                <div class="bg-gray-100 rounded-full h-14 w-14 flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-gamepad text-gray-700 text-xl"></i>
+                </div>
+                <h3 class="font-medium text-gray-900 text-sm">Toys & Games</h3>
+                <p class="text-gray-500 text-xs mt-1">156 wishes</p>
+            </div>
+            <div class="category-card text-center p-5">
+                <div class="bg-gray-100 rounded-full h-14 w-14 flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-bicycle text-gray-700 text-xl"></i>
+                </div>
+                <h3 class="font-medium text-gray-900 text-sm">Sports</h3>
+                <p class="text-gray-500 text-xs mt-1">73 wishes</p>
+            </div>
+            <div class="category-card text-center p-5">
+                <div class="bg-gray-100 rounded-full h-14 w-14 flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-paint-brush text-gray-700 text-xl"></i>
+                </div>
+                <h3 class="font-medium text-gray-900 text-sm">Art Supplies</h3>
+                <p class="text-gray-500 text-xs mt-1">42 wishes</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Wishes -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="text-2xl font-semibold text-gray-900 section-title">Featured Wishes</h2>
+            <a href="wish-new.html" class="text-gray-700 font-medium hover:text-gray-900 flex items-center text-sm">
+                View All Wishes <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- Wish 1 -->
+            <div class="product-card">
+                <div class="relative">
+                    <div class="h-40 bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-book-open text-gray-500 text-4xl"></i>
+                    </div>
+                    <div class="badge badge-wish">WISH</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-gray-900 mb-1">Story Books</h3>
+                    <p class="text-gray-500 text-sm mb-3">Looking for children's story books</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="bg-gray-100 rounded-full h-7 w-7 flex items-center justify-center">
+                                <span class="text-gray-700 font-medium text-xs">E</span>
+                            </div>
+                            <div class="ml-2">
+                                <p class="text-sm font-medium text-gray-900">Emily, 7</p>
+                                <p class="text-xs text-gray-500">3.2 km away</p>
+                            </div>
+                        </div>
+                        <button class="btn-primary px-3 py-1 rounded text-sm">
+                            Fulfill
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wish 2 -->
+            <div class="product-card">
+                <div class="relative">
+                    <div class="h-40 bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-tshirt text-gray-500 text-4xl"></i>
+                    </div>
+                    <div class="badge badge-wish">WISH</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-gray-900 mb-1">Winter Coat</h3>
+                    <p class="text-gray-500 text-sm mb-3">Need a warm coat for winter</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="bg-gray-100 rounded-full h-7 w-7 flex items-center justify-center">
+                                <span class="text-gray-700 font-medium text-xs">M</span>
+                            </div>
+                            <div class="ml-2">
+                                <p class="text-sm font-medium text-gray-900">Michael, 9</p>
+                                <p class="text-xs text-gray-500">5.7 km away</p>
+                            </div>
+                        </div>
+                        <button class="btn-primary px-3 py-1 rounded text-sm">
+                            Fulfill
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wish 3 -->
+            <div class="product-card">
+                <div class="relative">
+                    <div class="h-40 bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-laptop text-gray-500 text-4xl"></i>
+                    </div>
+                    <div class="badge badge-wish">WISH</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-gray-900 mb-1">Laptop for School</h3>
+                    <p class="text-gray-500 text-sm mb-3">For online learning and homework</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="bg-gray-100 rounded-full h-7 w-7 flex items-center justify-center">
+                                <span class="text-gray-700 font-medium text-xs">J</span>
+                            </div>
+                            <div class="ml-2">
+                                <p class="text-sm font-medium text-gray-900">Jessica, 15</p>
+                                <p class="text-xs text-gray-500">8.1 km away</p>
+                            </div>
+                        </div>
+                        <button class="btn-primary px-3 py-1 rounded text-sm">
+                            Fulfill
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wish 4 -->
+            <div class="product-card">
+                <div class="relative">
+                    <div class="h-40 bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-bicycle text-gray-500 text-4xl"></i>
+                    </div>
+                    <div class="badge badge-wish">WISH</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-gray-900 mb-1">Bicycle</h3>
+                    <p class="text-gray-500 text-sm mb-3">To ride to school and with friends</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="bg-gray-100 rounded-full h-7 w-7 flex items-center justify-center">
+                                <span class="text-gray-700 font-medium text-xs">T</span>
+                            </div>
+                            <div class="ml-2">
+                                <p class="text-sm font-medium text-gray-900">Tom, 12</p>
+                                <p class="text-xs text-gray-500">4.3 km away</p>
+                            </div>
+                        </div>
+                        <button class="btn-primary px-3 py-1 rounded text-sm">
+                            Fulfill
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Today's Matches -->
+<!--<section class="py-16 deal-section text-white">-->
+<!--    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">-->
+<!--        <div class="flex flex-col md:flex-row items-center">-->
+<!--            <div class="md:w-1/2 mb-10 md:mb-0">-->
+<!--                <h2 class="text-2xl font-semibold mb-4">Today's Perfect Matches</h2>-->
+<!--                <p class="text-gray-300 mb-6">We found these perfect matches between wishes and donations in your area</p>-->
+<!--                <a href="#" class="bg-white text-gray-900 px-5 py-2.5 rounded-md text-base font-medium inline-block hover:bg-gray-100 transition">-->
+<!--                    View All Matches-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="md:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-5">-->
+<!--                &lt;!&ndash; Match 1 &ndash;&gt;-->
+<!--                <div class="bg-white bg-opacity-10 rounded-lg p-4">-->
+<!--                    <div class="flex items-center mb-3">-->
+<!--                        <div class="bg-white bg-opacity-20 rounded-full h-9 w-9 flex items-center justify-center mr-3">-->
+<!--                            <i class="fas fa-book text-white"></i>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3 class="font-medium">Emily's Book Wish</h3>-->
+<!--                            <p class="text-sm text-gray-300">Matched with Sarah's Donation</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="flex justify-between items-center">-->
+<!--                        <span class="text-sm text-gray-300">Only 1.2 km apart</span>-->
+<!--                        <button class="bg-white text-gray-900 px-3 py-1 rounded text-sm font-medium">-->
+<!--                            Connect-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Match 2 &ndash;&gt;-->
+<!--                <div class="bg-white bg-opacity-10 rounded-lg p-4">-->
+<!--                    <div class="flex items-center mb-3">-->
+<!--                        <div class="bg-white bg-opacity-20 rounded-full h-9 w-9 flex items-center justify-center mr-3">-->
+<!--                            <i class="fas fa-tshirt text-white"></i>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3 class="font-medium">Michael's Coat Wish</h3>-->
+<!--                            <p class="text-sm text-gray-300">Matched with Alex's Donation</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="flex justify-between items-center">-->
+<!--                        <span class="text-sm text-gray-300">Only 0.8 km apart</span>-->
+<!--                        <button class="bg-white text-gray-900 px-3 py-1 rounded text-sm font-medium">-->
+<!--                            Connect-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!-- Featured Donations -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="text-2xl font-semibold text-gray-900 section-title">Available Donations</h2>
+            <a href="donation-new.html" class="text-gray-700 font-medium hover:text-gray-900 flex items-center text-sm">
+                View All Donations <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- Donation 1 -->
+            <div class="product-card">
+                <div class="relative">
+                    <div class="h-40 bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-bicycle text-gray-500 text-4xl"></i>
+                    </div>
+                    <div class="badge badge-donation">DONATION</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-gray-900 mb-1">Bicycle</h3>
+                    <p class="text-gray-500 text-sm mb-3">Good condition, perfect for a teen</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="bg-gray-100 rounded-full h-7 w-7 flex items-center justify-center">
+                                <span class="text-gray-700 font-medium text-xs">D</span>
+                            </div>
+                            <div class="ml-2">
+                                <p class="text-sm font-medium text-gray-900">David, 16</p>
+                                <p class="text-xs text-gray-500">2.5 km away</p>
+                            </div>
+                        </div>
+                        <button class="btn-primary px-3 py-1 rounded text-sm">
+                            Request
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donation 2 -->
+            <div class="product-card">
+                <div class="relative">
+                    <div class="h-40 bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-dumbbell text-gray-500 text-4xl"></i>
+                    </div>
+                    <div class="badge badge-donation">DONATION</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-gray-900 mb-1">Sports Equipment</h3>
+                    <p class="text-gray-500 text-sm mb-3">Soccer ball and other gear</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="bg-gray-100 rounded-full h-7 w-7 flex items-center justify-center">
+                                <span class="text-gray-700 font-medium text-xs">S</span>
+                            </div>
+                            <div class="ml-2">
+                                <p class="text-sm font-medium text-gray-900">Sam, 14</p>
+                                <p class="text-xs text-gray-500">6.3 km away</p>
+                            </div>
+                        </div>
+                        <button class="btn-primary px-3 py-1 rounded text-sm">
+                            Request
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donation 3 -->
+            <div class="product-card">
+                <div class="relative">
+                    <div class="h-40 bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-paint-brush text-gray-500 text-4xl"></i>
+                    </div>
+                    <div class="badge badge-donation">DONATION</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-gray-900 mb-1">Art Supplies</h3>
+                    <p class="text-gray-500 text-sm mb-3">Paints, brushes and canvases</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="bg-gray-100 rounded-full h-7 w-7 flex items-center justify-center">
+                                <span class="text-gray-700 font-medium text-xs">A</span>
+                            </div>
+                            <div class="ml-2">
+                                <p class="text-sm font-medium text-gray-900">Anna, 12</p>
+                                <p class="text-xs text-gray-500">4.8 km away</p>
+                            </div>
+                        </div>
+                        <button class="btn-primary px-3 py-1 rounded text-sm">
+                            Request
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donation 4 -->
+            <div class="product-card">
+                <div class="relative">
+                    <div class="h-40 bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-music text-gray-500 text-4xl"></i>
+                    </div>
+                    <div class="badge badge-donation">DONATION</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-gray-900 mb-1">Musical Instruments</h3>
+                    <p class="text-gray-500 text-sm mb-3">Keyboard and guitar</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="bg-gray-100 rounded-full h-7 w-7 flex items-center justify-center">
+                                <span class="text-gray-700 font-medium text-xs">L</span>
+                            </div>
+                            <div class="ml-2">
+                                <p class="text-sm font-medium text-gray-900">Liam, 13</p>
+                                <p class="text-xs text-gray-500">3.7 km away</p>
+                            </div>
+                        </div>
+                        <button class="btn-primary px-3 py-1 rounded text-sm">
+                            Request
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- Stats Section -->
-<section class="py-12 bg-white">
+<section class="py-16 stats-section">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 gap-8 md:grid-cols-4 text-center">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-                <div class="stat-number">1,243</div>
-                <div class="text-sm text-gray-600">Wishes Fulfilled</div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">1,243</div>
+                <div class="text-gray-600 text-sm">Wishes Fulfilled</div>
             </div>
             <div>
-                <div class="stat-number">756</div>
-                <div class="text-sm text-gray-600">Active Donors</div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">756</div>
+                <div class="text-gray-600 text-sm">Active Donors</div>
             </div>
             <div>
-                <div class="stat-number">524</div>
-                <div class="text-sm text-gray-600">Happy Wishers</div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">524</div>
+                <div class="text-gray-600 text-sm">Happy Wishers</div>
             </div>
             <div>
-                <div class="stat-number">32</div>
-                <div class="text-sm text-gray-600">Communities</div>
+                <div class="text-3xl font-bold text-gray-900 mb-2">32</div>
+                <div class="text-gray-600 text-sm">Communities</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- How It Works Section -->
-<section id="how-it-works" class="py-16 bg-gray-50">
+<!-- Testimonials -->
+<section id="testimonials" class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">How ThreeWish Works</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="step-card">
-                <div class="step-number bg-purple-100 text-purple-600">1</div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-3">Create a Wish or Donation</h3>
-                <p class="text-gray-600">Children create wishes for items they need, or list items they'd like to donate.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number bg-green-100 text-green-600">2</div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-3">Get Matched by Location</h3>
-                <p class="text-gray-600">Our system matches wishes with donors in the same community.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number bg-blue-100 text-blue-600">3</div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-3">Fulfill Wishes & Build Friendships</h3>
-                <p class="text-gray-600">Donors fulfill wishes and children learn the joy of giving and receiving.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Sample Wishes Section -->
-<section id="wishes" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Recent Wishes from Children</h2>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-10 text-center section-title mx-auto">Success Stories</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Wish Card 1 -->
-            <div class="card wish-card bg-white rounded-lg shadow">
-                <div class="h-40 bg-purple-100 flex items-center justify-center">
-                    <i class="fas fa-book-open text-purple-500 text-4xl"></i>
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-medium text-gray-900">Story Books</h3>
-                    <p class="text-gray-600 text-sm mt-1">Looking for children's story books for my 7-year-old</p>
-                    <div class="flex items-center mt-4">
-                        <div class="bg-purple-100 rounded-full h-8 w-8 flex items-center justify-center">
-                            <span class="text-purple-600 font-medium">E</span>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">Emily, 7</p>
-                            <p class="text-xs text-gray-500">3.2 km away</p>
+            <div class="testimonial-card">
+                <div class="flex items-center mb-4">
+                    <div class="bg-gray-100 rounded-full h-10 w-10 flex items-center justify-center mr-4">
+                        <span class="text-gray-700 font-medium">E</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Emily's Mom</h3>
+                        <div class="flex text-yellow-400 text-sm">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
                     </div>
                 </div>
+                <p class="text-gray-600 text-sm">"Thanks to ThreeWish, Emily received the storybooks she wanted. She's been reading every day and even started a book club with her new friends from the platform!"</p>
             </div>
-
-            <!-- Wish Card 2 -->
-            <div class="card wish-card bg-white rounded-lg shadow">
-                <div class="h-40 bg-blue-100 flex items-center justify-center">
-                    <i class="fas fa-tshirt text-blue-500 text-4xl"></i>
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-medium text-gray-900">Winter Coat</h3>
-                    <p class="text-gray-600 text-sm mt-1">Need a warm coat for winter, size 10-12</p>
-                    <div class="flex items-center mt-4">
-                        <div class="bg-blue-100 rounded-full h-8 w-8 flex items-center justify-center">
-                            <span class="text-blue-600 font-medium">M</span>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">Michael, 9</p>
-                            <p class="text-xs text-gray-500">5.7 km away</p>
+            <div class="testimonial-card">
+                <div class="flex items-center mb-4">
+                    <div class="bg-gray-100 rounded-full h-10 w-10 flex items-center justify-center mr-4">
+                        <span class="text-gray-700 font-medium">M</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Michael's Dad</h3>
+                        <div class="flex text-yellow-400 text-sm">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
                     </div>
                 </div>
+                <p class="text-gray-600 text-sm">"The winter coat Michael received through ThreeWish has kept him warm all season. He's even started donating his old clothes to help other kids."</p>
             </div>
-
-            <!-- Wish Card 3 -->
-            <div class="card wish-card bg-white rounded-lg shadow">
-                <div class="h-40 bg-yellow-100 flex items-center justify-center">
-                    <i class="fas fa-laptop text-yellow-500 text-4xl"></i>
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-medium text-gray-900">Laptop for School</h3>
-                    <p class="text-gray-600 text-sm mt-1">Need a laptop for online learning and homework</p>
-                    <div class="flex items-center mt-4">
-                        <div class="bg-yellow-100 rounded-full h-8 w-8 flex items-center justify-center">
-                            <span class="text-yellow-600 font-medium">J</span>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">Jessica, 15</p>
-                            <p class="text-xs text-gray-500">8.1 km away</p>
+            <div class="testimonial-card">
+                <div class="flex items-center mb-4">
+                    <div class="bg-gray-100 rounded-full h-10 w-10 flex items-center justify-center mr-4">
+                        <span class="text-gray-700 font-medium">S</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Sarah, Donor</h3>
+                        <div class="flex text-yellow-400 text-sm">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="text-center mt-8">
-            <p class="text-gray-600">
-                <a class="text-blue-600" href="registration-new.html">Sign up</a> to see more
-                <a class="text-blue-600" href="wish-new.html">wishes</a> and fulfill them
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- Sample Donations Section -->
-<section id="donations" class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Sample Donations Available</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Donation Card 1 -->
-            <div class="card donation-card bg-white rounded-lg shadow">
-                <div class="h-40 bg-green-100 flex items-center justify-center">
-                    <i class="fas fa-bicycle text-green-500 text-4xl"></i>
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-medium text-gray-900">Bicycle</h3>
-                    <p class="text-gray-600 text-sm mt-1">Good condition bicycle, perfect for a teenager</p>
-                    <div class="flex items-center mt-4">
-                        <div class="bg-green-100 rounded-full h-8 w-8 flex items-center justify-center">
-                            <span class="text-green-600 font-medium">D</span>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">David, 16</p>
-                            <p class="text-xs text-gray-500">2.5 km away</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Donation Card 2 -->
-            <div class="card donation-card bg-white rounded-lg shadow">
-                <div class="h-40 bg-red-100 flex items-center justify-center">
-                    <i class="fas fa-dumbbell text-red-500 text-4xl"></i>
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-medium text-gray-900">Sports Equipment</h3>
-                    <p class="text-gray-600 text-sm mt-1">Soccer ball and other sports equipment for team</p>
-                    <div class="flex items-center mt-4">
-                        <div class="bg-red-100 rounded-full h-8 w-8 flex items-center justify-center">
-                            <span class="text-red-600 font-medium">S</span>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">Sam, 14</p>
-                            <p class="text-xs text-gray-500">6.3 km away</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Donation Card 3 -->
-            <div class="card donation-card bg-white rounded-lg shadow">
-                <div class="h-40 bg-indigo-100 flex items-center justify-center">
-                    <i class="fas fa-paint-brush text-indigo-500 text-4xl"></i>
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-medium text-gray-900">Art Supplies</h3>
-                    <p class="text-gray-600 text-sm mt-1">Paints, brushes and canvases for art class</p>
-                    <div class="flex items-center mt-4">
-                        <div class="bg-indigo-100 rounded-full h-8 w-8 flex items-center justify-center">
-                            <span class="text-indigo-600 font-medium">A</span>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">Anna, 12</p>
-                            <p class="text-xs text-gray-500">4.8 km away</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-8">
-            <p class="text-gray-600">
-                <a class="text-blue-600" href="registration-new.html">Register</a> to see more
-                <a class="text-blue-600" href="donation-new.html">donations</a>
-                 and create your own
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- Organizations Section -->
-<section id="organizations" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Partner Organizations</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Org Card 1 -->
-            <div class="org-card">
-                <div class="h-32 bg-blue-100 flex items-center justify-center">
-                    <i class="fas fa-building text-blue-500 text-4xl"></i>
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-medium text-gray-900">Community Center A</h3>
-                    <p class="text-gray-600 text-sm mt-1">Serving the downtown community since 2010</p>
-                    <div class="mt-4 flex items-center">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                15 Members
-                            </span>
-                        <span class="ml-2 bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                32 Wishes Fulfilled
-                            </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Org Card 2 -->
-            <div class="org-card">
-                <div class="h-32 bg-green-100 flex items-center justify-center">
-                    <i class="fas fa-school text-green-500 text-4xl"></i>
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-medium text-gray-900">School B</h3>
-                    <p class="text-gray-600 text-sm mt-1">Elementary school serving grades K-5</p>
-                    <div class="mt-4 flex items-center">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                28 Members
-                            </span>
-                        <span class="ml-2 bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                47 Wishes Fulfilled
-                            </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Org Card 3 -->
-            <div class="org-card">
-                <div class="h-32 bg-purple-100 flex items-center justify-center">
-                    <i class="fas fa-child text-purple-500 text-4xl"></i>
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-medium text-gray-900">Youth Program C</h3>
-                    <p class="text-gray-600 text-sm mt-1">After-school programs for teens</p>
-                    <div class="mt-4 flex items-center">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                12 Members
-                            </span>
-                        <span class="ml-2 bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                                18 Wishes Fulfilled
-                            </span>
-                    </div>
-                </div>
+                <p class="text-gray-600 text-sm">"I donated my old bicycle through ThreeWish and met Tom, who needed it for school. Seeing how happy he was made me realize the true joy of giving."</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Registration CTA Section -->
-<section id="register" class="py-16 bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+<!-- CTA Section -->
+<section class="py-16 bg-white border-t border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl font-bold mb-6">Ready to Make a Difference?</h2>
-        <p class="text-xl mb-8 max-w-3xl mx-auto">Join ThreeWish today and become part of a community that believes in the power of sharing and caring</p>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-6">Ready to Make a Difference?</h2>
+        <p class="text-gray-700 mb-8 max-w-3xl mx-auto">Join ThreeWish today and become part of a community that believes in the power of sharing and caring</p>
         <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <a href="registration-new.html" class="px-6 py-3 border-2 border-white text-base font-medium rounded-md shadow-sm text-white bg-transparent hover:bg-white hover:text-purple-600 transition duration-300">
+            <a href="registration-new.html" class="btn-primary px-6 py-3 rounded-md text-base font-medium">
                 Sign Up as Donor
             </a>
-            <a href="registration-new.html" class="px-6 py-3 border-2 border-white text-base font-medium rounded-md shadow-sm text-white bg-transparent hover:bg-white hover:text-purple-600 transition duration-300">
+            <a href="registration-new.html" class="btn-outline px-6 py-3 rounded-md text-base font-medium">
                 Sign Up as Wisher
             </a>
         </div>
-        <p class="mt-6 text-purple-100">Already have an account? <a target="_blank" href="login-new.html" class="text-white font-semibold underline">Log in</a></p>
-    </div>
-</section>
-
-<!-- FAQ Section -->
-<section class="py-16 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
-        <div class="space-y-6">
-            <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="text-lg font-medium text-gray-900 mb-2">What is ThreeWish?</h3>
-                <p class="text-gray-600">ThreeWish is a social innovation platform where children can both give and receive. Kids with spare items can share them with nearby children who need them, fostering friendship and community.</p>
-            </div>
-            <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="text-lg font-medium text-gray-900 mb-2">Is ThreeWish safe for children?</h3>
-                <p class="text-gray-600">Absolutely. All content is moderated, location data is approximate, and guardian verification is required for wishers. We prioritize child safety above all else.</p>
-            </div>
-            <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="text-lg font-medium text-gray-900 mb-2">How does the matching work?</h3>
-                <p class="text-gray-600">Our system uses geolocation to match wishes with donors in the same community. Donors see wishes based on proximity, with the option to expand search radius.</p>
-            </div>
-        </div>
+        <p class="mt-6 text-gray-600 text-sm">Already have an account? <a href="login-new.html" class="text-gray-900 font-medium underline">Log in</a></p>
     </div>
 </section>
 
 <!-- Footer -->
-<footer class="bg-gray-800 text-white py-12">
+<footer class="footer text-white py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-                <h3 class="text-lg font-semibold mb-4">ThreeWish</h3>
-                <p class="text-gray-400">Building compassionate communities through the joy of giving.</p>
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
-                    <li><a href="#how-it-works" class="text-gray-400 hover:text-white">How It Works</a></li>
-                    <li><a href="#wishes" class="text-gray-400 hover:text-white">Wishes</a></li>
-                    <li><a href="#donations" class="text-gray-400 hover:text-white">Donations</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold mb-4">Support</h3>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Safety Guidelines</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Community Rules</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-gift text-gray-400 text-xl mr-2"></i>
+                    <span class="font-semibold">ThreeWish</span>
+                </div>
+                <p class="text-gray-400 mb-4 text-sm">Building compassionate communities through the joy of giving.</p>
                 <div class="flex space-x-4">
                     <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-medium mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm">Home</a></li>
+                    <li><a href="#categories" class="text-gray-400 hover:text-white text-sm">Categories</a></li>
+                    <li><a href="wish-new.html" class="text-gray-400 hover:text-white text-sm">Wishes</a></li>
+                    <li><a href="donation-new.html" class="text-gray-400 hover:text-white text-sm">Donations</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-medium mb-4">Support</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm">Help Center</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm">Safety Guidelines</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm">Community Rules</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-medium mb-4">Newsletter</h3>
+                <p class="text-gray-400 mb-4 text-sm">Subscribe to get updates on new wishes and donations</p>
+                <div class="flex">
+                    <input type="email" class="bg-gray-800 text-white px-4 py-2 rounded-l-md w-full text-sm" placeholder="Your email">
+                    <button class="bg-gray-700 text-white px-4 py-2 rounded-r-md hover:bg-gray-600 transition text-sm">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
                 </div>
             </div>
         </div>
-        <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-gray-400 text-center">
+        <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-400 text-center">
             <p>&copy; 2023 ThreeWish. All rights reserved.</p>
         </div>
     </div>
@@ -539,20 +803,9 @@
     // Mobile menu functionality
     document.getElementById('mobile-menu-button').addEventListener('click', function() {
         const menu = document.getElementById('mobile-menu');
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
-
-        // Toggle menu visibility
         menu.classList.toggle('hidden');
-
-        // Update aria-expanded attribute
-        this.setAttribute('aria-expanded', !isExpanded);
-
-        // Toggle hamburger/X icons
-        const hamburgerIcon = this.querySelector('svg:first-child');
-        const xIcon = this.querySelector('svg:last-child');
-        hamburgerIcon.classList.toggle('hidden');
-        xIcon.classList.toggle('hidden');
     });
+
     // Simple smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -564,7 +817,7 @@
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                    top: targetElement.offsetTop - 100,
                     behavior: 'smooth'
                 });
             }
