@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThreeWish - Browse Wishes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Fredoka', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+
+    .pagination button {
+      margin: 0 5px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid #D1D5DB;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .pagination button:hover {
+      background: #EDE9FE;
+      border-color: #8B5CF6;
+    }
+
+    .pagination button.active {
+      background: #8B5CF6;
+      color: white;
+      border-color: #8B5CF6;
+    }
+
+    .nav-item {
+      transition: all 0.2s ease;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      border-left: 4px solid #8B5CF6;
+      background-color: #f3f4f6;
+    }
+
+    .filter-section {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8fafc;
+    }
+
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .card-shadow {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .success-badge {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+<!-- Navigation -->
+<nav class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <i class="fas fa-gift text-purple-500 text-2xl mr-2"></i>
+          <span class="font-bold text-xl text-purple-600">ThreeWish</span>
+        </div>
+        <div class="hidden md:ml-6 md:flex md:space-x-8">
+          <a href="index.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+          <a href="index.html#how-it-works" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">How It Works</a>
+          <a href="wish-new.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Wishes</a>
+          <a href="donation-new.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Donations</a>
+          <a href="#organizations" class="nav-item active text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Wish Fulfilled</a>
+        </div>
+      </div>
+
+      <!-- Desktop buttons -->
+      <div class="hidden md:flex items-center">
+        <a href="registration-new.html" class="ml-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+          Sign Up
+        </a>
+        <a href="login-new.html" class="ml-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+          Login
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <!-- Hamburger icon -->
+          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- X icon (hidden by default) -->
+          <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu, show/hide based on menu state -->
+  <div class="md:hidden hidden" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Home</a>
+      <a href="index.html#how-it-works" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">How It Works</a>
+      <a href="wish-new.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Wishes</a>
+      <a href="donation-new.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Donations</a>
+      <a href="#organizations" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Organizations</a>
+    </div>
+    <div class="pt-4 pb-3 border-t border-gray-200">
+      <div class="mt-3 px-2 space-y-1">
+        <a href="registration-new.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Sign Up</a>
+        <a href="login-new.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-purple-600">Login</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Wishes Header -->
+<div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl font-bold mb-4">Wish Fulfilled</h1>
+    <p class="text-xl max-w-3xl mx-auto">Celebrating successful connections between donors and wishers. Each card represents a wish that has been fulfilled through generosity.</p>
+  </div>
+</div>
+
+<!-- Main Content -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="container">
+    <!-- Success Celebration Banner -->
+    <div class="gradient-bg rounded-2xl p-6 mb-10 text-white card-shadow">
+      <div class="flex flex-col md:flex-row items-center justify-between">
+        <div class="mb-6 md:mb-0">
+          <div class="flex items-center">
+            <i class="fas fa-trophy text-3xl mr-4"></i>
+            <div>
+              <h2 class="text-2xl font-bold">Wishes Fulfilled: <span id="wishCount">127</span></h2>
+              <p class="text-blue-100">Join us in celebrating generosity and compassion</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex space-x-4">
+          <button class="bg-white text-purple-700 font-semibold py-3 px-6 rounded-lg hover:bg-gray-100 transition duration-300">
+            <i class="fas fa-share-alt mr-2"></i> Share Stories
+          </button>
+          <button class="bg-transparent border-2 border-white text-white font-semibold py-3 px-6 rounded-lg hover:bg-white hover:text-purple-700 transition duration-300">
+            <i class="fas fa-heart mr-2"></i> Support More
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wish Fulfilled Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Card 1 -->
+      <div class="bg-white rounded-2xl overflow-hidden card-shadow">
+        <!-- Success Badge -->
+        <div class="success-badge absolute bg-green-500 text-white font-bold py-1 px-4 rounded-full m-4 z-10">
+          <i class="fas fa-check-circle mr-2"></i> Wish Fulfilled
+        </div>
+
+        <!-- Donation Item Image -->
+        <div class="h-48 overflow-hidden">
+          <img src="https://media.istockphoto.com/id/601013658/photo/back-to-school.jpg?s=612x612&w=0&k=20&c=qJ0EHhjVJ-x7VnCn8IwO7UiWFJ8re2dJ_lpIyryZ5Lk="
+               alt="Donated Laptop" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Donor & Wisher Info -->
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">School Bag</h3>
+
+          <!-- Donor and Wisher Images -->
+          <div class="flex justify-between items-center mb-6">
+            <!-- Donor -->
+            <div class="text-center">
+              <div class="relative inline-block">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                     alt="Donor" class="w-16 h-16 rounded-full object-cover border-4 border-white shadow">
+                <div class="absolute -bottom-1 -right-1 bg-blue-500 text-white rounded-full p-1">
+                  <i class="fas fa-hands-helping text-xs"></i>
+                </div>
+              </div>
+              <p class="font-medium text-gray-800 mt-2">Alex Johnson</p>
+              <p class="text-sm text-gray-500">Donor</p>
+            </div>
+
+            <!-- Exchange Icon -->
+            <div class="bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-full p-4">
+              <i class="fas fa-exchange-alt text-2xl"></i>
+            </div>
+
+            <!-- Wisher -->
+            <div class="text-center">
+              <div class="relative inline-block">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                     alt="Wisher" class="w-16 h-16 rounded-full object-cover border-4 border-white shadow">
+                <div class="absolute -bottom-1 -right-1 bg-purple-500 text-white rounded-full p-1">
+                  <i class="fas fa-star text-xs"></i>
+                </div>
+              </div>
+              <p class="font-medium text-gray-800 mt-2">Maria Garcia</p>
+              <p class="text-sm text-gray-500">Wisher</p>
+            </div>
+          </div>
+
+          <!-- Item Details -->
+          <div class="bg-gray-50 rounded-lg p-4 mb-4">
+            <h4 class="font-semibold text-gray-700 mb-2">Donated Item: School Bag</h4>
+            <p class="text-gray-600 text-sm">A lightly used laptop to support Maria's online studies in computer science.</p>
+          </div>
+
+          <!-- Fulfillment Details -->
+          <div class="text-sm text-gray-600">
+            <div class="flex items-center mb-2">
+              <i class="fas fa-calendar-check text-green-500 mr-2"></i>
+              <span>Fulfilled on: June 15, 2023</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+              <span>San Francisco, CA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white rounded-2xl overflow-hidden card-shadow">
+        <!-- Success Badge -->
+        <div class="success-badge absolute bg-green-500 text-white font-bold py-1 px-4 rounded-full m-4 z-10">
+          <i class="fas fa-check-circle mr-2"></i> Wish Fulfilled
+        </div>
+
+        <!-- Donation Item Image -->
+        <div class="h-48 overflow-hidden">
+          <img src="https://media.istockphoto.com/id/479473084/photo/empty-wooden-shelf.jpg?s=612x612&w=0&k=20&c=vMaO8tyEYVqrsoN4z94YuIgezQ2PPqWFbgiLNG5nP2k="
+               alt="Donated Groceries" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Donor & Wisher Info -->
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">Book Self</h3>
+
+          <!-- Donor and Wisher Images -->
+          <div class="flex justify-between items-center mb-6">
+            <!-- Donor -->
+            <div class="text-center">
+              <div class="relative inline-block">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                     alt="Donor" class="w-16 h-16 rounded-full object-cover border-4 border-white shadow">
+                <div class="absolute -bottom-1 -right-1 bg-blue-500 text-white rounded-full p-1">
+                  <i class="fas fa-hands-helping text-xs"></i>
+                </div>
+              </div>
+              <p class="font-medium text-gray-800 mt-2">Robert Chen</p>
+              <p class="text-sm text-gray-500">Donor</p>
+            </div>
+
+            <!-- Exchange Icon -->
+            <div class="bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-full p-4">
+              <i class="fas fa-exchange-alt text-2xl"></i>
+            </div>
+
+            <!-- Wisher -->
+            <div class="text-center">
+              <div class="relative inline-block">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                     alt="Wisher" class="w-16 h-16 rounded-full object-cover border-4 border-white shadow">
+                <div class="absolute -bottom-1 -right-1 bg-purple-500 text-white rounded-full p-1">
+                  <i class="fas fa-star text-xs"></i>
+                </div>
+              </div>
+              <p class="font-medium text-gray-800 mt-2">Sarah Miller</p>
+              <p class="text-sm text-gray-500">Wisher</p>
+            </div>
+          </div>
+
+          <!-- Item Details -->
+          <div class="bg-gray-50 rounded-lg p-4 mb-4">
+            <h4 class="font-semibold text-gray-700 mb-2">Donated Item: Book Self</h4>
+            <p class="text-gray-600 text-sm">A month's supply of groceries to help Sarah's family during a difficult time.</p>
+          </div>
+
+          <!-- Fulfillment Details -->
+          <div class="text-sm text-gray-600">
+            <div class="flex items-center mb-2">
+              <i class="fas fa-calendar-check text-green-500 mr-2"></i>
+              <span>Fulfilled on: May 28, 2023</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+              <span>Chicago, IL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-2xl overflow-hidden card-shadow">
+        <!-- Success Badge -->
+        <div class="success-badge absolute bg-green-500 text-white font-bold py-1 px-4 rounded-full m-4 z-10">
+          <i class="fas fa-check-circle mr-2"></i> Wish Fulfilled
+        </div>
+
+        <!-- Donation Item Image -->
+        <div class="h-48 overflow-hidden">
+          <img src="https://m.media-amazon.com/images/I/61p2jv49iGL._AC_UF894,1000_QL80_.jpg"
+               alt="Donated Wheelchair" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Donor & Wisher Info -->
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">Winter Cloth</h3>
+
+          <!-- Donor and Wisher Images -->
+          <div class="flex justify-between items-center mb-6">
+            <!-- Donor -->
+            <div class="text-center">
+              <div class="relative inline-block">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                     alt="Donor" class="w-16 h-16 rounded-full object-cover border-4 border-white shadow">
+                <div class="absolute -bottom-1 -right-1 bg-blue-500 text-white rounded-full p-1">
+                  <i class="fas fa-hands-helping text-xs"></i>
+                </div>
+              </div>
+              <p class="font-medium text-gray-800 mt-2">David Wilson</p>
+              <p class="text-sm text-gray-500">Donor</p>
+            </div>
+
+            <!-- Exchange Icon -->
+            <div class="bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-full p-4">
+              <i class="fas fa-exchange-alt text-2xl"></i>
+            </div>
+
+            <!-- Wisher -->
+            <div class="text-center">
+              <div class="relative inline-block">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                     alt="Wisher" class="w-16 h-16 rounded-full object-cover border-4 border-white shadow">
+                <div class="absolute -bottom-1 -right-1 bg-purple-500 text-white rounded-full p-1">
+                  <i class="fas fa-star text-xs"></i>
+                </div>
+              </div>
+              <p class="font-medium text-gray-800 mt-2">James Thompson</p>
+              <p class="text-sm text-gray-500">Wisher</p>
+            </div>
+          </div>
+
+          <!-- Item Details -->
+          <div class="bg-gray-50 rounded-lg p-4 mb-4">
+            <h4 class="font-semibold text-gray-700 mb-2">Donated Item: Winter Combol</h4>
+            <p class="text-gray-600 text-sm">A new wheelchair to help James regain mobility after his accident.</p>
+          </div>
+
+          <!-- Fulfillment Details -->
+          <div class="text-sm text-gray-600">
+            <div class="flex items-center mb-2">
+              <i class="fas fa-calendar-check text-green-500 mr-2"></i>
+              <span>Fulfilled on: April 10, 2023</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+              <span>New York, NY</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State (if needed) -->
+    <div id="emptyState" class="hidden text-center py-16">
+      <div class="text-gray-400 text-6xl mb-6">
+        <i class="fas fa-gift"></i>
+      </div>
+      <h3 class="text-2xl font-semibold text-gray-500 mb-3">No Fulfilled Wishes Yet</h3>
+      <p class="text-gray-400 max-w-md mx-auto">When donors and wishers exchange items, their fulfilled wishes will appear here. Be the first to fulfill a wish!</p>
+    </div>
+
+    <!-- Load More Button -->
+    <div class="text-center mt-12">
+      <button class="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-3 px-8 rounded-lg hover:opacity-90 transition duration-300">
+        <i class="fas fa-redo-alt mr-2"></i> Load More
+      </button>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="mt-16 bg-white rounded-2xl p-8 card-shadow">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Wish Fulfillment Impact</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="text-4xl font-bold text-blue-600 mb-2">127</div>
+          <div class="text-gray-600">Wishes Fulfilled</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-bold text-green-600 mb-2">89</div>
+          <div class="text-gray-600">Active Donors</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-bold text-purple-600 mb-2">42</div>
+          <div class="text-gray-600">Cities Reached</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- CTA Section -->
+<section class="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold mb-6">Want to Help?</h2>
+    <p class="text-xl mb-8 max-w-3xl mx-auto">Sign up for a free donor account to fulfill wishes and make children's dreams come true</p>
+    <a href="registration-new.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-purple-600 bg-white hover:bg-gray-100">
+      Become a Donor
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold mb-4">ThreeWish</h3>
+        <p class="text-gray-400">Building compassionate communities through the joy of giving.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+          <li><a href="wishes.html" class="text-gray-400 hover:text-white">Wishes</a></li>
+          <li><a href="donations.html" class="text-gray-400 hover:text-white">Donations</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">How It Works</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Support</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">Safety Guidelines</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">Community Rules</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-gray-400 text-center">
+      <p>&copy; 2023 ThreeWish. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu functionality
+  document.getElementById('mobile-menu-button').addEventListener('click', function() {
+    const menu = document.getElementById('mobile-menu');
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+    // Toggle menu visibility
+    menu.classList.toggle('hidden');
+
+    // Update aria-expanded attribute
+    this.setAttribute('aria-expanded', !isExpanded);
+
+    // Toggle hamburger/X icons
+    const hamburgerIcon = this.querySelector('svg:first-child');
+    const xIcon = this.querySelector('svg:last-child');
+    hamburgerIcon.classList.toggle('hidden');
+    xIcon.classList.toggle('hidden');
+  });
+  // Simple pagination functionality
+  document.querySelectorAll('.pagination button').forEach(button => {
+    button.addEventListener('click', function() {
+      document.querySelector('.pagination button.active').classList.remove('active');
+      this.classList.add('active');
+
+      // In a real application, this would fetch the next page of results
+      // For this demo, we'll just simulate loading
+      document.querySelector('main').style.opacity = '0.7';
+      setTimeout(() => {
+        document.querySelector('main').style.opacity = '1';
+      }, 300);
+    });
+  });
+</script>
+</body>
+</html>
